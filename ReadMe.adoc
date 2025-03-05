@@ -1,0 +1,46 @@
+= CIM use of LinkML for creating vocabulary and profile for Diagram
+v0.1.0-alpha, 2025-03-03
+:toc:  
+:toclevels: 2  
+
+== Overview
+
+CIM4Diagram is an **Proof-of-concept project** focusing on creating a **LinkML-based definition** of the **CIM Diagram Profile**, aligned with *W3C DX-PROF*. This project aims to define a **vocabulary and constraints** for diagram modeling within the **Common Information Model (CIM)** framework, ensuring compatibility with existing semantic web standards.  
+
+As part of this effort, we will:
+- Define **CIM Diagram Profile** constraints using **LinkML**.
+- Generate an **RDFS-Plus ontology** representation of the vocabulary.
+- Generate an **SHACL** representation of the profile constraints 
+- Investigate whether **LinkML** can be used to generate the expected ontology and contained defined in the target RDFS and SHACL definition that will be manually created. 
+- Explore alternative generation from LinkML for providing necessary documentation and Software Development Kit (SDK) for the profile.  
+
+== Objectives  
+
+CIM4Diagram aims to:  
+- Develop a structured CIM Diagram Profile using **LinkML**, conforming to *W3C DX-PROF*.  
+- Define a vocabulary and constraints for diagram representation in CIM with the expectation that we are able to provide all relevant modelling concept.  
+- Generate an expected **RDFS-Plus** ontology for the profile and evaluate LinkML’s ability to produce it.  
+- Investigate **SHACL** generation for enforcing constraints.  
+- Assess additional semantic web technologies for supporting interoperability. 
+- Investigate how LinkML can be used to make extension to the CIM standard.
+
+== Expected Deliverables
+
+- CIM Diagram Profile in LinkML, following W3C DX-PROF
+- RDFS-Plus ontology generation from LinkML
+- SHACL constraints for validation of diagram-related data
+- Comparative analysis of SHACL, RDFS-Plus, and other ontology constraints
+- Prototype implementation for querying CIM diagrams via SPARQL
+
+== Relevant Resources
+
+- W3C DX-PROF: link:https://www.w3.org/TR/dx-prof/[W3C DX-PROF Specification]
+- LinkML Documentation: link:https://linkml.io/LinkML/[LinkML]
+- RDFlib: link:https://github.com/RDFLib/rdflib[RDFLib GitHub]
+- SHACL Library for RDFLib: link:https://github.com/RDFLib/pySHACL[pySHACL]
+
+== Accreditation  
+
+We acknowledge and accredit link:https://cimug.ucaiug.org/[UCA CIMug] and the team responsible for the development of *IEC 61968-453:2014/AMD1:2018 ED2*, for their foundational work on the CIM profile included in this repository.  
+
+This repository and its contents are **made available under the Apache License 2.0**, ensuring open access, modification, and redistribution under the terms outlined in the `LICENSE` file.
