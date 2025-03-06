@@ -16,7 +16,8 @@ As part of this effort, we will:
 
 == Objectives  
 
-CIM4Diagram aims to:  
+CIM4Diagram aims to:
+
 - Develop a structured CIM Diagram Profile using **LinkML**, conforming to *W3C DX-PROF*.  
 - Define a vocabulary and constraints for diagram representation in CIM with the expectation that we are able to provide all relevant modelling concept.  
 - Generate an expected **RDFS-Plus** ontology for the profile and evaluate LinkML’s ability to produce it.  
