@@ -24,15 +24,18 @@
                                     dcterms:contributor <https://orcid.org/0000-0002-7167-7321> ,
                                                         <https://orcid.org/0000-0001-7508-7428> ;
                                     dcterms:creator <https://orcid.org/0009-0009-8211-926X> ;
-                                    dcterms:description "The Common Information Model (CIM) Domain vocabulary describe the primitive, contained primitive and unit datatype." ;
+                                    dcterms:description "The Common Information Model (CIM) Domain vocabulary describe the primitive, contained primitive and unit datatype."@en ;
                                     dcterms:identifier "urn:uuid:79ec3546-7023-4652-9879-1f02bbe5cb03" ;
                                     dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
                                     dcterms:modified "2025-03-06"^^xsd:date ;
                                     dcterms:publisher <https://www.ucaiug.org/> ;
                                     dcterms:title "Domain vocabulary" ;
-                                    rdfs:comment "The Domain vocabulary does not have any dependency." ;
+                                    rdfs:comment "The Domain vocabulary does not have any dependency."@en ;
                                     rdfs:label "CIM Domain Voc" ;
                                     owl:versionInfo "1.0.0-alpha-1" ;
+                                    owl:backwardCompatibleWith <https://cim.ucaiug.io/prof/Vocabulary/0.9> ;
+                                    owl:incompatibleWith <https://cim.ucaiug.io/prof/Vocabulary/0.1> ;
+                                    owl:priorVersion <https://cim.ucaiug.io/prof/Vocabulary/0.9> ;
                                     dcterms:issued "2025-03-06T17:59:40+01:00"^^xsd:dateTime ;
                                     dcterms:language "en-GB" ;
                                     dcterms:rightsHolder "UCA International User Group" ;
