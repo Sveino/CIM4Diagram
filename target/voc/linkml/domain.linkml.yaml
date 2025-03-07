@@ -1,0 +1,39 @@
+id: https://cim.ucaiug.io/ns/domain
+# id: urn:uuid:79ec3546-7023-4652-9879-1f02bbe5cb03
+name: cim-domain-voc  # rdfs:label, but must conform to NCName pattern. Weird.
+title: Domain vocabulary
+prefixes:
+  cim: http://iec.ch/TC57/CIM100#
+  dl: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU#
+  dctype: http://purl.org/dc/dcmitype/
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  dcat: http://www.w3.org/ns/dcat#
+  dcterms: http://purl.org/dc/terms/
+  dc: http://purl.org/dc/elements/1.1/
+  owl: http://www.w3.org/2002/07/owl#
+  skos: http://www.w3.org/2004/02/skos/core#
+  vann: http://purl.org/vocab/vann/
+  dom: https://cim.ucaiug.io/ns/domain#
+  orcid: https://orcid.org/
+default_prefix: cim
+version: 1.0.0-alpha-1  # PAV version, not OWL version IRI
+conforms_to: https://cim.ucaiug.io/prof/Vocabulary/1.0
+source_file: "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap"
+contributors:
+  - orcid:0000-0002-7167-7321
+  - orcid:orcid.org/0000-0001-7508-7428
+created_by: orcid:0009-0009-8211-926X
+description: The Common Information Model (CIM) Domain vocabulary describe the primitive, contained primitive and unit datatype.
+license: http://www.apache.org/licenses/LICENSE-2.0
+last_updated_on: 2025-03-06  # dcterms:modified "2025-03-06"^^xsd:date ;
+comments: The Domain vocabulary does not have any dependency.
+in_language: en-GB
+
+# dcterms:rights "Copyright" ;
+# dcterms:publisher <https://www.ucaiug.org/> ;
+# source: 'URI of file' also available, which is the actual dct:source
+# owl:versionInfo "1.0.0-alpha-1" ;
+# issued "2025-03-06T17:59:40+01:00"^^xsd:dateTime ;
+# dcterms:rightsHolder "UCA International User Group" ;
