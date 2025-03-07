@@ -1,0 +1,398 @@
+@prefix cim: <http://iec.ch/TC57/CIM100#> .
+
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+@prefix cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix uml: <http://iec.ch/TC57/NonStandard/UML#> .
+
+@base <https://cim.ucaiug.io/ns/core> .
+
+<https://cim.ucaiug.io/ns/DiagramLayout> rdf:type owl:Ontology ;
+                                    owl:versionIRI <https://cim.ucaiug.io/ns/DiagramLayout/1.0> ;
+                                    dcterms:rights "Copyright" ;
+                                    dcterms:conformsTo <https://cim.ucaiug.io/prof/Vocabulary/1.0> ;
+                                    dc:source "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
+                                    dcterms:contributor <https://orcid.org/0000-0002-7167-7321> ,
+                                                        <https://orcid.org/0000-0001-7508-7428> ;
+                                    dcterms:creator <https://orcid.org/0009-0009-8211-926X> ;
+                                    dcterms:description "The Common Information Model (CIM) Diagram Layout vocabulary describe how objects are arranged in a coordinate system rather than how they are rendered."@en ;
+                                    dcterms:identifier "urn:uuid:4a9c6788-65ed-46f9-bcfb-6b54605066d0" ;
+                                    dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
+                                    dcterms:modified "2025-03-07"^^xsd:date ;
+                                    dcterms:publisher <https://www.ucaiug.org/> ;
+                                    dcterms:title "DiagramLayout vocabulary" ;
+                                    rdfs:comment ""@en ;
+                                    rdfs:label "CIM DiagramLayout Voc" ;
+                                    owl:versionInfo "1.0.0-alpha-1" ;
+                                    owl:backwardCompatibleWith <https://cim.ucaiug.io/ns/DiagramLayout//0.9> ;
+                                    owl:incompatibleWith <https://cim.ucaiug.io/ns/DiagramLayout/0.1> ;
+                                    owl:priorVersion <https://cim.ucaiug.io/ns/DiagramLayout/0.9> ;
+                                    dcterms:issued "2025-03-06T17:59:40+01:00"^^xsd:dateTime ;
+                                    dcterms:language "en-GB" ;
+                                    dcterms:rightsHolder "UCA International User Group" ;
+                                    vann:preferredNamespacePrefix "cim" ;
+                                    vann:preferredNamespaceUri "hhttps://cim.ucaiug.io/ns#" ;
+                                    owl:imports <https://cim.ucaiug.io/ns/core> .
+
+dl:Package_DiagramLayoutProfile a cims:ClassCategory ;
+  rdfs:label "DiagramLayoutProfile" ;
+  rdfs:comment """This standard specifies an exchange profile for schematics with the following characteristics.
+A generic method for linking the diagram object to the domain data. Domain data and diagram layout data can be exchanged together with the domain data, or separately from each other with the assumption that domain data will have already been imported should diagram layout data be imported separately.
+It does not require or imply a specific domain data format. Therefore, it supports domain data modelled according to the IEC 61970-301 Common information model (CIM) that is exchanged in the IEC 61970-501 format (CIM RDF schema). Diagram layout data references domain data in compliance with IEC/TR 62541-1, <i>OPC Unified Architecture</i>).
+The intended usage of this standard is that the source of a diagram will use the standard to encode the layout of their diagram as they created it. It is then incumbent upon any receiver to supply the means of using that diagram layout in their system.
+<ul>
+\t<li>In the simplest situation, if the source uses Switch object placements, the receiver creates a generic Switch template in the receiver's system that will be used to render Switches (i.e. there is no exchange of Switch templates).</li>
+\t<li>In more complex situations, a 1:1 correspondence may not be desirable, and receivers may have to create generic transformations in order to use exchanges.</li>
+\t<li>However, in both situations, it is expected that once an investment is made in a strategy for rendering, repeated imports may be carried out automatically.</li>
+</ul>
+Supports the exchange of diagram objects that have no relationship to domain data, i.e., pure static background objects.
+Supports multiple representations of the same domain object in the same or different diagrams.
+Allows the diagram to be used as the unit of exchange, providing a straightforward approach to partial exchange, or an exchange between systems that have a separate model and repository for diagram layout data. 
+Supports assignment of diagram objects to layers or other means, for showing or hiding information based on zoom level and/or user interest.
+A generic method for proprietary extensions to enable full round tripping (export and import back into the same system) without information loss within a system, and without breaking the standard exchange format."""@en .
+
+
+cim:Diagram a owl:Class ;
+  rdfs:label "Diagram" ;
+  rdfs:comment "The diagram being exchanged. The coordinate system is a standard Cartesian coordinate system and the orientation attribute defines the orientation. The initial view related attributes can be used to specify an initial view with the x,y coordinates of the diagonal points."@en ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
+  cims:stereotype uml:concrete ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:DiagramObject a owl:Class ;
+  rdfs:label "DiagramObject" ;
+  rdfs:comment "An object that defines one or more points in a given space. This object can be associated with anything that specializes IdentifiedObject. For single line diagrams such objects typically include such items as analog values, breakers, disconnectors, power transformers, and transmission lines."@en ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
+  cims:stereotype uml:concrete ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:DiagramObjectGluePoint a owl:Class ;
+  rdfs:label "DiagramObjectGluePoint" ;
+  rdfs:comment "This is used for grouping diagram object points from different diagram objects that are considered to be glued together in a diagram even if they are not at the exact same coordinates."@en ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
+  cims:stereotype uml:concrete .
+
+cim:DiagramObjectPoint a owl:Class ;
+  rdfs:label "DiagramObjectPoint" ;
+  rdfs:comment "A point in a given space defined by 3 coordinates and associated to a diagram object.  The coordinates may be positive or negative as the origin does not have to be in the corner of a diagram."@en ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
+  cims:stereotype uml:concrete .
+
+cim:DiagramObjectStyle a owl:Class ;
+  rdfs:label "DiagramObjectStyle" ;
+  rdfs:comment "A reference to a style used by the originating system for a diagram object.  A diagram object style describes information such as line thickness, shape such as circle or rectangle etc, and colour."@en ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
+  cims:stereotype uml:concrete ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:DiagramStyle a owl:Class ;
+  rdfs:label "DiagramStyle" ;
+  rdfs:comment "The diagram style refers to a style used by the originating system for a diagram.  A diagram style describes information such as schematic, geographic, etc."@en ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
+  cims:stereotype uml:concrete ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:OrientationKind a owl:Class ;
+  rdfs:label "OrientationKind" ;
+  rdfs:comment "The orientation of the coordinate system with respect to top, left, and the coordinate number system."@en ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
+  cims:stereotype uml:enumeration .
+
+cim:TextDiagramObject a owl:Class ;
+  rdfs:label "TextDiagramObject" ;
+  rdfs:comment "A diagram object for placing free-text or text derived from an associated domain object."@en ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
+  cims:stereotype uml:concrete ;
+  rdfs:subClassOf cim:DiagramObject .
+
+cim:VisibilityLayer a owl:Class ;
+  rdfs:label "VisibilityLayer" ;
+  rdfs:comment """Layers are typically used for grouping diagram objects according to themes and scales. Themes are used to display or hide certain information (e.g., lakes, borders), while scales are used for hiding or displaying information depending on the current zoom level (hide text when it is too small to be read, or when it exceeds the screen size). This is also called de-cluttering.
+CIM based graphics exchange supports an m:n relationship between diagram objects and layers. The importing system shall convert an m:n case into an appropriate 1:n representation if the importing system does not support m:n."""@en ;
+  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
+  cims:stereotype uml:concrete ;
+  rdfs:subClassOf cim:IdentifiedObject .
+
+cim:Diagram.DiagramElements a owl:ObjectProperty, owl:InverseFunctionalProperty ;
+  rdfs:label "DiagramElements" ;
+  rdfs:comment "A diagram is made up of multiple diagram objects."@en ;
+  cims:AssociationUsed "No" ;
+  cims:multiplicity cims:M:0..n ;
+  owl:inverseOf cim:DiagramObject.Diagram ;
+  rdfs:domain cim:Diagram ;
+  rdfs:range cim:DiagramObject .
+
+cim:Diagram.DiagramStyle a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "DiagramStyle" ;
+  rdfs:comment "A Diagram may have a DiagramStyle."@en ;
+  cims:AssociationUsed "Yes" ;
+  cims:multiplicity cims:M:0..1 ;
+  owl:inverseOf cim:DiagramStyle.Diagram ;
+  rdfs:domain cim:Diagram ;
+  rdfs:range cim:DiagramStyle .
+
+cim:Diagram.orientation a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "orientation" ;
+  rdfs:comment "Coordinate system orientation of the diagram. A positive orientation gives standard “right-hand” orientation, with negative orientation indicating a “left-hand” orientation. For 2D diagrams, a positive orientation will result in X values increasing from left to right and Y values increasing from bottom to top. A negative orientation gives the “left-hand” orientation (favoured by computer graphics displays) with X values increasing from left to right and Y values increasing from top to bottom."@en ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:Diagram ;
+  rdfs:range cim:OrientationKind .
+
+cim:DiagramObject.Diagram a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "Diagram" ;
+  rdfs:comment "A diagram object is part of a diagram."@en ;
+  cims:AssociationUsed "Yes" ;
+  cims:multiplicity cims:M:1..1 ;
+  owl:inverseOf cim:Diagram.DiagramElements ;
+  rdfs:domain cim:DiagramObject ;
+  rdfs:range cim:Diagram .
+
+cim:DiagramObject.DiagramObjectPoints a owl:ObjectProperty, owl:InverseFunctionalProperty ;
+  rdfs:label "DiagramObjectPoints" ;
+  rdfs:comment "A diagram object can have 0 or more points to reflect its layout position, routing (for polylines) or boundary (for polygons)."@en ;
+  cims:AssociationUsed "No" ;
+  cims:multiplicity cims:M:0..n ;
+  owl:inverseOf cim:DiagramObjectPoint.DiagramObject ;
+  rdfs:domain cim:DiagramObject ;
+  rdfs:range cim:DiagramObjectPoint .
+
+cim:DiagramObject.DiagramObjectStyle a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "DiagramObjectStyle" ;
+  rdfs:comment "A diagram object has a style associated that provides a reference for the style used in the originating system."@en ;
+  cims:AssociationUsed "Yes" ;
+  cims:multiplicity cims:M:0..1 ;
+  owl:inverseOf cim:DiagramObjectStyle.StyledObjects ;
+  rdfs:domain cim:DiagramObject ;
+  rdfs:range cim:DiagramObjectStyle .
+
+cim:DiagramObject.IdentifiedObject a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "IdentifiedObject" ;
+  rdfs:comment "The domain object to which this diagram object is associated."@en ;
+  cims:AssociationUsed "Yes" ;
+  cims:multiplicity cims:M:0..1 ;
+  owl:inverseOf cim:IdentifiedObject.DiagramObjects ;
+  rdfs:domain cim:DiagramObject ;
+  rdfs:range cim:IdentifiedObject .
+
+cim:DiagramObject.VisibilityLayers a owl:ObjectProperty ;
+  rdfs:label "VisibilityLayers" ;
+  rdfs:comment "A diagram object can be part of multiple visibility layers."@en ;
+  cims:AssociationUsed "No" ;
+  cims:multiplicity cims:M:0..n ;
+  owl:inverseOf cim:VisibilityLayer.VisibleObjects ;
+  rdfs:domain cim:DiagramObject ;
+  rdfs:range cim:VisibilityLayer .
+
+cim:DiagramObjectGluePoint.DiagramObjectPoints a owl:ObjectProperty, owl:InverseFunctionalProperty ;
+  rdfs:label "DiagramObjectPoints" ;
+  rdfs:comment "A diagram object glue point is associated with 2 or more object points that are considered to be 'glued' together."@en ;
+  cims:AssociationUsed "No" ;
+  cims:multiplicity cims:M:2..n ;
+  owl:inverseOf cim:DiagramObjectPoint.DiagramObjectGluePoint ;
+  rdfs:domain cim:DiagramObjectGluePoint ;
+  rdfs:range cim:DiagramObjectPoint .
+
+cim:DiagramObjectPoint.DiagramObject a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "DiagramObject" ;
+  rdfs:comment "The diagram object with which the points are associated."@en ;
+  cims:AssociationUsed "Yes" ;
+  cims:multiplicity cims:M:1..1 ;
+  owl:inverseOf cim:DiagramObject.DiagramObjectPoints ;
+  rdfs:domain cim:DiagramObjectPoint ;
+  rdfs:range cim:DiagramObject .
+
+cim:DiagramObjectPoint.DiagramObjectGluePoint a owl:ObjectProperty, owl:FunctionalProperty ;
+  rdfs:label "DiagramObjectGluePoint" ;
+  rdfs:comment "The 'glue' point to which this point is associated."@en ;
+  cims:AssociationUsed "Yes" ;
+  cims:multiplicity cims:M:0..1 ;
+  owl:inverseOf cim:DiagramObjectGluePoint.DiagramObjectPoints ;
+  rdfs:domain cim:DiagramObjectPoint ;
+  rdfs:range cim:DiagramObjectGluePoint .
+
+cim:DiagramObjectStyle.StyledObjects a owl:ObjectProperty, owl:InverseFunctionalProperty ;
+  rdfs:label "StyledObjects" ;
+  rdfs:comment "A style can be assigned to multiple diagram objects."@en ;
+  cims:AssociationUsed "No" ;
+  cims:multiplicity cims:M:0..n ;
+  owl:inverseOf cim:DiagramObject.DiagramObjectStyle ;
+  rdfs:domain cim:DiagramObjectStyle ;
+  rdfs:range cim:DiagramObject .
+
+cim:DiagramStyle.Diagram a owl:ObjectProperty, owl:InverseFunctionalProperty ;
+  rdfs:label "Diagram" ;
+  rdfs:comment "A DiagramStyle can be used by many Diagrams."@en ;
+  cims:AssociationUsed "No" ;
+  cims:multiplicity cims:M:0..n ;
+  owl:inverseOf cim:Diagram.DiagramStyle ;
+  rdfs:domain cim:DiagramStyle ;
+  rdfs:range cim:Diagram .
+
+cim:IdentifiedObject.DiagramObjects a owl:ObjectProperty, owl:InverseFunctionalProperty ;
+  rdfs:label "DiagramObjects" ;
+  rdfs:comment "The diagram objects that are associated with the domain object."@en ;
+  cims:AssociationUsed "No" ;
+  cims:multiplicity cims:M:0..n ;
+  owl:inverseOf cim:DiagramObject.IdentifiedObject ;
+  rdfs:domain cim:IdentifiedObject ;
+  rdfs:range cim:DiagramObject .
+
+cim:VisibilityLayer.VisibleObjects a owl:ObjectProperty ;
+  rdfs:label "VisibleObjects" ;
+  rdfs:comment "A visibility layer can contain one or more diagram objects."@en ;
+  cims:AssociationUsed "Yes" ;
+  cims:multiplicity cims:M:1..n ;
+  owl:inverseOf cim:DiagramObject.VisibilityLayers ;
+  rdfs:domain cim:VisibilityLayer ;
+  rdfs:range cim:DiagramObject .
+
+cim:Diagram.x1InitialView a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "x1InitialView" ;
+  rdfs:comment "X coordinate of the first corner of the initial view."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:Diagram ;
+  rdfs:range xsd:float .
+
+cim:Diagram.x2InitialView a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "x2InitialView" ;
+  rdfs:comment "X coordinate of the second corner of the initial view."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:Diagram ;
+  rdfs:range xsd:float .
+
+cim:Diagram.y1InitialView a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "y1InitialView" ;
+  rdfs:comment "Y coordinate of the first corner of the initial view."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:Diagram ;
+  rdfs:range xsd:float .
+
+cim:Diagram.y2InitialView a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "y2InitialView" ;
+  rdfs:comment "Y coordinate of the second corner of the initial view."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:Diagram ;
+  rdfs:range xsd:float .
+
+cim:DiagramObject.drawingOrder a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "drawingOrder" ;
+  rdfs:comment "The drawing order of this element. The higher the number, the later the element is drawn in sequence. This is used to ensure that elements that overlap are rendered in the correct order."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:DiagramObject ;
+  rdfs:range xsd:integer .
+
+cim:DiagramObject.isPolygon a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "isPolygon" ;
+  rdfs:comment "Defines whether or not the diagram objects points define the boundaries of a polygon or the routing of a polyline. If this value is true then a receiving application should consider the first and last points to be connected."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:DiagramObject ;
+  rdfs:range xsd:boolean .
+
+cim:DiagramObject.offsetX a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "offsetX" ;
+  rdfs:comment """The offset in the X direction. This is used for defining the offset from centre for rendering an icon (the default is that a single point specifies the centre of the icon).
+
+The offset is in per-unit with 0 indicating there is no offset from the horizontal centre of the icon.  -0.5 indicates it is offset by 50% to the left and 0.5 indicates an offset of 50% to the right."""@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:DiagramObject ;
+  rdfs:range xsd:float .
+
+cim:DiagramObject.offsetY a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "offsetY" ;
+  rdfs:comment """The offset in the Y direction. This is used for defining the offset from centre for rendering an icon (the default is that a single point specifies the centre of the icon).
+
+The offset is in per-unit with 0 indicating there is no offset from the vertical centre of the icon.  The offset direction is dependent on the orientation of the diagram, with -0.5 and 0.5 indicating an offset of +/- 50% on the vertical axis."""@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:DiagramObject ;
+  rdfs:range xsd:float .
+
+cim:DiagramObject.rotation a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "rotation" ;
+  rdfs:comment """Sets the angle of rotation of the diagram object.  Zero degrees is pointing to the top of the diagram.  Rotation is clockwise.  DiagramObject.rotation=0 has the following meaning: The connection point of an element which has one terminal is pointing to the top side of the diagram. The connection point "From side" of an element which has more than one terminal is pointing to the top side of the diagram.
+DiagramObject.rotation=90 has the following meaning: The connection point of an element which has one terminal is pointing to the right hand side of the diagram. The connection point "From side" of an element which has more than one terminal is pointing to the right hand side of the diagram."""@en ;
+  cim:unitMultiplier cim:UnitMultiplier.none ;
+  cim:unitSymbol cim:UnitSymbol.deg ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  qudt:hasQuantityKind cim:AngleDegrees ;
+  qudt:hasUnit unit:DEG ;
+  rdfs:domain cim:DiagramObject ;
+  rdfs:range xsd:float .
+
+cim:DiagramObjectPoint.sequenceNumber a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "sequenceNumber" ;
+  rdfs:comment "The sequence position of the point, used for defining the order of points for diagram objects acting as a polyline or polygon with more than one point. The attribute shall be a positive value."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:DiagramObjectPoint ;
+  rdfs:range xsd:integer .
+
+cim:DiagramObjectPoint.xPosition a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "xPosition" ;
+  rdfs:comment "The X coordinate of this point."@en ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:DiagramObjectPoint ;
+  rdfs:range xsd:float .
+
+cim:DiagramObjectPoint.yPosition a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "yPosition" ;
+  rdfs:comment "The Y coordinate of this point."@en ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:DiagramObjectPoint ;
+  rdfs:range xsd:float .
+
+cim:DiagramObjectPoint.zPosition a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "zPosition" ;
+  rdfs:comment "The Z coordinate of this point."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:DiagramObjectPoint ;
+  rdfs:range xsd:float .
+
+
+cim:TextDiagramObject.text a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "text" ;
+  rdfs:comment "The text that is displayed by this text diagram object."@en ;
+  cims:multiplicity cims:M:1..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:TextDiagramObject ;
+  rdfs:range xsd:string .
+
+cim:VisibilityLayer.drawingOrder a owl:DatatypeProperty, owl:FunctionalProperty ;
+  rdfs:label "drawingOrder" ;
+  rdfs:comment "The drawing order for this layer.  The higher the number, the later the layer and the objects within it are rendered."@en ;
+  cims:multiplicity cims:M:0..1 ;
+  cims:stereotype uml:attribute ;
+  rdfs:domain cim:VisibilityLayer ;
+  rdfs:range xsd:integer .
+
+cim:OrientationKind.negative a cim:OrientationKind ;
+  rdfs:label "negative" ;
+  rdfs:comment "For 2D diagrams, a negative orientation gives the left-hand orientation (favoured by computer graphics displays) with X values increasing from left to right and Y values increasing from top to bottom.   This is also known as a left hand orientation."@en ;
+  cims:stereotype "enum" .
+
+cim:OrientationKind.positive a cim:OrientationKind ;
+  rdfs:label "positive" ;
+  rdfs:comment "For 2D diagrams, a positive orientation will result in X values increasing from left to right and Y values increasing from bottom to top.  This is also known as a right hand orientation."@en ;
+  cims:stereotype "enum" .
+

@@ -1,0 +1,49 @@
+@prefix cim: <http://iec.ch/TC57/CIM100#> .
+
+
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+
+@prefix cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
+@prefix uml: <http://iec.ch/TC57/NonStandard/UML#> .
+
+
+@prefix prof: <http://www.w3.org/ns/dx/prof/#> .
+@prefix role: <http://www.w3.org/ns/dx/prof/role/#> .
+
+@base <https://cim.ucaiug.io/ns/core> .
+
+<http://cim.ucaiug.io/grid/DiagramLayout> rdf:type owl:Ontology ;
+                                    owl:versionIRI <http://cim.ucaiug.io/grid/DiagramLayout/1.0> ;
+                                    dcterms:rights "Copyright" ;
+                                    dcterms:conformsTo <https://cim.ucaiug.io/prof/Profile/1.0> ;
+                                    dc:source "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
+                                    dcterms:contributor <https://orcid.org/0000-0002-7167-7321> ,
+                                                        <https://orcid.org/0000-0001-7508-7428> ;
+                                    dcterms:creator <https://orcid.org/0009-0009-8211-926X> ;
+                                    dcterms:description "The Common Information Model (CIM) Core vocabulary describe the PowerSystemResource and ConductingEquipment classes that is used in all other CIM vocabularies."@en ;
+                                    dcterms:identifier "urn:uuid:f518784d-1ec5-4e49-bcb3-5d244d8f9f2e" ;
+                                    dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
+                                    dcterms:modified "2025-03-07"^^xsd:date ;
+                                    dcterms:publisher <https://www.ucaiug.org/> ;
+                                    dcterms:title "Core vocabulary" ;
+                                    rdfs:comment "Contains the core PowerSystemResource and ConductingEquipment entities shared by all applications plus common collections of those entities. Not all applications require all the Core entities. This package does not depend on any other package except the Domain package, but most of the other packages have associations and generalizations that depend on it"@en ;
+                                    rdfs:label "CIM Core Voc" ;
+                                    owl:versionInfo "1.0.0-alpha-1" ;
+                                    owl:backwardCompatibleWith <https://cim.ucaiug.io/ns/core//0.9> ;
+                                    owl:incompatibleWith <https://cim.ucaiug.io/ns/core/0.1> ;
+                                    owl:priorVersion <https://cim.ucaiug.io/ns/core/0.9> ;
+                                    dcterms:issued "2025-03-06T17:59:40+01:00"^^xsd:dateTime ;
+                                    dcterms:language "en-GB" ;
+                                    dcterms:rightsHolder "UCA International User Group" ;
+                                    vann:preferredNamespacePrefix "cim" ;
+                                    vann:preferredNamespaceUri "hhttps://cim.ucaiug.io/ns#" ;
+                                    owl:imports <https://cim.ucaiug.io/ns/domain> .
+
