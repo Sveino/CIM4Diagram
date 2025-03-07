@@ -1,0 +1,99 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:nc="https://cim4.eu/ns/nc#"
+         xmlns:cim="https://cim.ucaiug.io/ns#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:cims="http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#"
+         xmlns:dcat="http://www.w3.org/ns/dcat#"
+         xmlns:ra="https://ap.cim4.eu/RemedialAction#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:profcim="https://cim.ucaiug.io/ns/prof-cim#"
+         xmlns:prof="http://www.w3.org/ns/dx/prof/#"
+         xmlns:role="http://www.w3.org/ns/dx/prof/role/#"
+         xmlns:dcterms="http://purl.org/dc/terms/#"
+         xml:base="https://cim.ucaiug.io/ns">
+	<rdf:Description rdf:about="https://ap.cim4.eu/RemedialAction/2.3#Profile">
+		<dcterms:creator xml:lang="en">ENTSO-E CIM WG NC project </dcterms:creator>
+		<dcterms:description xml:lang="en">This profile is describing the remedial action.</dcterms:description>
+		<dcterms:identifier>urn:uuid:57fcfe0e-258c-45f2-b2ed-ff5b6a9859bc</dcterms:identifier>
+		<dcat:keyword>RA</dcat:keyword>
+		<dcterms:language>en-GB</dcterms:language>
+		<dcterms:license xml:lang="en">https://www.apache.org/licenses/LICENSE-2.0</dcterms:license>
+		<dcterms:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2024-09-05</dcterms:modified>
+		<owl:priorVersion rdf:resource="http://entsoe.eu/ns/CIM/RemedialAction-EU/2.2"/>
+		<dcterms:publisher xml:lang="en">ENTSO-E</dcterms:publisher>
+		<dcterms:rightsHolder xml:lang="en">ENTSO-E</dcterms:rightsHolder>
+		<dcat:theme xml:lang="en">profile</dcat:theme>
+		<dcterms:title xml:lang="en">Remedial action Profile</dcterms:title>
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/#Profile"/>
+		<owl:versionIRI rdf:resource="https://ap.cim4.eu/RemedialAction/2.3"/>
+		<owl:versionInfo xml:lang="en">2.3.1</owl:versionInfo>
+		<prof:hasResource rdf:resource="https://ap.cim4.eu/DocumentHeader/2.3#Profile"/>
+		<prof:hasResource rdf:resource="https://ap-con.cim4.eu/DocumentHeader/2.3#Constraints"/>
+		<prof:hasResource rdf:resource="https://ap-voc.cim4.eu/RemedialAction/2.3#Vocabulary"/>
+		<prof:hasResource rdf:resource="https://ap-con.cim4.eu/RemedialAction-Simple/2.3#Constraints"/>
+		<prof:hasResource rdf:resource="https://ap-con.cim4.eu/RemedialAction-Complex/2.3#Constraints"/>
+		<prof:hasResource rdf:resource="https://ap.cim4.eu/RemedialAction-Specification/2.3#Specification"/>
+		<prof:hasResource rdf:resource="https://ap.cim4.eu/RemedialAction/2.3#Validation"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://ap.cim4.eu/DocumentHeader/2.3#Profile">
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/#vocabulary"/>
+		<prof:hasArtifact rdf:resource="https://ap.cim4.eu/DocumentHeader/2.3/Header-AP-Voc-RDFS2020_v2-3-2.rdf"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/application/rdf+xml"/>
+		<dcterms:title xml:lang="en">Header Profile</dcterms:title>
+		<dcterms:description xml:lang="en">Vocabulary for the document header.</dcterms:description>
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/#ResourceDescriptor"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://ap-con.cim4.eu/DocumentHeader/2.3#Constraints">
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/#constraints"/>
+		<prof:hasArtifact rdf:resource="https://ap-con.cim4.eu/DocumentHeader/2.3/Header-AP-Con-SHACL_v2-3-2.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label xml:lang="en">Header Constraints</rdfs:label>
+		<dcterms:description xml:lang="en">Constraints for the document header.</dcterms:description>
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/#ResourceDescriptor"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://ap-voc.cim4.eu/RemedialAction/2.3#Vocabulary">
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/#vocabulary"/>
+		<prof:hasArtifact rdf:resource="https://ap-voc.cim4.eu/RemedialAction/2.3/Header-AP-Voc-RDFS2020_v2-3-2.rdf"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/application/rdf+xml"/>
+		<dcterms:title xml:lang="en">Remedial Action Vocabilary</dcterms:title>
+		<dcterms:description xml:lang="en">Vocabulary for the remedial action profile. It is the RDFS.</dcterms:description>
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/#ResourceDescriptor"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://ap-con.cim4.eu/RemedialAction-Simple/2.3#Constraints">
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/#constraints"/>
+		<prof:hasArtifact rdf:resource="https://ap-con.cim4.eu/RemedialAction-Simple/2.3/RemedialAction-AP-Con-Simple-SHACL_v2-3-1.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label xml:lang="en">Remedial Action Simple Constraints</rdfs:label>
+		<dcterms:description xml:lang="en">SHACL based constraints used to validate datatypes, cardinality, associations value types.</dcterms:description>
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/#ResourceDescriptor"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://ap-con.cim4.eu/RemedialAction-Complex/2.3#Constraints">
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/#constraints"/>
+		<prof:hasArtifact rdf:resource="https://ap-con.cim4.eu/RemedialAction-Complex/2.3/RemedialAction-AP-Con-Complex-SHACL_v2-3-0.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label xml:lang="en">Remedial Action Complex Constraints</rdfs:label>
+		<dcterms:description xml:lang="en">SHACL based constraints designed on the basis of the English written constraints part of the profile specification document.</dcterms:description>
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/#ResourceDescriptor"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://ap.cim4.eu/RemedialAction/2.3#Validation">
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/#validation"/>
+		<prof:hasArtifact rdf:resource="https://ap-con.cim4.eu/RemedialAction/2.3/RemedialAction-AP-Con-Validation-SHACL_v2-3-0.ttl"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/text/turtle"/>
+		<dcterms:conformsTo>http://www.w3.org/ns/shacl</dcterms:conformsTo>
+		<rdfs:label xml:lang="en">Remedial Action Validation</rdfs:label>
+		<dcterms:description xml:lang="en">A set of SHACL based constraints that shall be executed when validating a dataset that conforms to remeadial action profile.</dcterms:description>
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/#ResourceDescriptor"/>
+	</rdf:Description>
+	<rdf:Description rdf:about="https://ap.cim4.eu/RemedialAction/2.3#Specification">
+		<prof:hasRole rdf:resource="http://www.w3.org/ns/dx/prof/role/#specification"/>
+		<prof:hasArtifact rdf:resource="https://ap.cim4.eu/RemedialAction-Specification/2.3/RemedialAction_Profile_Specification_v2-3-1.pdf"/>
+		<dcterms:format rdf:resource="https://www.iana.org/assignments/media-types/application/pdf"/>
+		<rdfs:label xml:lang="en">Remedial Action Specification</rdfs:label>
+		<dcterms:description xml:lang="en">The specification of the remedial action profile.</dcterms:description>
+		<rdf:type rdf:resource="http://www.w3.org/ns/dx/prof/#ResourceDescriptor"/>
+	</rdf:Description>
+</rdf:RDF>
