@@ -1,0 +1,89 @@
+id: https://cim.ucaiug.io/ns/domain/types
+name: cim-domain-voc  # rdfs:label, but must conform to NCName pattern. Weird.
+title: Domain vocabulary
+description: Shared type definitions for Domain vocabulary
+
+prefixes:
+  linkml: https://w3id.org/linkml/
+  xsd: http://www.w3.org/2001/XMLSchema#
+  shex: http://www.w3.org/ns/shex#
+  schema: http://schema.org/
+
+default_prefix: linkml
+default_range: string
+
+
+# ==================================
+# Common type definitions
+#
+# Definition consists of:
+#    <name>:   type name
+#      uri:    RDF datatype
+#      base:   python base type
+#      repr:   representational form in yaml/python if different than representation in base
+#      (additional metadata)
+# ==================================
+types:
+  nonNegativeInteger:
+    uri: xsd:nonNegativeInteger
+    base: integer
+  positiveInteger:
+    uri: xsd:positiveInteger
+    base: integer
+  nonPositiveInteger:
+    uri: xsd:nonPositiveInteger
+    base: integer
+  negativeInteger:
+    uri: xsd:negativeInteger
+    base: integer
+  normalizedString:
+    uri: xsd:normalizedString
+    base: string
+  token:
+    uri: xsd:token
+    base: string
+  language:
+    uri: xsd:language
+    base: string
+  Name:
+    uri: xsd:Name
+    base: string
+  NCName:
+    uri: xsd:NCName
+    base: string
+  ID:
+    uri: xsd:ID
+    base: string
+  IDREF:
+    uri: xsd:IDREF
+    base: string
+  ENTITY:
+    uri: xsd:ENTITY
+    base: string
+  anyURI:
+    uri: xsd:anyURI
+    base: string
+  QName:
+    uri: xsd:QName
+    base: string
+  duration:
+    uri: xsd:duration
+    base: string
+  gYear:
+    uri: xsd:gYear
+    base: string
+  gYearMonth:
+    uri: xsd:gYearMonth
+    base: string
+  gMonth:
+    uri: xsd:gMonth
+    base: string
+  gMonthDay:
+    uri: xsd:gMonthDay
+    base: string
+  gDay:
+    uri: xsd:gDay
+    base: string
+  langString:
+    uri: rdf:langString
+    base: string

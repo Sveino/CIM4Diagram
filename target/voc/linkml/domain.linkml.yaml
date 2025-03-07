@@ -18,16 +18,25 @@ prefixes:
   dom: https://cim.ucaiug.io/ns/domain#
   orcid: https://orcid.org/
 default_prefix: cim
+default_range: string
+imports:
+- linkml:types
+- ./extra-types
+default_curi_maps:
+- semweb_context
+annotations:
+  issued: "2025-03-06"
+
 version: 1.0.0-alpha-1  # PAV version, not OWL version IRI
 conforms_to: https://cim.ucaiug.io/prof/Vocabulary/1.0
-source_file: "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap"
+source_file: iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap
 contributors:
   - orcid:0000-0002-7167-7321
-  - orcid:orcid.org/0000-0001-7508-7428
+  - orcid:0000-0001-7508-7428
 created_by: orcid:0009-0009-8211-926X
 description: The Common Information Model (CIM) Domain vocabulary describe the primitive, contained primitive and unit datatype.
 license: http://www.apache.org/licenses/LICENSE-2.0
-last_updated_on: 2025-03-06  # dcterms:modified "2025-03-06"^^xsd:date ;
+last_updated_on: "2025-03-06"  # dcterms:modified "2025-03-06"^^xsd:date ;
 comments: The Domain vocabulary does not have any dependency.
 in_language: en-GB
 
