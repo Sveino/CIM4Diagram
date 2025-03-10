@@ -1,0 +1,36 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prof: <http://www.w3.org/ns/dx/prof/> .
+@base <http://cim.ucaiug.io/grid/DiagramLayout> .
+
+<https://cim.ucaiug.io/grid/DiagramLayout/2.1>
+
+    dcterms:description "Diagramskjema-applikasjonsprofil spesifiserer de forventede dataene som skal utveksles for å beskrive et Common Information Model (CIM) diagramskjema."@nb ;
+    rdfs:comment "Diagramskjema-profil"@nb ;
+    rdfs:label "Diagramoppsett-applikasjonsprofil"@nb ;
+    dcterms:language "nb" .
+
+<https://cim.ucaiug.io/grid/DiagramLayout/2.1#Vocabulary> 
+
+    rdfs:label "Diagramskjema vokabular"@nb ;
+    dcterms:description "Vokabular for Diagramoppsett-profilen beskrevet i RDFS-Plus."@nb .
+
+<https://cim.ucaiug.io/grid/DiagramLayout/2.1#Constraints>
+
+    rdfs:label "Diagramskjema begrensninger"@nb ;
+    dcterms:description "Begrensninger for Diagramskjema-profilen beskrevet i SHACL."@nb .
+
+<https://cim.ucaiug.io/dcatcim/1.0#Vocabilary>
+
+    rdfs:label "Diagramskjema spesifikasjon"@nb ;
+    dcterms:description "Dokument som beskriver den menneskelesbare spesifikasjonen av Diagramskjema-applikasjonsprofilen."@nb .
+
+<https://cim.ucaiug.io/dcatcim/1.0#Constraints>
+
+    rdfs:label "DCAT-CIM Constraints"@en ;
+    dcterms:description "Begrensninger for Datakatalog vokabular (DCAT) med CIM utvidelse profilen beskrevet i SHACLConstraints for the  profile described in SHACL."@en .
+
+<https://cim.ucaiug.io/grid/DiagramLayout/2.1#Specification>
+
+    rdfs:label "Diagramskjema Spesifikasjon"@nb ;
+    dcterms:description "Dokument som beskriver den menneskelesbare spesifikasjonen av Diagramskjema-applikasjonsprofilen."@nb .
