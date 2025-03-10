@@ -41,25 +41,7 @@
                                     dcterms:rightsHolder "UCA International User Group" ;
                                     vann:preferredNamespacePrefix "cim" ;
                                     vann:preferredNamespaceUri "hhttps://cim.ucaiug.io/ns#" ;
-                                    owl:imports <https://cim.ucaiug.io/ns/core> .
-
-dl:Package_DiagramLayoutProfile a cims:ClassCategory ;
-  rdfs:label "DiagramLayoutProfile" ;
-  rdfs:comment """This standard specifies an exchange profile for schematics with the following characteristics.
-A generic method for linking the diagram object to the domain data. Domain data and diagram layout data can be exchanged together with the domain data, or separately from each other with the assumption that domain data will have already been imported should diagram layout data be imported separately.
-It does not require or imply a specific domain data format. Therefore, it supports domain data modelled according to the IEC 61970-301 Common information model (CIM) that is exchanged in the IEC 61970-501 format (CIM RDF schema). Diagram layout data references domain data in compliance with IEC/TR 62541-1, <i>OPC Unified Architecture</i>).
-The intended usage of this standard is that the source of a diagram will use the standard to encode the layout of their diagram as they created it. It is then incumbent upon any receiver to supply the means of using that diagram layout in their system.
-<ul>
-\t<li>In the simplest situation, if the source uses Switch object placements, the receiver creates a generic Switch template in the receiver's system that will be used to render Switches (i.e. there is no exchange of Switch templates).</li>
-\t<li>In more complex situations, a 1:1 correspondence may not be desirable, and receivers may have to create generic transformations in order to use exchanges.</li>
-\t<li>However, in both situations, it is expected that once an investment is made in a strategy for rendering, repeated imports may be carried out automatically.</li>
-</ul>
-Supports the exchange of diagram objects that have no relationship to domain data, i.e., pure static background objects.
-Supports multiple representations of the same domain object in the same or different diagrams.
-Allows the diagram to be used as the unit of exchange, providing a straightforward approach to partial exchange, or an exchange between systems that have a separate model and repository for diagram layout data. 
-Supports assignment of diagram objects to layers or other means, for showing or hiding information based on zoom level and/or user interest.
-A generic method for proprietary extensions to enable full round tripping (export and import back into the same system) without information loss within a system, and without breaking the standard exchange format."""@en .
-
+                                    owl:imports <https://cim.ucaiug.io/ns/core/1.0> .
 
 cim:Diagram a owl:Class ;
   rdfs:label "Diagram" ;

@@ -1,49 +1,100 @@
-@prefix cim: <http://iec.ch/TC57/CIM100#> .
-
-
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-@prefix vann: <http://purl.org/vocab/vann/> .
 
-@prefix cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
-@prefix uml: <http://iec.ch/TC57/NonStandard/UML#> .
+@prefix cim: <https://cim.ucaiug.io/ns#> .
+@prefix cims: <https://cim.ucaiug.io/schema-extensions#> .
 
+@prefix prof: <http://www.w3.org/ns/dx/prof/> .
+@prefix role: <http://www.w3.org/ns/dx/prof/role/> .
 
-@prefix prof: <http://www.w3.org/ns/dx/prof/#> .
-@prefix role: <http://www.w3.org/ns/dx/prof/role/#> .
+@base <http://cim.ucaiug.io/grid/DiagramLayout> .
 
-@base <https://cim.ucaiug.io/ns/core> .
-
-<http://cim.ucaiug.io/grid/DiagramLayout> rdf:type owl:Ontology ;
-                                    owl:versionIRI <http://cim.ucaiug.io/grid/DiagramLayout/1.0> ;
-                                    dcterms:rights "Copyright" ;
+<https://cim.ucaiug.io/grid/DiagramLayout/2.1> rdf:type prof:Profile ;
+                                    dcat:isVersionOf <https://cim.ucaiug.io/grid/DiagramLayout/> ;
+                                    dcat:version "2.1.0" ;
+                                    dcat:priorVersion <https://cim.ucaiug.io/grid/DiagramLayout/2.0> ;
+                                    dcterms:issued "2025-03-06T17:59:40+01:00"^^xsd:dateTime ;
+                                    cims:backwardCompatibleWith <https://cim.ucaiug.io/grid/DiagramLayout/2.0> ;
+                                    cims:incompatibleWith <https://cim.ucaiug.io/grid/DiagramLayout/1.0> ;                                    
+                                    
                                     dcterms:conformsTo <https://cim.ucaiug.io/prof/Profile/1.0> ;
                                     dc:source "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
                                     dcterms:contributor <https://orcid.org/0000-0002-7167-7321> ,
                                                         <https://orcid.org/0000-0001-7508-7428> ;
                                     dcterms:creator <https://orcid.org/0009-0009-8211-926X> ;
-                                    dcterms:description "The Common Information Model (CIM) Core vocabulary describe the PowerSystemResource and ConductingEquipment classes that is used in all other CIM vocabularies."@en ;
-                                    dcterms:identifier "urn:uuid:f518784d-1ec5-4e49-bcb3-5d244d8f9f2e" ;
-                                    dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
-                                    dcterms:modified "2025-03-07"^^xsd:date ;
-                                    dcterms:publisher <https://www.ucaiug.org/> ;
-                                    dcterms:title "Core vocabulary" ;
-                                    rdfs:comment "Contains the core PowerSystemResource and ConductingEquipment entities shared by all applications plus common collections of those entities. Not all applications require all the Core entities. This package does not depend on any other package except the Domain package, but most of the other packages have associations and generalizations that depend on it"@en ;
-                                    rdfs:label "CIM Core Voc" ;
-                                    owl:versionInfo "1.0.0-alpha-1" ;
-                                    owl:backwardCompatibleWith <https://cim.ucaiug.io/ns/core//0.9> ;
-                                    owl:incompatibleWith <https://cim.ucaiug.io/ns/core/0.1> ;
-                                    owl:priorVersion <https://cim.ucaiug.io/ns/core/0.9> ;
-                                    dcterms:issued "2025-03-06T17:59:40+01:00"^^xsd:dateTime ;
+                                    dcterms:description "Diagram Layout application profile specific the expected data to be exchanges to describe a Common Information Model (CIM) Diagram Layout."@en ;
+                                    dcterms:identifier "urn:uuid:1a27399f-4731-481c-b326-4beee63fbf84e" ;                                  
+                                    dcterms:title "DiagramLayout-AP-v2-1-0" ;
+                                    rdfs:comment "Diagram Layout application profile defined by DX-PROF"@en ;
+                                    rdfs:label "Diagram Layout Application Profile"@en ;
                                     dcterms:language "en-GB" ;
+
+                                    dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
+                                    dcterms:publisher <https://www.ucaiug.org/> ;
                                     dcterms:rightsHolder "UCA International User Group" ;
-                                    vann:preferredNamespacePrefix "cim" ;
-                                    vann:preferredNamespaceUri "hhttps://cim.ucaiug.io/ns#" ;
-                                    owl:imports <https://cim.ucaiug.io/ns/domain> .
+                                    dcterms:rights "Copyright" ;
+
+                                    prof:hasResource <https://cim.ucaiug.io/grid/DiagramLayout/2.1#Vocabilary>,
+                                                    <https://cim.ucaiug.io/grid/DiagramLayout/2.1#Constraints>,
+                                                    <https://cim.ucaiug.io/dcatcim/1.0#Vocabilary>,
+                                                    <https://cim.ucaiug.io/dcatcim/1.0#Constraints>,
+                                                    <https://cim.ucaiug.io/grid/DiagramLayout/2.1#Specification> .
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+
+<https://cim.ucaiug.io/grid/DiagramLayout/2.1#Vocabulary> a prof:ResourceDescriptor ;
+    rdfs:label "Diagram Layout Vocabulary"@en ;
+    dcterms:title "DiagramLayout-Voc-v2-1-0" ;
+    dcterms:description "Vocabulary for the Diagram Layout profile described in RDFS-Plus."@en ;
+    dcterms:conformsTo <https://cim.ucaiug.io/prof/Vocabulary/1.0> ;
+    dcterms:format <https://www.iana.org/assignments/media-types/text/turtle> ;
+    prof:hasArtifact <https://cim.ucaiug.io/grid/DiagramLayout-Voc-v2-1-0.ttl> ;
+    prof:hasRole role:vocabulary .
+
+<https://cim.ucaiug.io/grid/DiagramLayout/2.1#Constraints> a prof:ResourceDescriptor ;
+    rdfs:label "Diagram Layout Constraints"@en ;
+    dcterms:title "DiagramLayout-Cons-v2-1-0" ;
+    dcterms:conformsTo <https://cim.ucaiug.io/prof/Constraints/1.0> ;
+    dcterms:description "Constraints for the Diagram Layout profile described in SHACL."@en ;
+    dcterms:format <https://www.iana.org/assignments/media-types/text/turtle> ;
+    prof:hasArtifact <https://cim.ucaiug.io/grid/DiagramLayout-Cons-v2-1-0.ttl> ;
+    prof:hasRole role:constraints .
+
+<https://cim.ucaiug.io/dcatcim/1.0#Vocabilary> a prof:ResourceDescriptor ;
+    rdfs:label "DCAT-CIM Vocabulary (DCAT-CIM)"@en ;
+    dcterms:title "DCAT-CIM-Voc-v1-0-0" ;
+    dcterms:description "Data Catalog Vocabulary (DCAT) with CIM extension described in RDFS-Plus."@en ;
+    dcterms:conformsTo <https://cim.ucaiug.io/prof/Vocabulary/1.0> ;
+    dcterms:format <https://www.iana.org/assignments/media-types/text/turtle> ;
+    prof:hasArtifact <https://cim.ucaiug.io/dcatcim/DCAT-CIM-Voc-v1-0-0.ttl> ;
+    prof:hasRole role:vocabulary .
+
+<https://cim.ucaiug.io/dcatcim/1.0#Constraints> a prof:ResourceDescriptor ;
+    rdfs:label "DCAT-CIM Constraints"@en ;
+    dcterms:title "DCAT-CIM-Cons-v1-0-0" ;
+    dcterms:description "Constraints for the Data Catalog Vocabulary (DCAT) with CIM extension profile described in SHACL."@en ;
+    dcterms:conformsTo <https://cim.ucaiug.io/prof/Constraints/1.0> ;
+    dcterms:format <https://www.iana.org/assignments/media-types/text/turtle> ;
+    prof:hasArtifact <https://cim.ucaiug.io/dcatcim/DCAT-CIM-Cons-v1-0-0.ttl> ;
+    prof:hasRole role:constraints .
+
+
+<https://cim.ucaiug.io/grid/DiagramLayout/2.1#Specification> a prof:ResourceDescriptor ;
+    rdfs:label "Diagram Layout Specification"@en ;
+    dcterms:title "DCAT-CIM-Cons-v1-0-0" ;
+    dcterms:description "Document describing the human readable specification of the Diagram Layout application profile."@en ;
+    dcterms:format <https://www.iana.org/assignments/media-types/application/pdf> ;
+    prof:hasArtifact <https://cim.ucaiug.io/grid/DiagramLayout_Profile_Specification_v2-1-0.pdf> ;
+    prof:hasRole role:specification .
 
