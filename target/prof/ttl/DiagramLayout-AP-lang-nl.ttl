@@ -1,0 +1,27 @@
+@prefix ex: <http://cim.ucaiug.io/grid/DiagramLayout/2.1#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix prof: <http://www.w3.org/ns/dx/prof/> .
+@base <http://cim.ucaiug.io/grid/DiagramLayout> .
+
+<https://cim.ucaiug.io/grid/DiagramLayout/2.1>
+    dcterms:description "Het Diagramindeling toepassingsprofiel specificeert de verwachte gegevensuitwisseling voor het beschrijven van een Common Information Model (CIM) diagramindeling."@nl ;
+    rdfs:comment "Diagramindeling profiel"@nl ;
+    rdfs:label "Diagramindeling toepassingsprofiel"@nl ;
+    dcterms:language "nl" .
+
+<https://cim.ucaiug.io/grid/DiagramLayout/2.1#Vocabulary> 
+
+    rdfs:label "Diagramindeling vocabulaire"@nl ;
+    dcterms:description "Vocabulaire voor het Diagramindeling profiel beschreven in RDFS-Plus."@nl .
+
+<https://cim.ucaiug.io/grid/DiagramLayout/2.1#Constraints>
+
+    rdfs:label "Diagramindeling beperkingen"@nl ;
+    dcterms:description "Beperkingen voor het Diagramindeling profiel beschreven in SHACL."@nl .
+
+
+<https://cim.ucaiug.io/grid/DiagramLayout/2.1#Specification>
+
+    rdfs:label "Diagramindeling specificatie"@nl ;
+    dcterms:description "Document waarin de leesbare specificatie van het Diagramindeling toepassingsprofiel wordt beschreven."@nl .

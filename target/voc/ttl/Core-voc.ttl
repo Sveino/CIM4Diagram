@@ -33,15 +33,12 @@
                                     rdfs:comment "Contains the core PowerSystemResource and ConductingEquipment entities shared by all applications plus common collections of those entities. Not all applications require all the Core entities. This package does not depend on any other package except the Domain package, but most of the other packages have associations and generalizations that depend on it"@en ;
                                     rdfs:label "CIM Core Voc" ;
                                     owl:versionInfo "1.0.0-alpha-1" ;
-                                    owl:backwardCompatibleWith <https://cim.ucaiug.io/ns/core//0.9> ;
-                                    owl:incompatibleWith <https://cim.ucaiug.io/ns/core/0.1> ;
-                                    owl:priorVersion <https://cim.ucaiug.io/ns/core/0.9> ;
                                     dcterms:issued "2025-03-06T17:59:40+01:00"^^xsd:dateTime ;
                                     dcterms:language "en-GB" ;
                                     dcterms:rightsHolder "UCA International User Group" ;
                                     vann:preferredNamespacePrefix "cim" ;
                                     vann:preferredNamespaceUri "hhttps://cim.ucaiug.io/ns#" ;
-                                    owl:imports <https://cim.ucaiug.io/ns/domain> .
+                                    owl:imports <https://cim.ucaiug.io/ns/domain/1.0> .
 
 
 #################################################################
