@@ -1,47 +1,55 @@
-@prefix cim: <http://iec.ch/TC57/CIM100#> .
-
-
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-@prefix dcat: <http://www.w3.org/ns/dcat#> .
-@prefix dcterms: <http://purl.org/dc/terms/> .
+
 @prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix vann: <http://purl.org/vocab/vann/> .
 
-@prefix cims: <http://iec.ch/TC57/1999/rdf-schema-extensions-19990926#> .
-@prefix uml: <http://iec.ch/TC57/NonStandard/UML#> .
+@prefix cim: <https://cim.ucaiug.io/ns#> .
+@prefix cims: <https://cim.ucaiug.io/schema-extensions#> .
 
-@base <https://cim.ucaiug.io/ns/core> .
 
-<https://cim.ucaiug.io/ns/DiagramLayout> rdf:type owl:Ontology ;
-                                    owl:versionIRI <https://cim.ucaiug.io/ns/DiagramLayout/1.0> ;
-                                    dcterms:rights "Copyright" ;
+@base <https://cim.ucaiug.io/ns/DiagramLayout> .
+
+<https://cim.ucaiug.io/ns/Diagramlayout/1.0> rdf:type owl:Ontology ;
+                                    dcat:isVersionOf <https://cim.ucaiug.io/ns/DiagramLayout/> ;
+                                    dcat:version "1.0.0" ;
+                                    dcterms:issued "2025-03-06T17:59:40+01:00"^^xsd:dateTime ;
+                                    
                                     dcterms:conformsTo <https://cim.ucaiug.io/prof/Vocabulary/1.0> ;
                                     dc:source "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
                                     dcterms:contributor <https://orcid.org/0000-0002-7167-7321> ,
                                                         <https://orcid.org/0000-0001-7508-7428> ;
                                     dcterms:creator <https://orcid.org/0009-0009-8211-926X> ;
+
                                     dcterms:description "The Common Information Model (CIM) Diagram Layout vocabulary describe how objects are arranged in a coordinate system rather than how they are rendered."@en ;
                                     dcterms:identifier "urn:uuid:4a9c6788-65ed-46f9-bcfb-6b54605066d0" ;
-                                    dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
-                                    dcterms:modified "2025-03-07"^^xsd:date ;
-                                    dcterms:publisher <https://www.ucaiug.org/> ;
-                                    dcterms:title "DiagramLayout vocabulary" ;
-                                    rdfs:comment ""@en ;
-                                    rdfs:label "CIM DiagramLayout Voc" ;
-                                    owl:versionInfo "1.0.0-alpha-1" ;
-                                    owl:backwardCompatibleWith <https://cim.ucaiug.io/ns/DiagramLayout//0.9> ;
-                                    owl:incompatibleWith <https://cim.ucaiug.io/ns/DiagramLayout/0.1> ;
-                                    owl:priorVersion <https://cim.ucaiug.io/ns/DiagramLayout/0.9> ;
-                                    dcterms:issued "2025-03-06T17:59:40+01:00"^^xsd:dateTime ;
+                                    dcterms:title "DiagramLayout-Voc-v1-0-0" ;
+                                    rdfs:comment "This describes how objects are arranged in a coordinate system rather than how they are rendered."@en ;
+                                    rdfs:label "Diagram layout vocabulary"@en ;
                                     dcterms:language "en-GB" ;
+
+                                    dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
+                                    dcterms:publisher <https://www.ucaiug.org/> ;
                                     dcterms:rightsHolder "UCA International User Group" ;
+                                    dcterms:rights "Copyright" ;                                    
+
                                     vann:preferredNamespacePrefix "cim" ;
                                     vann:preferredNamespaceUri "hhttps://cim.ucaiug.io/ns#" ;
                                     owl:imports <https://cim.ucaiug.io/ns/core/1.0> .
+
+
+#################################################################
+#    Annotation properties
+#################################################################
+
+
+
 
 cim:Diagram a owl:Class ;
   rdfs:label "Diagram" ;
