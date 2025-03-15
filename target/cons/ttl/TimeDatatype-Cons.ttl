@@ -19,9 +19,10 @@
 
 @base <https://cim.ucaiug.io/ns/constraints> .
 
-<https://cim.ucaiug.io/ns/TimeDatatype/1.0> rdf:type owl:Ontology ;
-                                    dcat:isVersionOf <https://cim.ucaiug.io/ns/TimeDatatype/> ;
-                                    dcat:version "1.0.0" ;
+<https://cim.ucaiug.io/ns/TimeDatatype> rdf:type owl:Ontology ;
+                                    owl:versionIRI <https://cim.ucaiug.io/grid/TimeDatatype/1.0> ;
+                                    owl:versionInfo "1.0" ;
+
                                     dcterms:issued "2025-03-06T17:59:40+01:00"^^xsd:dateTime ;
                                     
                                     dcterms:conformsTo <https://cim.ucaiug.io/prof/Constraints/1.0> ;
@@ -43,7 +44,7 @@
                                     dcterms:rights "Copyright" ;                                    
 
                                     vann:preferredNamespacePrefix "cimc" ;
-                                    vann:preferredNamespaceUri "hhttps://cim.ucaiug.io/ns/constraints#" .
+                                    vann:preferredNamespaceUri "https://cim.ucaiug.io/ns/constraints#" .
 
 
 

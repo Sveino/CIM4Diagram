@@ -16,9 +16,12 @@
 
 @base <https://cim.ucaiug.io/ns/DiagramLayout> .
 
-<https://cim.ucaiug.io/ns/Diagramlayout/1.0> rdf:type owl:Ontology ;
-                                    dcat:isVersionOf <https://cim.ucaiug.io/ns/DiagramLayout/> ;
-                                    dcat:version "1.0.0" ;
+<https://cim.ucaiug.io/ns/Diagramlayout> rdf:type owl:Ontology ;
+                                    owl:versionIRI <https://cim.ucaiug.io/grid/DiagramLayout/2.1> ;
+                                    owl:versionInfo "2.1" ;
+                                    owl:priorVersion <https://cim.ucaiug.io/grid/DiagramLayout/2.0> ;
+                                    owl:backwardCompatibleWith <https://cim.ucaiug.io/grid/DiagramLayout/2.0> ;
+                                    owl:incompatibleWith <https://cim.ucaiug.io/grid/DiagramLayout/1.0> ;
                                     dcterms:issued "2025-03-06T17:59:40+01:00"^^xsd:dateTime ;
                                     
                                     dcterms:conformsTo <https://cim.ucaiug.io/prof/Vocabulary/1.0> ;
