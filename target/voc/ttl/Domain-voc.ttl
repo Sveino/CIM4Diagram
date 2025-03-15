@@ -106,26 +106,8 @@ xsd:token rdf:type rdfs:Datatype .
 ###  http://www.w3.org/2001/XMLSchema#language
 xsd:language rdf:type rdfs:Datatype .
 
-###  http://www.w3.org/2001/XMLSchema#Name
-xsd:Name rdf:type rdfs:Datatype .
-
-###  http://www.w3.org/2001/XMLSchema#NCName
-xsd:NCName rdf:type rdfs:Datatype .
-
-###  http://www.w3.org/2001/XMLSchema#ID
-xsd:ID rdf:type rdfs:Datatype .
-
-###  http://www.w3.org/2001/XMLSchema#IDREF
-xsd:IDREF rdf:type rdfs:Datatype .
-
-###  http://www.w3.org/2001/XMLSchema#ENTITY
-xsd:ENTITY rdf:type rdfs:Datatype .
-
 ###  http://www.w3.org/2001/XMLSchema#anyURI
 xsd:anyURI rdf:type rdfs:Datatype .
-
-###  http://www.w3.org/2001/XMLSchema#QName
-xsd:QName rdf:type rdfs:Datatype .
 
 ###  http://www.w3.org/2001/XMLSchema#duration
 xsd:duration rdf:type rdfs:Datatype .
