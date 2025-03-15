@@ -52,7 +52,87 @@ dcterms:conformsTo rdf:type owl:AnnotationProperty ;
                                       dcterms:relation ;
                    rdfs:range dcterms:Standard .
 
+###  https://www.w3.org/2000/01/rdf-schema#
+rdfs:comment rdfs:label "comment"@en-US ;
+    rdfs:isDefinedBy <https://www.w3.org/2000/01/rdf-schema#> ;
+    skos:definition "instance of rdf:Property that may be used to provide a human-readable description of a resource"@en-US .
 
+
+rdfs:isDefinedBy rdfs:label "is defined by"@en-US ;
+    rdfs:isDefinedBy <https://www.w3.org/2000/01/rdf-schema#> ;
+    skos:definition "instance of rdf:Property that is used to indicate a resource defining the subject resource"@en-US .
+
+dcterms:creator a owl:AnnotationProperty ;
+    rdfs:label "creator"@en-US ;
+    rdfs:isDefinedBy dcterms:creator ;
+    rdfs:subPropertyOf dcterms:contributor ;
+    skos:definition "entity responsible for making the resource"@en-US .
+
+dcterms:issued a owl:AnnotationProperty ;
+    rdfs:label "issued"@en-US ;
+    rdfs:isDefinedBy dcterms:issued ;
+    skos:definition "date of formal issuance of the resource"@en-US .
+
+dcterms:license a owl:AnnotationProperty ;
+    rdfs:label "license"@en-US ;
+    rdfs:isDefinedBy dcterms:license ;
+    skos:definition "legal document giving official permission to do something with the resource"@en-US .
+
+ dcterms:publisher a owl:AnnotationProperty ;
+    rdfs:label "publisher"@en-US ;
+    rdfs:isDefinedBy dcterms:publisher ;
+    skos:definition "entity responsible for making the resource available"@en-US .
+
+dcterms:references a owl:AnnotationProperty ;
+    rdfs:label "references"@en-US ;
+    rdfs:isDefinedBy dcterms:references ;
+    skos:definition "related resource that is referenced, cited, or otherwise pointed to by the described resource"@en-US .
+
+  dcterms:title a owl:AnnotationProperty ;
+    rdfs:label "title"@en-US ;
+    rdfs:isDefinedBy dcterms:title ;
+    skos:definition "name given to the resource"@en-US .
+
+rdfs:label rdfs:label "label"@en-US ;
+    rdfs:isDefinedBy <https://www.w3.org/2000/01/rdf-schema#> ;
+    skos:definition "instance of rdf:Property that may be used to provide a human-readable version of a resource's name"@en-US ;
+    skos:example "Example: If the IRI of a class was https://www.industrialontologies.org/ontology/core/Core/ManufacturedProduct, the rdfs:label might be 'manufactured product'"@en-US .
+
+dcterms:description a owl:AnnotationProperty ;
+    rdfs:label "description"@en-US ;
+    rdfs:isDefinedBy dcterms:description ;
+    rdfs:subPropertyOf skos:note ;
+    skos:definition "account of the resource"@en-US ;
+    iof-av:usageNote "This annotation is used to describe an artifact such as a vocabulary, ontology, or ontology module." .
+
+ dcterms:rights a owl:AnnotationProperty ;
+    rdfs:label "rights"@en-US ;
+    rdfs:isDefinedBy dcterms:rights ;
+    skos:definition "information about rights held in and over the resource"@en-US .
+
+ dcterms:contributor a owl:AnnotationProperty ;
+    rdfs:label "contributor"@en-US ;
+    rdfs:isDefinedBy dcterms:contributor ;
+    skos:definition "entity responsible for making contributions to the resource"@en-US .
+
+ cterms:source a owl:AnnotationProperty ;
+    rdfs:label "source"@en-US ;
+    rdfs:isDefinedBy dcterms:source ;
+    skos:definition "related resource from which the described resource is derived"@en-US .
+
+skos:definition a owl:AnnotationProperty ;
+    rdfs:label "definition"@en-US ;
+    rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+    rdfs:subPropertyOf skos:note ;
+    skos:definition "statement or formal explanation of the meaning of a concept"@en-US .
+
+ skos:note a owl:AnnotationProperty ;
+    rdfs:label "note"@en-US ;
+    rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+    skos:definition "general note, for any purpose"@en-US .   
+
+
+   
 
 
                                                      
@@ -133,6 +213,8 @@ rdf:langString rdf:type rdfs:Datatype .
 #################################################################
 #    Unit Datatypes
 #################################################################
+
+
 
 cim:UnitMultiplier a owl:Class ;
   rdfs:label "UnitMultiplier" ;
