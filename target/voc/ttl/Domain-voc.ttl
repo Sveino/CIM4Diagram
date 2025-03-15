@@ -31,7 +31,7 @@
                                     dcterms:title "Domain-Voc-v1-0-0" ;
                                     rdfs:comment "The Domain vocabulary does not have any dependency."@en ;
                                     rdfs:label "Domain vocabulary"@en ;
-                                    dcterms:language "en-GB" ;
+                                    dcterms:language "en-GB"^^xsd:language ;
 
                                     dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
                                     dcterms:publisher <https://www.ucaiug.org/> ;

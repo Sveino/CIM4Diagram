@@ -35,7 +35,7 @@
                                     dcterms:title "DiagramLayout-AP-v2-1-0" ;
                                     rdfs:comment "Diagram Layout application profile defined by DX-PROF"@en ;
                                     rdfs:label "Diagram Layout Application Profile"@en ;
-                                    dcterms:language "en-GB" ;
+                                    dcterms:language "en-GB"^^xsd:language ;
 
                                     dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
                                     dcterms:publisher <https://www.ucaiug.org/> ;

@@ -36,7 +36,7 @@
                                     dcterms:title "UnitDatatype-Cons-v1-0-0" ;
                                     rdfs:comment "The unit datatype constraints."@en ;
                                     rdfs:label "Unit datatype constraints"@en ;
-                                    dcterms:language "en-GB" ;
+                                    dcterms:language "en-GB"^^xsd:language ;
 
                                     dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
                                     dcterms:publisher <https://www.ucaiug.org/> ;

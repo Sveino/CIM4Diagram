@@ -35,7 +35,7 @@
                                     dcterms:title "DiagramLayout-Voc-v1-0-0" ;
                                     rdfs:comment "This describes how objects are arranged in a coordinate system rather than how they are rendered."@en ;
                                     rdfs:label "Diagram layout vocabulary"@en ;
-                                    dcterms:language "en-GB" ;
+                                    dcterms:language "en-GB"^^xsd:language ;
 
                                     dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
                                     dcterms:publisher <https://www.ucaiug.org/> ;
