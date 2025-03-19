@@ -3,6 +3,7 @@ id: https://cim.ucaiug.io/ns/diagram-layout
 name: cim-diagram-layout  # rdfs:label, but must conform to NCName pattern. Weird.
 title: Diagram Layout
 prefixes:
+  linkml: https://w3id.org/linkml/
   cim: http://iec.ch/TC57/CIM100#
   dl: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU#
   dctype: http://purl.org/dc/dcmitype/
@@ -383,7 +384,7 @@ slots:
     multivalued: true
     inverse: DiagramObject.DiagramObjectPoints
     domain: DiagramObjectPoint
-    range: cim:DiagramObject
+    range: DiagramObject
 
   DiagramObjectPoint.DiagramObjectGluePoint:
     annotations:
@@ -414,7 +415,7 @@ slots:
   DiagramStyle.Diagram:
     annotations:
       cims:AssociationUsed: false
-    slot_uri: DiagramStyle.Diagram 
+    slot_uri: cim:DiagramStyle.Diagram 
     aliases:
       - Diagram
     description: A DiagramStyle can be used by many Diagrams.
@@ -427,7 +428,7 @@ slots:
   IdentifiedObject.DiagramObjects:
     annotations:
       cims:AssociationUsed: false
-    slot_uri: IdentifiedObject.DiagramObjects 
+    slot_uri: cim:IdentifiedObject.DiagramObjects 
     aliases:
       - DiagramObjects
     description: The diagram objects that are associated with the domain object.
