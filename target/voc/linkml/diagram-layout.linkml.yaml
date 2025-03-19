@@ -20,10 +20,11 @@ prefixes:
 default_prefix: cim
 default_range: string
 imports:
-- linkml:types
-- ./extra-types
+  - linkml:types
+  - core
+  - ./extra-types
 default_curi_maps:
-- semweb_context
+  - semweb_context
 
 version: 1.0.0-alpha-1  # PAV version, not OWL version IRI
 conforms_to: https://cim.ucaiug.io/prof/Vocabulary/1.0
@@ -157,10 +158,11 @@ classes:
         required: false
         multivalued: false
         range: float
-        cim:unitMultiplier cim:UnitMultiplier.none ;
-        cim:unitSymbol cim:UnitSymbol.deg ;
-        qudt:hasQuantityKind cim:AngleDegrees ;
-        qudt:hasUnit unit:DEG ;
+        ### TODO: QUDT stuff.
+        # cim:unitMultiplier cim:UnitMultiplier.none ;
+        # cim:unitSymbol cim:UnitSymbol.deg ;
+        # qudt:hasQuantityKind cim:AngleDegrees ;
+        # qudt:hasUnit unit:DEG ;
 
   DiagramObjectGluePoint:
     annotations:
@@ -251,7 +253,7 @@ classes:
         range: string
 
   VisibilityLayer:
-  description: Layers are typically used for grouping diagram objects according to themes and scales. Themes are used to display or hide certain information (e.g., lakes, borders), while scales are used for hiding or displaying information depending on the current zoom level (hide text when it is too small to be read, or when it exceeds the screen size). This is also called de-cluttering. CIM based graphics exchange supports an m:n relationship between diagram objects and layers. The importing system shall convert an m:n case into an appropriate 1:n representation if the importing system does not support m:n.
+    description: Layers are typically used for grouping diagram objects according to themes and scales. Themes are used to display or hide certain information (e.g., lakes, borders), while scales are used for hiding or displaying information depending on the current zoom level (hide text when it is too small to be read, or when it exceeds the screen size). This is also called de-cluttering. CIM based graphics exchange supports an m:n relationship between diagram objects and layers. The importing system shall convert an m:n case into an appropriate 1:n representation if the importing system does not support m:n.
     annotations:
       cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
       cims:stereotype: uml:concrete
@@ -260,7 +262,6 @@ classes:
       drawingOrder:
         annotations:
           cims:stereotype: uml:attribute
-        slot_uri: cim:TextDiagramObject.text
         slot_uri: cim:VisibilityLayer.drawingOrder
         description: The drawing order for this layer.  The higher the number, the later the layer and the objects within it are rendered.
         required: false
