@@ -1,0 +1,473 @@
+id: https://cim.ucaiug.io/ns/diagram-layout
+# id: urn:uuid:79ec3546-7023-4652-9879-1f02bbe5cb03
+name: cim-diagram-layout  # rdfs:label, but must conform to NCName pattern. Weird.
+title: Diagram Layout
+prefixes:
+  linkml: https://w3id.org/linkml/
+  cim: http://iec.ch/TC57/CIM100#
+  dl: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU#
+  dctype: http://purl.org/dc/dcmitype/
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  dcat: http://www.w3.org/ns/dcat#
+  dcterms: http://purl.org/dc/terms/
+  dc: http://purl.org/dc/elements/1.1/
+  owl: http://www.w3.org/2002/07/owl#
+  skos: http://www.w3.org/2004/02/skos/core#
+  vann: http://purl.org/vocab/vann/
+  dom: https://cim.ucaiug.io/ns/domain#
+  orcid: https://orcid.org/
+default_prefix: cim
+default_range: string
+imports:
+  - linkml:types
+  - core
+  - ./extra-types
+default_curi_maps:
+  - semweb_context
+
+version: 1.0.0-alpha-1  # PAV version, not OWL version IRI
+conforms_to: https://cim.ucaiug.io/prof/Vocabulary/1.0
+source_file: iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap
+contributors:
+  - orcid:0000-0002-7167-7321
+  - orcid:0000-0001-7508-7428
+created_by: orcid:0009-0009-8211-926X
+description: The Common Information Model (CIM) Domain vocabulary describe the primitive, contained primitive and unit datatype.
+license: http://www.apache.org/licenses/LICENSE-2.0
+last_updated_on: "2025-03-06"  # dcterms:modified "2025-03-06"^^xsd:date ;
+comments: The Domain vocabulary does not have any dependency.
+in_language: en-GB
+
+# dcterms:rights "Copyright" ;
+# dcterms:publisher <https://www.ucaiug.org/> ;
+# source: 'URI of file' also available, which is the actual dct:source
+# owl:versionInfo "1.0.0-alpha-1" ;
+# issued "2025-03-06T17:59:40+01:00"^^xsd:dateTime ;
+# dcterms:rightsHolder "UCA International User Group" ;
+
+classes:
+  Diagram:
+    annotations:
+      cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
+      cims:stereotype: uml:concrete
+    is_a: IdentifiedObject
+    description: The diagram being exchanged. The coordinate system is a standard Cartesian coordinate system and the orientation attribute defines the orientation. The initial view related attributes can be used to specify an initial view with the x,y coordinates of the diagonal points.
+    attributes:
+      x1InitialView:
+        annotations:
+          cims:stereotype: uml:attribute
+        slot_uri: cim:Diagram.x1InitialView
+        description: X coordinate of the first corner of the initial view.
+        required: false
+        multivalued: false
+        range: float
+
+      x2InitialView:
+        annotations:
+          cims:stereotype: uml:attribute
+        slot_uri: cim:Diagram.x2InitialView 
+        description: X coordinate of the second corner of the initial view.
+        required: false
+        multivalued: false
+        range: float
+
+      y1InitialView:
+        annotations:
+          cims:stereotype: uml:attribute
+        slot_uri: cim:Diagram.y1InitialView 
+        description: Y coordinate of the first corner of the initial view.
+        required: false
+        multivalued: false
+        range: float
+
+      y2InitialView:
+        annotations:
+          cims:stereotype: uml:attribute
+        slot_uri: cim:Diagram.y2InitialView 
+        description: Y coordinate of the second corner of the initial view.
+        required: false
+        multivalued: false
+        range: float
+
+      orientation:
+        annotations:
+          cims:stereotype: uml:attribute
+        slot_uri: cim:Diagram.orientation
+        description: Coordinate system orientation of the diagram. A positive orientation gives standard “right-hand” orientation, with negative orientation indicating a “left-hand” orientation. For 2D diagrams, a positive orientation will result in X values increasing from left to right and Y values increasing from bottom to top. A negative orientation gives the “left-hand” orientation (favoured by computer graphics displays) with X values increasing from left to right and Y values increasing from top to bottom.
+        required: true
+        multivalued: false
+        range: OrientationKind
+
+  DiagramObject:
+    annotations:
+      cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
+      cims:stereotype: uml:concrete
+    description: An object that defines one or more points in a given space. This object can be associated with anything that specializes IdentifiedObject. For single line diagrams such objects typically include such items as analog values, breakers, disconnectors, power transformers, and transmission lines.
+    is_a: IdentifiedObject
+    attributes:
+      drawingOrder:
+        annotations:
+          cims:stereotype: uml:attribute
+        slot_uri: cim:DiagramObject.drawingOrder
+        description: The drawing order of this element. The higher the number, the later the element is drawn in sequence. This is used to ensure that elements that overlap are rendered in the correct order.
+        required: false
+        multivalued: false
+        range: integer
+
+      isPolygon:
+        annotations:
+          cims:stereotype: uml:attribute
+        slot_uri: cim:DiagramObject.isPolygon
+        description: Defines whether or not the diagram objects points define the boundaries of a polygon or the routing of a polyline. If this value is true then a receiving application should consider the first and last points to be connected.
+        required: false
+        multivalued: false
+        range: boolean
+
+      offsetX:
+        annotations:
+          cims:stereotype: uml:attribute
+        slot_uri: cim:DiagramObject.offsetX
+        description: >-
+          The offset in the X direction. This is used for defining the offset from centre for rendering an icon (the default is that a single point specifies the centre of the 
+
+          The offset is in per-unit with 0 indicating there is no offset from the horizontal centre of the icon.  -0.5 indicates it is offset by 50% to the left and 0.5 indicates an offset of 50% to the right.
+        required: false
+        multivalued: false
+        range: float
+
+      offsetY:
+        slot_uri: cim:DiagramObject.offsetY
+        annotations:
+          cims:stereotype: uml:attribute
+        description: >-
+          The offset in the Y direction. This is used for defining the offset from centre for rendering an icon (the default is that a single point specifies the centre of the icon).
+
+          The offset is in per-unit with 0 indicating there is no offset from the vertical centre of the icon.  The offset direction is dependent on the orientation of the diagram, with -0.5 and 0.5 indicating an offset of +/- 50% on the vertical axis.
+        required: false
+        multivalued: false
+        range: float
+
+      rotation:
+        slot_uri: cim:DiagramObject.rotation 
+        annotations:
+          cims:stereotype: uml:attribute
+        description: >-
+          Sets the angle of rotation of the diagram object.  Zero degrees is pointing to the top of the diagram.  Rotation is clockwise.  DiagramObject.rotation=0 has the following meaning: The connection point of an element which has one terminal is pointing to the top side of the diagram. The connection point "From side" of an element which has more than one terminal is pointing to the top side of the diagram.
+          DiagramObject.rotation=90 has the following meaning: The connection point of an element which has one terminal is pointing to the right hand side of the diagram. The connection point "From side" of an element which has more than one terminal is pointing to the right hand side of the diagram.
+        required: false
+        multivalued: false
+        range: float
+        ### TODO: QUDT stuff.
+        # cim:unitMultiplier cim:UnitMultiplier.none ;
+        # cim:unitSymbol cim:UnitSymbol.deg ;
+        # qudt:hasQuantityKind cim:AngleDegrees ;
+        # qudt:hasUnit unit:DEG ;
+
+  DiagramObjectGluePoint:
+    annotations:
+      cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
+      cims:stereotype: uml:concrete
+    description: This is used for grouping diagram object points from different diagram objects that are considered to be glued together in a diagram even if they are not at the exact same coordinates.
+
+  DiagramObjectPoint:
+    description: A point in a given space defined by 3 coordinates and associated to a diagram object.  The coordinates may be positive or negative as the origin does not have to be in the corner of a diagram.
+    annotations:
+      cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
+      cims:stereotype: uml:concrete
+    attributes:
+      sequenceNumber:
+        annotations:
+          cims:stereotype: uml:attribute
+        slot_uri: cim:DiagramObjectPoint.sequenceNumber
+        description: The sequence position of the point, used for defining the order of points for diagram objects acting as a polyline or polygon with more than one point. The attribute shall be a positive value.
+        required: false
+        multivalued: false
+        range: integer
+
+      xPosition:
+        annotations:
+          cims:stereotype: uml:attribute
+        slot_uri: cim:DiagramObjectPoint.xPosition
+        description: The X coordinate of this point.
+        required: true
+        multivalued: false
+        range: float
+
+      yPosition:
+        annotations:
+          cims:stereotype: uml:attribute
+        slot_uri: cim:DiagramObjectPoint.yPosition
+        description: The Y coordinate of this point.
+        required: true
+        multivalued: false
+        range: float
+
+      zPosition:
+        annotations:
+          cims:stereotype: uml:attribute
+        slot_uri: cim:DiagramObjectPoint.zPosition
+        description: The Z coordinate of this point.
+        required: false
+        multivalued: false
+        range: float
+
+      text:
+        annotations:
+          cims:stereotype: uml:attribute
+        slot_uri: cim:TextDiagramObject.text
+        description: The text that is displayed by this text diagram object.
+        required: true
+        multivalued: false
+        range: string
+
+  DiagramObjectStyle:
+    description: A reference to a style used by the originating system for a diagram object.  A diagram object style describes information such as line thickness, shape such as circle or rectangle etc, and colour.
+    annotations:
+      cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
+      cims:stereotype: uml:concrete
+    is_a: IdentifiedObject
+
+  DiagramStyle:
+    description: The diagram style refers to a style used by the originating system for a diagram.  A diagram style describes information such as schematic, geographic, etc.
+    annotations:
+      cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
+      cims:stereotype: uml:concrete
+    is_a: IdentifiedObject
+
+
+  TextDiagramObject:
+    description: A diagram object for placing free-text or text derived from an associated domain object.
+    annotations:
+      cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
+      cims:stereotype: uml:concrete
+    is_a: DiagramObject
+    attributes:
+      text:
+        annotations:
+          cims:stereotype: uml:attribute
+        slot_uri: cim:TextDiagramObject.text
+        description: The text that is displayed by this text diagram object.
+        required: true
+        multivalued: false
+        range: string
+
+  VisibilityLayer:
+    description: Layers are typically used for grouping diagram objects according to themes and scales. Themes are used to display or hide certain information (e.g., lakes, borders), while scales are used for hiding or displaying information depending on the current zoom level (hide text when it is too small to be read, or when it exceeds the screen size). This is also called de-cluttering. CIM based graphics exchange supports an m:n relationship between diagram objects and layers. The importing system shall convert an m:n case into an appropriate 1:n representation if the importing system does not support m:n.
+    annotations:
+      cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
+      cims:stereotype: uml:concrete
+    is_a: IdentifiedObject
+    attributes:
+      drawingOrder:
+        annotations:
+          cims:stereotype: uml:attribute
+        slot_uri: cim:VisibilityLayer.drawingOrder
+        description: The drawing order for this layer.  The higher the number, the later the layer and the objects within it are rendered.
+        required: false
+        multivalued: false
+        range: integer
+
+  Diagram_DiagramElements1:  # NOTE: Naming this is horrible, since CIM has no names for these.
+    represents_relationship: true
+    attributes:
+      Diagram.DiagramElements:
+        annotations:
+          cims:AssociationUsed: false
+        aliases:
+          - DiagramElements
+        slot_uri: cim:Diagram.DiagramElements
+        description: A diagram is made up of multiple diagram objects.
+        relational_role: NODE  # NOTE: `NODE` Implies the other is the inverse.
+        required: false
+        multivalued: true
+        domain: Diagram
+        range: DiagramObject
+      DiagramObject.Diagram:
+        annotations:
+          cims:AssociationUsed: true
+        aliases:
+          - Diagram
+        slot_uri: cim:DiagramObject.Diagram 
+        relational_role: NODE
+        description: A diagram object is part of a diagram.
+        required: true
+        multivalued: false
+        domain: DiagramObject
+        range: Diagram
+
+slots:
+  Diagram.DiagramStyle:
+    annotations:
+      cims:AssociationUsed: true
+    slot_uri: cim:Diagram.DiagramStyle 
+    aliases:
+      - DiagramStyle
+    description: A Diagram may have a DiagramStyle
+    required: false
+    multivalued: false
+    inverse: DiagramStyle.Diagram
+    domain: Diagram
+    range: DiagramStyle
+
+  DiagramObject.DiagramObjectPoints:
+    annotations:
+      cims:AssociationUsed: false
+    slot_uri: cim:DiagramObject.DiagramObjectPoints 
+    aliases:
+      - DiagramObjectPoints
+    description: A diagram object can have 0 or more points to reflect its layout position, routing (for polylines) or boundary (for polygons).
+    required: false
+    multivalued: true
+    inverse: DiagramObjectPoint.DiagramObject
+    domain: DiagramObject
+    range: DiagramObjectPoint
+
+  DiagramObject.DiagramObjectStyle:
+    annotations:
+      cims:AssociationUsed: true
+    slot_uri: cim:DiagramObject.DiagramObjectStyle 
+    aliases:
+      - DiagramObjectStyle
+    description: A diagram object has a style associated that provides a reference for the style used in the originating system.
+    required: false
+    multivalued: false
+    inverse: DiagramObjectStyle.StyledObjects
+    domain: DiagramObject
+    range: DiagramObjectStyle
+
+  DiagramObject.IdentifiedObject:
+    annotations:
+      cims:AssociationUsed: true
+    slot_uri: cim:DiagramObject.IdentifiedObject 
+    aliases:
+      - IdentifiedObject
+    description: The domain object to which this diagram object is associated.
+    required: false
+    multivalued: false
+    inverse: IdentifiedObject.DiagramObjects
+    domain: DiagramObject
+    range: IdentifiedObject
+
+  DiagramObject.VisibilityLayers:
+    annotations:
+      cims:AssociationUsed: false
+    slot_uri: cim:DiagramObject.VisibilityLayers 
+    aliases:
+      - VisibilityLayers
+    description: A diagram object can be part of multiple visibility layers.
+    required: false
+    multivalued: true
+    inverse: VisibilityLayer.VisibleObjects
+    domain: DiagramObject
+    range: VisibilityLayer
+
+  DiagramObjectGluePoint.DiagramObjectPoints:
+    annotations:
+      cims:AssociationUsed: false
+    slot_uri: cim:DiagramObjectGluePoint.DiagramObjectPoints
+    aliases:
+      - DiagramObjectPoints
+    description: A diagram object glue point is associated with 2 or more object points that are considered to be 'glued' together
+    minimum_cardinality: 2
+    inverse: DiagramObjectPoint.DiagramObjectGluePoint
+    domain: DiagramObjectGluePoint
+    range: DiagramObjectPoint
+
+  DiagramObjectPoint.DiagramObject:
+    annotations:
+      cims:AssociationUsed: true
+    slot_uri: cim:DiagramObjectPoint.DiagramObject
+    aliases:
+      - DiagramObject
+    description: The diagram object with which the points are associated.
+    required: true
+    multivalued: true
+    inverse: DiagramObject.DiagramObjectPoints
+    domain: DiagramObjectPoint
+    range: DiagramObject
+
+  DiagramObjectPoint.DiagramObjectGluePoint:
+    annotations:
+      cims:AssociationUsed: true
+    slot_uri: cim:DiagramObjectPoint.DiagramObjectGluePoint 
+    aliases:
+      - DiagramObjectGluePoint
+    description: The 'glue' point to which this point is associated.
+    required: false
+    multivalued: false
+    inverse: DiagramObjectGluePoint.DiagramObjectPoints
+    domain: DiagramObjectPoint
+    range: DiagramObjectGluePoint
+
+  DiagramObjectStyle.StyledObjects:
+    annotations:
+      cims:AssociationUsed: false
+    slot_uri: cim:DiagramObjectStyle.StyledObjects 
+    aliases:
+      - StyledObjects
+    description: A style can be assigned to multiple diagram objects.
+    required: false
+    multivalued: true
+    inverse: DiagramObject.DiagramObjectStyle
+    domain: DiagramObjectStyle
+    range: DiagramObject
+
+  DiagramStyle.Diagram:
+    annotations:
+      cims:AssociationUsed: false
+    slot_uri: cim:DiagramStyle.Diagram 
+    aliases:
+      - Diagram
+    description: A DiagramStyle can be used by many Diagrams.
+    required: false
+    multivalued: true
+    inverse: Diagram.DiagramStyle
+    domain: DiagramStyle
+    range: Diagram
+
+  IdentifiedObject.DiagramObjects:
+    annotations:
+      cims:AssociationUsed: false
+    slot_uri: cim:IdentifiedObject.DiagramObjects 
+    aliases:
+      - DiagramObjects
+    description: The diagram objects that are associated with the domain object.
+    required: false
+    multivalued: true
+    inverse: DiagramObject.IdentifiedObject
+    domain: IdentifiedObject
+    range: DiagramObject
+
+  VisibilityLayer.VisibleObjects:
+    annotations:
+      cims:AssociationUsed: true
+    slot_uri: cim:VisibilityLayer.VisibleObjects
+    aliases:
+      - VisibleObjects
+    description: A visibility layer can contain one or more diagram objects.
+    required: true
+    multivalued: true
+    inverse: DiagramObject.VisibilityLayers
+    domain: VisibilityLayer
+    range: DiagramObject
+
+enums:
+  OrientationKind:
+    description: The orientation of the coordinate system with respect to top, left, and the coordinate number system.
+    annotations:
+      cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
+      cims:stereotype: uml:enumeration
+    permissible_values:
+      negative:
+        annotations:
+          cims:stereotype: enum
+        meaning: cim:OrientationKind.negative
+        description: For 2D diagrams, a negative orientation gives the left-hand orientation (favoured by computer graphics displays) with X values increasing from left to right and Y values increasing from top to bottom.   This is also known as a left hand orientation.
+      positive:
+        annotations:
+          cims:stereotype: enum
+        meaning: cim:OrientationKind.positive
+        description: For 2D diagrams, a positive orientation will result in X values increasing from left to right and Y values increasing from bottom to top.  This is also known as a right hand orientation.
+
