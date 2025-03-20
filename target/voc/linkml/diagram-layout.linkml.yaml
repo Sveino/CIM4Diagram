@@ -4,7 +4,7 @@ name: cim-diagram-layout  # rdfs:label, but must conform to NCName pattern. Weir
 title: Diagram Layout
 prefixes:
   linkml: https://w3id.org/linkml/
-  cim: http://iec.ch/TC57/CIM100#
+  cim: https://cim.ucaiug.io/ns#
   dl: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU#
   dctype: http://purl.org/dc/dcmitype/
   rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
@@ -24,7 +24,6 @@ default_prefix: cim
 default_range: string
 imports:
   - linkml:types
-  - core
   - ./extra-types
 default_curi_maps:
   - semweb_context
@@ -50,12 +49,48 @@ in_language: en-GB
 # dcterms:rightsHolder "UCA International User Group" ;
 
 classes:
+  IdentifiedObject:
+    annotations:
+      cims:belongsToCategory: https://cim.ucaiug.io/ns/core
+      cims:stereotype: uml:abstract
+    description: This is a root class to provide common identification for all classes needing identification and naming attributes.
+    attributes:
+      name:
+        annotations:
+          cims:stereotype: uml:attribute
+        slot_uri: cim:IdentifiedObject.name 
+        description: The name is any free human readable and possibly non unique text naming the object.
+        required: true
+        multivalued: false
+        range: string
+
+      description:
+        annotations:
+          cims:stereotype: uml:attribute
+        slot_uri: cim:IdentifiedObject.description 
+        description: The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy
+        required: false
+        multivalued: false
+        range: string
+
+      mRID:
+        annotations:
+          cims:stereotype: uml:attribute
+        slot_uri: cim:IdentifiedObject.mRID 
+        description: Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements
+        required: true
+        multivalued: false
+        range: string
+
   Diagram:
     annotations:
       cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
       cims:stereotype: uml:concrete
     is_a: IdentifiedObject
     description: The diagram being exchanged. The coordinate system is a standard Cartesian coordinate system and the orientation attribute defines the orientation. The initial view related attributes can be used to specify an initial view with the x,y coordinates of the diagonal points.
+    slots:  # Assocations
+      - Diagram.DiagramElements
+      - Diagram.DiagramStyle
     attributes:
       x1InitialView:
         annotations:
@@ -108,6 +143,12 @@ classes:
       cims:stereotype: uml:concrete
     description: An object that defines one or more points in a given space. This object can be associated with anything that specializes IdentifiedObject. For single line diagrams such objects typically include such items as analog values, breakers, disconnectors, power transformers, and transmission lines.
     is_a: IdentifiedObject
+    slots:
+      - DiagramObject.Diagram
+      - DiagramObject.DiagramObjectPoints
+      - DiagramObject.DiagramObjectStyle
+      - DiagramObject.IdentifiedObject
+      - DiagramObject.VisibilityLayers
     attributes:
       drawingOrder:
         annotations:
@@ -174,12 +215,17 @@ classes:
       cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
       cims:stereotype: uml:concrete
     description: This is used for grouping diagram object points from different diagram objects that are considered to be glued together in a diagram even if they are not at the exact same coordinates.
+    slots:
+      - DiagramObjectGluePoint.DiagramObjectPoints
 
   DiagramObjectPoint:
     description: A point in a given space defined by 3 coordinates and associated to a diagram object.  The coordinates may be positive or negative as the origin does not have to be in the corner of a diagram.
     annotations:
       cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
       cims:stereotype: uml:concrete
+    slots:
+      - DiagramObjectPoint.DiagramObject
+      - DiagramObjectPoint.DiagramObjectGluePoint
     attributes:
       sequenceNumber:
         annotations:
@@ -232,6 +278,8 @@ classes:
       cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
       cims:stereotype: uml:concrete
     is_a: IdentifiedObject
+    slots:
+      - DiagramObjectStyle.StyledObjects
 
   DiagramStyle:
     description: The diagram style refers to a style used by the originating system for a diagram.  A diagram style describes information such as schematic, geographic, etc.
@@ -239,6 +287,8 @@ classes:
       cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
       cims:stereotype: uml:concrete
     is_a: IdentifiedObject
+    slots:
+      - DiagramStyle.Diagram
 
 
   TextDiagramObject:
@@ -263,6 +313,8 @@ classes:
       cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
       cims:stereotype: uml:concrete
     is_a: IdentifiedObject
+    slots:
+      - VisibilityLayer.VisibleObjects
     attributes:
       drawingOrder:
         annotations:
@@ -274,7 +326,7 @@ classes:
         range: integer
 
 slots:
-  Diagram.DiagramElements:
+  Diagram.DiagramElements:  # NOTE: Disadvantage: `Diagram.` prefix for example in UML labels or Pydantic attributes should be stripped. This means conventions need to be assumed.
     annotations:
       cims:AssociationUsed: false
     slot_uri: cim:Diagram.DiagramElements 
@@ -284,7 +336,7 @@ slots:
     required: false
     multivalued: true
     inverse: DiagramObject.Diagram
-    domain: Diagram
+    domain: Diagram  # NOTE: Wish it could be inferred, but it turns out the PlantUML generator relies on it.
     range: DiagramObject
 
   Diagram.DiagramStyle:
@@ -297,7 +349,6 @@ slots:
     required: false
     multivalued: false
     inverse: DiagramStyle.Diagram
-    domain: Diagram
     range: DiagramStyle
 
   DiagramObject.Diagram:
@@ -310,7 +361,6 @@ slots:
     required: true
     multivalued: false
     inverse: Diagram.DiagramElements
-    domain: DiagramObject
     range: Diagram
 
   DiagramObject.DiagramObjectPoints:
@@ -323,7 +373,6 @@ slots:
     required: false
     multivalued: true
     inverse: DiagramObjectPoint.DiagramObject
-    domain: DiagramObject
     range: DiagramObjectPoint
 
   DiagramObject.DiagramObjectStyle:
@@ -336,7 +385,6 @@ slots:
     required: false
     multivalued: false
     inverse: DiagramObjectStyle.StyledObjects
-    domain: DiagramObject
     range: DiagramObjectStyle
 
   DiagramObject.IdentifiedObject:
@@ -349,7 +397,6 @@ slots:
     required: false
     multivalued: false
     inverse: IdentifiedObject.DiagramObjects
-    domain: DiagramObject
     range: IdentifiedObject
 
   DiagramObject.VisibilityLayers:
@@ -362,7 +409,6 @@ slots:
     required: false
     multivalued: true
     inverse: VisibilityLayer.VisibleObjects
-    domain: DiagramObject
     range: VisibilityLayer
 
   DiagramObjectGluePoint.DiagramObjectPoints:
@@ -374,7 +420,6 @@ slots:
     description: A diagram object glue point is associated with 2 or more object points that are considered to be 'glued' together
     minimum_cardinality: 2
     inverse: DiagramObjectPoint.DiagramObjectGluePoint
-    domain: DiagramObjectGluePoint
     range: DiagramObjectPoint
 
   DiagramObjectPoint.DiagramObject:
@@ -387,7 +432,6 @@ slots:
     required: true
     multivalued: true
     inverse: DiagramObject.DiagramObjectPoints
-    domain: DiagramObjectPoint
     range: DiagramObject
 
   DiagramObjectPoint.DiagramObjectGluePoint:
@@ -400,7 +444,6 @@ slots:
     required: false
     multivalued: false
     inverse: DiagramObjectGluePoint.DiagramObjectPoints
-    domain: DiagramObjectPoint
     range: DiagramObjectGluePoint
 
   DiagramObjectStyle.StyledObjects:
@@ -413,7 +456,6 @@ slots:
     required: false
     multivalued: true
     inverse: DiagramObject.DiagramObjectStyle
-    domain: DiagramObjectStyle
     range: DiagramObject
 
   DiagramStyle.Diagram:
@@ -426,21 +468,7 @@ slots:
     required: false
     multivalued: true
     inverse: Diagram.DiagramStyle
-    domain: DiagramStyle
     range: Diagram
-
-  IdentifiedObject.DiagramObjects:
-    annotations:
-      cims:AssociationUsed: false
-    slot_uri: cim:IdentifiedObject.DiagramObjects 
-    aliases:
-      - DiagramObjects
-    description: The diagram objects that are associated with the domain object.
-    required: false
-    multivalued: true
-    inverse: DiagramObject.IdentifiedObject
-    domain: IdentifiedObject
-    range: DiagramObject
 
   VisibilityLayer.VisibleObjects:
     annotations:
@@ -452,7 +480,18 @@ slots:
     required: true
     multivalued: true
     inverse: DiagramObject.VisibilityLayers
-    domain: VisibilityLayer
+    range: DiagramObject
+
+  IdentifiedObject.DiagramObjects:
+    annotations:
+      cims:AssociationUsed: false
+    slot_uri: cim:IdentifiedObject.DiagramObjects 
+    aliases:
+      - DiagramObjects
+    description: The diagram objects that are associated with the domain object.
+    required: false
+    multivalued: true
+    inverse: DiagramObject.IdentifiedObject
     range: DiagramObject
 
 enums:

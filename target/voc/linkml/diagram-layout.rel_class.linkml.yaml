@@ -269,26 +269,22 @@ classes:
         multivalued: false
         range: integer
 
-  Diagram_DiagramElements1:  # NOTE: Naming this is horrible, since CIM has no names for these.
+  Diagram_DiagramElements:  # NOTE: Relation names are possible, but if none exists you can use the CIM convention of using the class names.
     represents_relationship: true
     attributes:
-      Diagram.DiagramElements:
+      DiagramElements:  # NOTE: No need for magic and conventions, these local names just work.
         annotations:
           cims:AssociationUsed: false
-        aliases:
-          - DiagramElements
         slot_uri: cim:Diagram.DiagramElements
         description: A diagram is made up of multiple diagram objects.
-        relational_role: NODE  # NOTE: `NODE` Implies the other is the inverse.
+        relational_role: NODE  # NOTE: `NODE` Could be the default in our schema view. It also implies the other is the inverse (i.e. represents bi-directionality).
         required: false
         multivalued: true
         domain: Diagram
         range: DiagramObject
-      DiagramObject.Diagram:
+      Diagram:
         annotations:
           cims:AssociationUsed: true
-        aliases:
-          - Diagram
         slot_uri: cim:DiagramObject.Diagram 
         relational_role: NODE
         description: A diagram object is part of a diagram.
@@ -296,6 +292,10 @@ classes:
         multivalued: false
         domain: DiagramObject
         range: Diagram
+  # Issues:
+  # 1. Complex and possibly non-conformant: what class becomes the `owner` of these attributes? The relation class or the class the slot will be placed on? I guess the first, so we must use `domain`, but I don't know if this is easy and good practice.
+  # 2. We need a predicate role slot to tell what the relation is. This is also reflected by the class name, but there needs to be an underlying property with a domain and range for this to make sense. Especially if reification is desired you'll feel the necessity of this.
+  ### However, we treat the roles as properties in their own rights.
 
 slots:
   Diagram.DiagramStyle:
