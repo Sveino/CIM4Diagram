@@ -93,7 +93,7 @@ types:
   # CIM Data types
 
   AngleDegrees:
-    type_uri: cim:AngleDegrees 
+    uri: cim:AngleDegrees
     base: float
     description: Measurement of angle in degrees.
     annotations:
