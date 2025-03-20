@@ -17,6 +17,8 @@ prefixes:
   skos: http://www.w3.org/2004/02/skos/core#
   vann: http://purl.org/vocab/vann/
   dom: https://cim.ucaiug.io/ns/domain#
+  qk: http://qudt.org/vocab/quantitykind/
+  unit: https://qudt.org/vocab/unit/
   orcid: https://orcid.org/
 default_prefix: cim
 default_range: string
@@ -159,11 +161,13 @@ classes:
         required: false
         multivalued: false
         range: float
-        ### TODO: QUDT stuff.
-        # cim:unitMultiplier cim:UnitMultiplier.none ;
-        # cim:unitSymbol cim:UnitSymbol.deg ;
-        # qudt:hasQuantityKind cim:AngleDegrees ;
-        # qudt:hasUnit unit:DEG ;
+        # range: AngleDegrees
+        unit:
+          symbol: Â°
+          ucum_code: deg  # Multipliers are included (here "none")
+          has_quantity_kind: qk:Angle
+          exact_mappings:
+            - cim:AngleDegrees
 
   DiagramObjectGluePoint:
     annotations:
