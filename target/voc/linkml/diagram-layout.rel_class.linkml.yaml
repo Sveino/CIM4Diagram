@@ -49,8 +49,8 @@ in_language: en-GB
 
 classes:
   Diagram:
+    owned_by: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
     annotations:
-      cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
       cims:stereotype: uml:concrete
     is_a: IdentifiedObject
     description: The diagram being exchanged. The coordinate system is a standard Cartesian coordinate system and the orientation attribute defines the orientation. The initial view related attributes can be used to specify an initial view with the x,y coordinates of the diagonal points.
@@ -101,8 +101,8 @@ classes:
         range: OrientationKind
 
   DiagramObject:
+    owned_by: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
     annotations:
-      cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
       cims:stereotype: uml:concrete
     description: An object that defines one or more points in a given space. This object can be associated with anything that specializes IdentifiedObject. For single line diagrams such objects typically include such items as analog values, breakers, disconnectors, power transformers, and transmission lines.
     is_a: IdentifiedObject
@@ -166,15 +166,15 @@ classes:
         # qudt:hasUnit unit:DEG ;
 
   DiagramObjectGluePoint:
+    owned_by: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
     annotations:
-      cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
       cims:stereotype: uml:concrete
     description: This is used for grouping diagram object points from different diagram objects that are considered to be glued together in a diagram even if they are not at the exact same coordinates.
 
   DiagramObjectPoint:
     description: A point in a given space defined by 3 coordinates and associated to a diagram object.  The coordinates may be positive or negative as the origin does not have to be in the corner of a diagram.
+    owned_by: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
     annotations:
-      cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
       cims:stereotype: uml:concrete
     attributes:
       sequenceNumber:
@@ -224,23 +224,23 @@ classes:
 
   DiagramObjectStyle:
     description: A reference to a style used by the originating system for a diagram object.  A diagram object style describes information such as line thickness, shape such as circle or rectangle etc, and colour.
+    owned_by: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
     annotations:
-      cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
       cims:stereotype: uml:concrete
     is_a: IdentifiedObject
 
   DiagramStyle:
     description: The diagram style refers to a style used by the originating system for a diagram.  A diagram style describes information such as schematic, geographic, etc.
+    owned_by: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
     annotations:
-      cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
       cims:stereotype: uml:concrete
     is_a: IdentifiedObject
 
 
   TextDiagramObject:
     description: A diagram object for placing free-text or text derived from an associated domain object.
+    owned_by: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
     annotations:
-      cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
       cims:stereotype: uml:concrete
     is_a: DiagramObject
     attributes:
@@ -255,8 +255,8 @@ classes:
 
   VisibilityLayer:
     description: Layers are typically used for grouping diagram objects according to themes and scales. Themes are used to display or hide certain information (e.g., lakes, borders), while scales are used for hiding or displaying information depending on the current zoom level (hide text when it is too small to be read, or when it exceeds the screen size). This is also called de-cluttering. CIM based graphics exchange supports an m:n relationship between diagram objects and layers. The importing system shall convert an m:n case into an appropriate 1:n representation if the importing system does not support m:n.
+    owned_by: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
     annotations:
-      cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
       cims:stereotype: uml:concrete
     is_a: IdentifiedObject
     attributes:
@@ -456,8 +456,8 @@ slots:
 enums:
   OrientationKind:
     description: The orientation of the coordinate system with respect to top, left, and the coordinate number system.
+    owned_by: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
     annotations:
-      cims:belongsToCategory: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU
       cims:stereotype: uml:enumeration
     permissible_values:
       negative:
