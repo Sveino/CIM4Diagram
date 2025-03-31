@@ -103,7 +103,7 @@ dcterms:description a owl:AnnotationProperty ;
     rdfs:isDefinedBy dcterms:description ;
     rdfs:subPropertyOf skos:note ;
     skos:definition "account of the resource"@en-US ;
-    iof-av:usageNote "This annotation is used to describe an artifact such as a vocabulary, ontology, or ontology module." .
+    skos:usageNote "This annotation is used to describe an artifact such as a vocabulary, ontology, or ontology module." .
 
  dcterms:rights a owl:AnnotationProperty ;
     rdfs:label "rights"@en-US ;
@@ -115,9 +115,9 @@ dcterms:description a owl:AnnotationProperty ;
     rdfs:isDefinedBy dcterms:contributor ;
     skos:definition "entity responsible for making contributions to the resource"@en-US .
 
- cterms:source a owl:AnnotationProperty ;
+ dcterms:source a owl:AnnotationProperty ;
     rdfs:label "source"@en-US ;
-    rdfs:isDefinedBy dcterms:source ;
+    rdfs:isDefinedBy dcterms ;
     skos:definition "related resource from which the described resource is derived"@en-US .
 
 skos:definition a owl:AnnotationProperty ;
