@@ -234,24 +234,24 @@ rdf:langString rdf:type rdfs:Datatype .
 
 cim:UnitMultiplier a owl:Class ;
   rdfs:label "UnitMultiplier" ;
-  skos:prefLabel "UnitMultiplier" ;
+  skos:prefLabel "UnitMultiplier"@en ;
   rdfs:comment """The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
 
 For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
 
 For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is defined as "kg", then the multiplier is applied to "kg" as a whole and does not replace the "k" in front of the "g". In this case, the multiplier of "m" would be used with the unit symbol of "kg" to represent one gram.  As a text string, this violates the instructions in IEC 80000-1. However, because the unit symbol in CIM is treated as a derived unit instead of as an SI unit, it makes more sense to conceptualize the "kg" as if it were replaced by one of the proposed replacements for the SI mass symbol. If one imagines that the "kg" were replaced by a symbol "Þ", then it is easier to conceptualize the multiplier "m" as creating the proper unit "mÞ", and not the forbidden unit "mkg"."""@en ;
-  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype uml:enumeration .
 
 cim:UnitSymbol a owl:Class ;
   rdfs:label "UnitSymbol" ;
-  skos:prefLabel "UnitSymbol" ;
+  skos:prefLabel "UnitSymbol"@en ;
   rdfs:comment """The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
 Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
 To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
 Non-SI units are included in list of unit symbols to allow sources of data to be correctly labelled with their non-SI units (for example, a GPS sensor that is reporting numbers that represent feet instead of meters). This allows software to use the unit symbol information correctly convert and scale the raw data of those sources into SI-based units. 
 The integer values are used for harmonization with IEC 61850."""@en ;
-  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype uml:enumeration .
 
   cim:ActivePower skos:exactMatch quantitykind:ActivePower .
@@ -264,9 +264,9 @@ cim:ActivePowerPerFrequency skos:exactMatch quantitykind:ActivePowerPerFrequency
 
 cim:AngleDegrees a qudt:QuantityKind ;
   rdfs:label "AngleDegrees" ;
-  skos:prefLabel "AngleDegrees" ;
+  skos:prefLabel "AngleDegrees"@en ;
   rdfs:comment "Measurement of angle in degrees."@en ;
-  cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   qudt:applicableUnit cim:UnitSymbol.deg ;
   skos:exactMatch quantitykind:Angle .
 
@@ -314,259 +314,302 @@ cim:Temperature skos:exactMatch quantitykind:Temperature .
 
 cim:UnitMultiplier.E a cim:UnitMultiplier ;
   rdfs:label "E" ;
-  skos:prefLabel "E" ;
+  skos:prefLabel "E"@en ;
   rdfs:comment "Exa 10**18."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.G a cim:UnitMultiplier ;
   rdfs:label "G" ;
-  skos:prefLabel "G" ;
+  skos:prefLabel "G"@en ;
   rdfs:comment "Giga 10**9."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.M a cim:UnitMultiplier ;
   rdfs:label "M" ;
-  skos:prefLabel "M" ;
+  skos:prefLabel "M"@en ;
   rdfs:comment "Mega 10**6."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" ;
   qudt:prefixMultiplier 1E6 ;
   skos:exactMatch prefix:Mega .
 
 cim:UnitMultiplier.P a cim:UnitMultiplier ;
   rdfs:label "P" ;
-  skos:prefLabel "P" ;
+  skos:prefLabel "P"@en ;
   rdfs:comment "Peta 10**15."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.T a cim:UnitMultiplier ;
   rdfs:label "T" ;
-  skos:prefLabel "T" ;
+  skos:prefLabel "T"@en ;
   rdfs:comment "Tera 10**12."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.Y a cim:UnitMultiplier ;
   rdfs:label "Y" ;
-  skos:prefLabel "Y" ;
+  skos:prefLabel "Y"@en ;
   rdfs:comment "Yotta 10**24."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.Z a cim:UnitMultiplier ;
   rdfs:label "Z" ;
-  skos:prefLabel "Z" ;
+  skos:prefLabel "Z"@en ;
   rdfs:comment "Zetta 10**21."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.a a cim:UnitMultiplier ;
   rdfs:label "a" ;
-  skos:prefLabel "a" ;
+  skos:prefLabel "a"@en ;
   rdfs:comment "Atto 10**-18."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.c a cim:UnitMultiplier ;
   rdfs:label "c" ;
-  skos:prefLabel "c" ;
+  skos:prefLabel "c"@en ;
   rdfs:comment "Centi 10**-2."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.d a cim:UnitMultiplier ;
   rdfs:label "d" ;
-  skos:prefLabel "d" ;
+  skos:prefLabel "d"@en ;
   rdfs:comment "Deci 10**-1."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.da a cim:UnitMultiplier ;
   rdfs:label "da" ;
-  skos:prefLabel "da" ;
+  skos:prefLabel "da"@en ;
   rdfs:comment "Deca 10**1."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.f a cim:UnitMultiplier ;
   rdfs:label "f" ;
-  skos:prefLabel "f" ;
+  skos:prefLabel "f"@en ;
   rdfs:comment "Femto 10**-15."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.h a cim:UnitMultiplier ;
   rdfs:label "h" ;
-  skos:prefLabel "h" ;
+  skos:prefLabel "h"@en ;
   rdfs:comment "Hecto 10**2."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.k a cim:UnitMultiplier ;
   rdfs:label "k" ;
-  skos:prefLabel "k" ;
+  skos:prefLabel "k"@en ;
   rdfs:comment "Kilo 10**3."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" ;
   qudt:prefixMultiplier 1E3 ;
   skos:exactMatch prefix:Kilo .
 
 cim:UnitMultiplier.m a cim:UnitMultiplier ;
   rdfs:label "m" ;
-  skos:prefLabel "m" ;
+  skos:prefLabel "m"@en ;
   rdfs:comment "Milli 10**-3."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.micro a cim:UnitMultiplier ;
   rdfs:label "micro" ;
-  skos:prefLabel "micro" ;
+  skos:prefLabel "micro"@en ;
   rdfs:comment "Micro 10**-6."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.n a cim:UnitMultiplier ;
   rdfs:label "n" ;
-  skos:prefLabel "n" ;
+  skos:prefLabel "n"@en ;
   rdfs:comment "Nano 10**-9."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.none a cim:UnitMultiplier ;
   rdfs:label "none" ;
-  skos:prefLabel "none" ;
+  skos:prefLabel "none"@en ;
   rdfs:comment "No multiplier or equivalently multiply by 1."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" ;
   qudt:prefixMultiplier 1E0 .
 
 cim:UnitMultiplier.p a cim:UnitMultiplier ;
   rdfs:label "p" ;
-  skos:prefLabel "p" ;
+  skos:prefLabel "p"@en ;
   rdfs:comment "Pico 10**-12."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.y a cim:UnitMultiplier ;
   rdfs:label "y" ;
-  skos:prefLabel "y" ;
+  skos:prefLabel "y"@en ;
   rdfs:comment "Yocto 10**-24."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.z a cim:UnitMultiplier ;
   rdfs:label "z" ;
-  skos:prefLabel "z" ;
+  skos:prefLabel "z"@en ;
   rdfs:comment "Zepto 10**-21."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.A a cim:UnitSymbol ;
   rdfs:label "A" ;
-  skos:prefLabel "A" ;
+  skos:prefLabel "A"@en ;
   rdfs:comment "Current in amperes."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" ;
   skos:exactMatch unit:A .
 
 cim:UnitSymbol.A2 a cim:UnitSymbol ;
   rdfs:label "A2" ;
-  skos:prefLabel "A2" ;
+  skos:prefLabel "A2"@en ;
   rdfs:comment "Amperes squared (A²)."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.A2h a cim:UnitSymbol ;
   rdfs:label "A2h" ;
-  skos:prefLabel "A2h" ;
+  skos:prefLabel "A2h"@en ;
   rdfs:comment "Ampere-squared hour, ampere-squared hour."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.A2s a cim:UnitSymbol ;
   rdfs:label "A2s" ;
-  skos:prefLabel "A2s" ;
+  skos:prefLabel "A2s"@en ;
   rdfs:comment "Ampere squared time in square amperes (A²s)."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.APerA a cim:UnitSymbol ;
   rdfs:label "APerA" ;
-  skos:prefLabel "APerA" ;
+  skos:prefLabel "APerA"@en ;
   rdfs:comment "Current, ratio of amperages.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mA/A’."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.APerm a cim:UnitSymbol ;
   rdfs:label "APerm" ;
-  skos:prefLabel "APerm" ;
+  skos:prefLabel "APerm"@en ;
   rdfs:comment "A/m, magnetic field strength, amperes per metre."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Ah a cim:UnitSymbol ;
   rdfs:label "Ah" ;
-  skos:prefLabel "Ah" ;
+  skos:prefLabel "Ah"@en ;
   rdfs:comment "Ampere-hours, ampere-hours."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.As a cim:UnitSymbol ;
   rdfs:label "As" ;
-  skos:prefLabel "As" ;
+  skos:prefLabel "As"@en ;
   rdfs:comment "Ampere seconds (A·s)."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Bq a cim:UnitSymbol ;
   rdfs:label "Bq" ;
-  skos:prefLabel "Bq" ;
+  skos:prefLabel "Bq"@en ;
   rdfs:comment "Radioactivity in becquerels (1/s)."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Btu a cim:UnitSymbol ;
   rdfs:label "Btu" ;
-  skos:prefLabel "Btu" ;
+  skos:prefLabel "Btu"@en ;
   rdfs:comment "Energy, British Thermal Units."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.C a cim:UnitSymbol ;
   rdfs:label "C" ;
-  skos:prefLabel "C" ;
+  skos:prefLabel "C"@en ;
   rdfs:comment "Electric charge in coulombs (A·s)."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.CPerkg a cim:UnitSymbol ;
   rdfs:label "CPerkg" ;
-  skos:prefLabel "CPerkg" ;
+  skos:prefLabel "CPerkg"@en ;
   rdfs:comment "Exposure (x rays), coulombs per kilogram."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.CPerm2 a cim:UnitSymbol ;
   rdfs:label "CPerm2" ;
-  skos:prefLabel "CPerm2" ;
+  skos:prefLabel "CPerm2"@en ;
   rdfs:comment "Surface charge density, coulombs per square metre."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.CPerm3 a cim:UnitSymbol ;
   rdfs:label "CPerm3" ;
-  skos:prefLabel "CPerm3" ;
+  skos:prefLabel "CPerm3"@en ;
   rdfs:comment "Electric charge density, coulombs per cubic metre."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.F a cim:UnitSymbol ;
   rdfs:label "F" ;
   rdfs:comment "Electric capacitance in farads (C/V)."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" ;
   skos:exactMatch unit:FARAD .
 
 cim:UnitSymbol.FPerm a cim:UnitSymbol ;
   rdfs:label "FPerm" ;
   rdfs:comment "Permittivity, farads per metre."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.G a cim:UnitSymbol ;
   rdfs:label "G" ;
   rdfs:comment "Magnetic flux density, gausses (1 G = 10-4 T)."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Gy a cim:UnitSymbol ;
   rdfs:label "Gy" ;
   rdfs:comment "Absorbed dose in grays (J/kg)."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.GyPers a cim:UnitSymbol ;
   rdfs:label "GyPers" ;
   rdfs:comment "Absorbed dose rate, grays per second."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.H a cim:UnitSymbol ;
   rdfs:label "H" ;
   rdfs:comment "Electric inductance in henrys (Wb/A)."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.HPerm a cim:UnitSymbol ;
   rdfs:label "HPerm" ;
   rdfs:comment "Permeability, henrys per metre."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Hz a cim:UnitSymbol ;
   rdfs:label "Hz" ;
   rdfs:comment "Frequency in hertz (1/s)."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/domain> ;
   cims:stereotype "enum" ;
   skos:exactMatch unit:HZ ;
   skos:narrower unit:REV-PER-SEC .

@@ -56,7 +56,7 @@ cim:IdentifiedObject a owl:Class ;
     rdfs:label "IdentifiedObject" ;
     skos:prefLabel "IdentifiedObject"@en ;
     skos:definition "This is a root class to provide common identification for all classes needing identification and naming attributes."@en ;
-    cims:belongsToCategory <https://cim.ucaiug.io/ns/core> ;
+    rdfs:isDefinedBy <https://cim.ucaiug.io/ns/core> ;
     cims:stereotype uml:abstract .
 
 cim:IdentifiedObject.name a owl:DatatypeProperty, owl:FunctionalProperty ;
