@@ -17,13 +17,13 @@
 
 @base <http://cim.ucaiug.io/grid/DiagramLayout> .
 
-<https://cim.ucaiug.io/grid/DiagramLayout/2.1> rdf:type prof:Profile ;
-                                    dcat:isVersionOf <https://cim.ucaiug.io/grid/DiagramLayout/> ;
-                                    dcat:version "2.1.0" ;
-                                    dcat:priorVersion <https://cim.ucaiug.io/grid/DiagramLayout/2.0> ;
-                                    dcterms:issued "2025-03-06T17:59:40+01:00"^^xsd:dateTime ;
-                                    cims:backwardCompatibleWith <https://cim.ucaiug.io/grid/DiagramLayout/2.0> ;
-                                    cims:incompatibleWith <https://cim.ucaiug.io/grid/DiagramLayout/1.0> ;                                    
+<https://cim.ucaiug.io/grid/DiagramLayout> rdf:type prof:Profile ;
+                                    owl:versionIRI <https://cim.ucaiug.io/grid/DiagramLayout/2.1> ;
+                                    owl:versionInfo "2.1" ;
+                                    owl:priorVersion <https://cim.ucaiug.io/grid/DiagramLayout/2.0> ;
+                                    owl:backwardCompatibleWith <https://cim.ucaiug.io/grid/DiagramLayout/2.0> ;
+                                    owl:incompatibleWith <https://cim.ucaiug.io/grid/DiagramLayout/1.0> ;
+                                    dcterms:issued "2025-03-06T17:59:40+01:00"^^xsd:dateTime ;                                 
                                     
                                     dcterms:conformsTo <https://cim.ucaiug.io/prof/Profile/1.0> ;
                                     dc:source "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
@@ -35,7 +35,7 @@
                                     dcterms:title "DiagramLayout-AP-v2-1-0" ;
                                     rdfs:comment "Diagram Layout application profile defined by DX-PROF"@en ;
                                     rdfs:label "Diagram Layout Application Profile"@en ;
-                                    dcterms:language "en-GB" ;
+                                    dcterms:language "en-GB"^^xsd:language ;
 
                                     dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
                                     dcterms:publisher <https://www.ucaiug.org/> ;

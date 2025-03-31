@@ -15,9 +15,9 @@
 
 @base <https://cim.ucaiug.io/ns/domain> .
 
-<https://cim.ucaiug.io/ns/domain/1.0> rdf:type owl:Ontology ;
-                                    dcat:isVersionOf <https://cim.ucaiug.io/ns/domain/> ;
-                                    dcat:version "1.0.0" ;
+<https://cim.ucaiug.io/ns/domain> rdf:type owl:Ontology ;
+                                    owl:versionIRI <https://cim.ucaiug.io/grid/Domain/1.0> ;
+                                    owl:versionInfo "1.0" ;
                                     dcterms:issued "2025-03-06T17:59:40+01:00"^^xsd:dateTime ;
                                     
                                     dcterms:conformsTo <https://cim.ucaiug.io/prof/Vocabulary/1.0> ;
@@ -31,7 +31,7 @@
                                     dcterms:title "Domain-Voc-v1-0-0" ;
                                     rdfs:comment "The Domain vocabulary does not have any dependency."@en ;
                                     rdfs:label "Domain vocabulary"@en ;
-                                    dcterms:language "en-GB" ;
+                                    dcterms:language "en-GB"^^xsd:language ;
 
                                     dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
                                     dcterms:publisher <https://www.ucaiug.org/> ;
@@ -39,7 +39,7 @@
                                     dcterms:rights "Copyright" ;                                    
 
                                     vann:preferredNamespacePrefix "cim" ;
-                                    vann:preferredNamespaceUri "hhttps://cim.ucaiug.io/ns#" .
+                                    vann:preferredNamespaceUri "https://cim.ucaiug.io/ns#" .
 
 
 #################################################################
@@ -52,7 +52,87 @@ dcterms:conformsTo rdf:type owl:AnnotationProperty ;
                                       dcterms:relation ;
                    rdfs:range dcterms:Standard .
 
+###  https://www.w3.org/2000/01/rdf-schema#
+rdfs:comment rdfs:label "comment"@en-US ;
+    rdfs:isDefinedBy <https://www.w3.org/2000/01/rdf-schema#> ;
+    skos:definition "instance of rdf:Property that may be used to provide a human-readable description of a resource"@en-US .
 
+
+rdfs:isDefinedBy rdfs:label "is defined by"@en-US ;
+    rdfs:isDefinedBy <https://www.w3.org/2000/01/rdf-schema#> ;
+    skos:definition "instance of rdf:Property that is used to indicate a resource defining the subject resource"@en-US .
+
+dcterms:creator a owl:AnnotationProperty ;
+    rdfs:label "creator"@en-US ;
+    rdfs:isDefinedBy dcterms:creator ;
+    rdfs:subPropertyOf dcterms:contributor ;
+    skos:definition "entity responsible for making the resource"@en-US .
+
+dcterms:issued a owl:AnnotationProperty ;
+    rdfs:label "issued"@en-US ;
+    rdfs:isDefinedBy dcterms:issued ;
+    skos:definition "date of formal issuance of the resource"@en-US .
+
+dcterms:license a owl:AnnotationProperty ;
+    rdfs:label "license"@en-US ;
+    rdfs:isDefinedBy dcterms:license ;
+    skos:definition "legal document giving official permission to do something with the resource"@en-US .
+
+ dcterms:publisher a owl:AnnotationProperty ;
+    rdfs:label "publisher"@en-US ;
+    rdfs:isDefinedBy dcterms:publisher ;
+    skos:definition "entity responsible for making the resource available"@en-US .
+
+dcterms:references a owl:AnnotationProperty ;
+    rdfs:label "references"@en-US ;
+    rdfs:isDefinedBy dcterms:references ;
+    skos:definition "related resource that is referenced, cited, or otherwise pointed to by the described resource"@en-US .
+
+  dcterms:title a owl:AnnotationProperty ;
+    rdfs:label "title"@en-US ;
+    rdfs:isDefinedBy dcterms:title ;
+    skos:definition "name given to the resource"@en-US .
+
+rdfs:label rdfs:label "label"@en-US ;
+    rdfs:isDefinedBy <https://www.w3.org/2000/01/rdf-schema#> ;
+    skos:definition "instance of rdf:Property that may be used to provide a human-readable version of a resource's name"@en-US ;
+    skos:example "Example: If the IRI of a class was https://www.industrialontologies.org/ontology/core/Core/ManufacturedProduct, the rdfs:label might be 'manufactured product'"@en-US .
+
+dcterms:description a owl:AnnotationProperty ;
+    rdfs:label "description"@en-US ;
+    rdfs:isDefinedBy dcterms:description ;
+    rdfs:subPropertyOf skos:note ;
+    skos:definition "account of the resource"@en-US ;
+    skos:usageNote "This annotation is used to describe an artifact such as a vocabulary, ontology, or ontology module." .
+
+ dcterms:rights a owl:AnnotationProperty ;
+    rdfs:label "rights"@en-US ;
+    rdfs:isDefinedBy dcterms:rights ;
+    skos:definition "information about rights held in and over the resource"@en-US .
+
+ dcterms:contributor a owl:AnnotationProperty ;
+    rdfs:label "contributor"@en-US ;
+    rdfs:isDefinedBy dcterms:contributor ;
+    skos:definition "entity responsible for making contributions to the resource"@en-US .
+
+ dcterms:source a owl:AnnotationProperty ;
+    rdfs:label "source"@en-US ;
+    rdfs:isDefinedBy dcterms ;
+    skos:definition "related resource from which the described resource is derived"@en-US .
+
+skos:definition a owl:AnnotationProperty ;
+    rdfs:label "definition"@en-US ;
+    rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+    rdfs:subPropertyOf skos:note ;
+    skos:definition "statement or formal explanation of the meaning of a concept"@en-US .
+
+ skos:note a owl:AnnotationProperty ;
+    rdfs:label "note"@en-US ;
+    rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
+    skos:definition "general note, for any purpose"@en-US .   
+
+
+   
 
 
                                                      
@@ -106,26 +186,8 @@ xsd:token rdf:type rdfs:Datatype .
 ###  http://www.w3.org/2001/XMLSchema#language
 xsd:language rdf:type rdfs:Datatype .
 
-###  http://www.w3.org/2001/XMLSchema#Name
-xsd:Name rdf:type rdfs:Datatype .
-
-###  http://www.w3.org/2001/XMLSchema#NCName
-xsd:NCName rdf:type rdfs:Datatype .
-
-###  http://www.w3.org/2001/XMLSchema#ID
-xsd:ID rdf:type rdfs:Datatype .
-
-###  http://www.w3.org/2001/XMLSchema#IDREF
-xsd:IDREF rdf:type rdfs:Datatype .
-
-###  http://www.w3.org/2001/XMLSchema#ENTITY
-xsd:ENTITY rdf:type rdfs:Datatype .
-
 ###  http://www.w3.org/2001/XMLSchema#anyURI
 xsd:anyURI rdf:type rdfs:Datatype .
-
-###  http://www.w3.org/2001/XMLSchema#QName
-xsd:QName rdf:type rdfs:Datatype .
 
 ###  http://www.w3.org/2001/XMLSchema#duration
 xsd:duration rdf:type rdfs:Datatype .
@@ -151,6 +213,8 @@ rdf:langString rdf:type rdfs:Datatype .
 #################################################################
 #    Unit Datatypes
 #################################################################
+
+
 
 cim:UnitMultiplier a owl:Class ;
   rdfs:label "UnitMultiplier" ;
