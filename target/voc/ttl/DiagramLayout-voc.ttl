@@ -104,7 +104,8 @@ cim:OrientationKind a owl:Class ;
   skos:prefLabel "OrientationKind"@en ;
   rdfs:comment "The orientation of the coordinate system with respect to top, left, and the coordinate number system."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:stereotype uml:enumeration .
+  cims:stereotype cims:enumeration ;
+  owl:oneOf (cim:OrientationKind.negative cim:OrientationKind.positive) .
 
 cim:TextDiagramObject a owl:Class ;
   rdfs:label "TextDiagramObject" ;
@@ -452,12 +453,12 @@ cim:OrientationKind.negative a cim:OrientationKind ;
   skos:prefLabel "negative"@en ;
   rdfs:comment "For 2D diagrams, a negative orientation gives the left-hand orientation (favoured by computer graphics displays) with X values increasing from left to right and Y values increasing from top to bottom.   This is also known as a left hand orientation."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:stereotype "enum" .
+  cims:stereotype cims:enumerationValue  .
 
 cim:OrientationKind.positive a cim:OrientationKind ;
   rdfs:label "positive" ;
   skos:prefLabel "positive"@en ;
   rdfs:comment "For 2D diagrams, a positive orientation will result in X values increasing from left to right and Y values increasing from bottom to top.  This is also known as a right hand orientation."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:stereotype "enum" .
+  cims:stereotype cims:enumerationValue  .
 
