@@ -17,7 +17,7 @@
 @base <https://cim.ucaiug.io/ns/core> .
 
 <https://cim.ucaiug.io/ns/core> rdf:type owl:Ontology ;
-                                    owl:versionIRI <https://cim.ucaiug.io/grid/core/1.0> ;
+                                    owl:versionIRI <https://cim.ucaiug.io/ns/core/1.0> ;
                                     owl:versionInfo "1.0" ;
                                     dcterms:issued "2025-03-06T17:59:40+01:00"^^xsd:dateTime ;
                                     
@@ -31,7 +31,36 @@
                                     dcterms:identifier "urn:uuid:f518784d-1ec5-4e49-bcb3-5d244d8f9f2e" ;
                                     dcterms:title "Core-Voc-v1-0-0" ;
                                     rdfs:comment "Contains the core PowerSystemResource and ConductingEquipment entities shared by all applications plus common collections of those entities. Not all applications require all the Core entities. This package does not depend on any other package except the Domain package, but most of the other packages have associations and generalizations that depend on it"@en ;
-                                    rdfs:label "Core vocabulary"@en ;
+                                    rdfs:label "Core vocabulary" ;
+                                    skos:prefLabel "Core vocabulary"@en ;
+                                    dcterms:language "en-GB"^^xsd:language ;
+
+                                    dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
+                                    dcterms:publisher <https://www.ucaiug.org/> ;
+                                    dcterms:rightsHolder "UCA International User Group" ;
+                                    dcterms:rights "Copyright" ;                                    
+
+                                    vann:preferredNamespacePrefix "cim" ;
+                                    vann:preferredNamespaceUri "https://cim.ucaiug.io/ns#" ;
+                                    owl:imports <https://cim.ucaiug.io/ns/domain> .
+
+<https://cim.ucaiug.io/ns/core/1.0> rdf:type owl:Ontology ;
+                                    dcat:isVersionOf <https://cim.ucaiug.io/ns/core> ;
+                                    owl:versionInfo "1.0" ;
+                                    dcterms:issued "2025-03-06T17:59:40+01:00"^^xsd:dateTime ;
+                                    
+                                    dcterms:conformsTo <https://cim.ucaiug.io/prof/Vocabulary/1.0> ;
+                                    dc:source "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
+                                    dcterms:contributor <https://orcid.org/0000-0002-7167-7321> ,
+                                                        <https://orcid.org/0000-0001-7508-7428> ;
+                                    dcterms:creator <https://orcid.org/0009-0009-8211-926X> ;
+
+                                    dcterms:description "The Common Information Model (CIM) Core vocabulary describe the PowerSystemResource and ConductingEquipment classes that is used in all other CIM vocabularies."@en ;
+                                    dcterms:identifier "urn:uuid:8e45560a-09ef-4851-8f03-8943408b00c2" ;
+                                    dcterms:title "Core-Voc-v1-0-0" ;
+                                    rdfs:comment "Contains the core PowerSystemResource and ConductingEquipment entities shared by all applications plus common collections of those entities. Not all applications require all the Core entities. This package does not depend on any other package except the Domain package, but most of the other packages have associations and generalizations that depend on it"@en ;
+                                    rdfs:label "Core vocabulary" ;
+                                    skos:prefLabel "Core vocabulary"@en ;
                                     dcterms:language "en-GB"^^xsd:language ;
 
                                     dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
@@ -43,7 +72,8 @@
                                     vann:preferredNamespaceUri "https://cim.ucaiug.io/ns#" ;
                                     owl:imports <https://cim.ucaiug.io/ns/domain/1.0> .
 
-
+<https://cim.ucaiug.io/ns/core> dcat:hasVersion 
+  <https://cim.ucaiug.io/ns/core/1.0> .
 
 #################################################################
 #    Annotation properties
@@ -52,31 +82,38 @@
 ### do we need to have annotation for properties that are included in the imported vocabulary?
 
 cim:IdentifiedObject a owl:Class ;
-    rdfs:label "IdentifiedObject"@en ;
+    rdfs:label "IdentifiedObject" ;
+    skos:prefLabel "IdentifiedObject"@en ;
     skos:definition "This is a root class to provide common identification for all classes needing identification and naming attributes."@en ;
-    cims:belongsToCategory <https://cim.ucaiug.io/ns/core> ;
-    cims:stereotype uml:abstract .
+    rdfs:isDefinedBy <https://cim.ucaiug.io/ns/core> ;
+    cims:isAbstract true .
 
 cim:IdentifiedObject.name a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "name" ;
+  skos:prefLabel "name"@en ;
   skos:definition "The name is any free human readable and possibly non unique text naming the object."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/core> ;
   cims:multiplicity cims:M:1..1 ;
-  cims:stereotype uml:attribute ;
+  cims:stereotype cims:attribute ;
   rdfs:domain cim:IdentifiedObject ;
   rdfs:range xsd:string .
 
 cim:IdentifiedObject.description a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "description" ;
+  skos:prefLabel "description"@en ;
   skos:definition "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy."@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/core> ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
+  cims:stereotype cims:attribute ;
   rdfs:domain cim:IdentifiedObject ;
   rdfs:range xsd:string .
 
 cim:IdentifiedObject.mRID a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "mRID" ;
+  skos:prefLabel "mRID"@en ;
   skos:definition "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements"@en ;
+  rdfs:isDefinedBy <https://cim.ucaiug.io/ns/core> ;
   cims:multiplicity cims:M:1..1 ;
-  cims:stereotype uml:attribute ;
+  cims:stereotype cims:attribute ;
   rdfs:domain cim:IdentifiedObject ;
   rdfs:range xsd:string .
