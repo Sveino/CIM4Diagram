@@ -31,7 +31,8 @@
                                     dcterms:identifier "urn:uuid:f518784d-1ec5-4e49-bcb3-5d244d8f9f2e" ;
                                     dcterms:title "Core-Voc-v1-0-0" ;
                                     rdfs:comment "Contains the core PowerSystemResource and ConductingEquipment entities shared by all applications plus common collections of those entities. Not all applications require all the Core entities. This package does not depend on any other package except the Domain package, but most of the other packages have associations and generalizations that depend on it"@en ;
-                                    rdfs:label "Core vocabulary"@en ;
+                                    rdfs:label "Core vocabulary" ;
+                                    skos:prefLabel "Core vocabulary"@en ;
                                     dcterms:language "en-GB"^^xsd:language ;
 
                                     dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
@@ -52,13 +53,15 @@
 ### do we need to have annotation for properties that are included in the imported vocabulary?
 
 cim:IdentifiedObject a owl:Class ;
-    rdfs:label "IdentifiedObject"@en ;
+    rdfs:label "IdentifiedObject" ;
+    skos:prefLabel "IdentifiedObject"@en ;
     skos:definition "This is a root class to provide common identification for all classes needing identification and naming attributes."@en ;
     cims:belongsToCategory <https://cim.ucaiug.io/ns/core> ;
     cims:stereotype uml:abstract .
 
 cim:IdentifiedObject.name a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "name" ;
+  skos:prefLabel "name"@en ;
   skos:definition "The name is any free human readable and possibly non unique text naming the object."@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype uml:attribute ;
@@ -67,6 +70,7 @@ cim:IdentifiedObject.name a owl:DatatypeProperty, owl:FunctionalProperty ;
 
 cim:IdentifiedObject.description a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "description" ;
+  skos:prefLabel "description"@en ;
   skos:definition "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy."@en ;
   cims:multiplicity cims:M:0..1 ;
   cims:stereotype uml:attribute ;
@@ -75,6 +79,7 @@ cim:IdentifiedObject.description a owl:DatatypeProperty, owl:FunctionalProperty 
 
 cim:IdentifiedObject.mRID a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "mRID" ;
+  skos:prefLabel "mRID"@en ;
   skos:definition "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements"@en ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype uml:attribute ;

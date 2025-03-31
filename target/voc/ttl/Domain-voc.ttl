@@ -30,7 +30,8 @@
                                     dcterms:identifier "urn:uuid:79ec3546-7023-4652-9879-1f02bbe5cb03" ;
                                     dcterms:title "Domain-Voc-v1-0-0" ;
                                     rdfs:comment "The Domain vocabulary does not have any dependency."@en ;
-                                    rdfs:label "Domain vocabulary"@en ;
+                                    rdfs:label "Domain vocabulary";
+                                    skos:prefLabel "Domain vocabulary"@en-GB;
                                     dcterms:language "en-GB"^^xsd:language ;
 
                                     dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
@@ -53,53 +54,63 @@ dcterms:conformsTo rdf:type owl:AnnotationProperty ;
                    rdfs:range dcterms:Standard .
 
 ###  https://www.w3.org/2000/01/rdf-schema#
-rdfs:comment rdfs:label "comment"@en-US ;
+rdfs:comment rdfs:label "comment" ;
+    skos:prefLabel "comment"@en-US ;
     rdfs:isDefinedBy <https://www.w3.org/2000/01/rdf-schema#> ;
     skos:definition "instance of rdf:Property that may be used to provide a human-readable description of a resource"@en-US .
 
 
-rdfs:isDefinedBy rdfs:label "is defined by"@en-US ;
+rdfs:isDefinedBy rdfs:label "is defined by" ;
+    skos:prefLabel "is defined by"@en-US ;
     rdfs:isDefinedBy <https://www.w3.org/2000/01/rdf-schema#> ;
     skos:definition "instance of rdf:Property that is used to indicate a resource defining the subject resource"@en-US .
 
 dcterms:creator a owl:AnnotationProperty ;
-    rdfs:label "creator"@en-US ;
+    rdfs:label "creator" ;
+    skos:prefLabel "creator"@en-US ;
     rdfs:isDefinedBy dcterms:creator ;
     rdfs:subPropertyOf dcterms:contributor ;
     skos:definition "entity responsible for making the resource"@en-US .
 
 dcterms:issued a owl:AnnotationProperty ;
     rdfs:label "issued"@en-US ;
+    skos:prefLabel "issued"@en-US ;
     rdfs:isDefinedBy dcterms:issued ;
     skos:definition "date of formal issuance of the resource"@en-US .
 
 dcterms:license a owl:AnnotationProperty ;
     rdfs:label "license"@en-US ;
+    skos:prefLabel "license"@en-US ;
     rdfs:isDefinedBy dcterms:license ;
     skos:definition "legal document giving official permission to do something with the resource"@en-US .
 
  dcterms:publisher a owl:AnnotationProperty ;
     rdfs:label "publisher"@en-US ;
+    skos:prefLabel "publisher"@en-US ;
     rdfs:isDefinedBy dcterms:publisher ;
     skos:definition "entity responsible for making the resource available"@en-US .
 
 dcterms:references a owl:AnnotationProperty ;
     rdfs:label "references"@en-US ;
+    skos:prefLabel "references"@en-US ;
     rdfs:isDefinedBy dcterms:references ;
     skos:definition "related resource that is referenced, cited, or otherwise pointed to by the described resource"@en-US .
 
   dcterms:title a owl:AnnotationProperty ;
     rdfs:label "title"@en-US ;
+    skos:prefLabel "title"@en-US ;
     rdfs:isDefinedBy dcterms:title ;
     skos:definition "name given to the resource"@en-US .
 
 rdfs:label rdfs:label "label"@en-US ;
+    skos:prefLabel "label"@en-US ;
     rdfs:isDefinedBy <https://www.w3.org/2000/01/rdf-schema#> ;
     skos:definition "instance of rdf:Property that may be used to provide a human-readable version of a resource's name"@en-US ;
     skos:example "Example: If the IRI of a class was https://www.industrialontologies.org/ontology/core/Core/ManufacturedProduct, the rdfs:label might be 'manufactured product'"@en-US .
 
 dcterms:description a owl:AnnotationProperty ;
     rdfs:label "description"@en-US ;
+    skos:prefLabel "description"@en-US ;
     rdfs:isDefinedBy dcterms:description ;
     rdfs:subPropertyOf skos:note ;
     skos:definition "account of the resource"@en-US ;
@@ -107,27 +118,32 @@ dcterms:description a owl:AnnotationProperty ;
 
  dcterms:rights a owl:AnnotationProperty ;
     rdfs:label "rights"@en-US ;
+    skos:prefLabel "rights"@en-US ;
     rdfs:isDefinedBy dcterms:rights ;
     skos:definition "information about rights held in and over the resource"@en-US .
 
  dcterms:contributor a owl:AnnotationProperty ;
     rdfs:label "contributor"@en-US ;
+    skos:prefLabel "contributor"@en-US ;
     rdfs:isDefinedBy dcterms:contributor ;
     skos:definition "entity responsible for making contributions to the resource"@en-US .
 
  dcterms:source a owl:AnnotationProperty ;
     rdfs:label "source"@en-US ;
-    rdfs:isDefinedBy dcterms ;
+    skos:prefLabel "source"@en-US ;
+  ###   rdfs:isDefinedBy dcterms ; This his the proposed 
     skos:definition "related resource from which the described resource is derived"@en-US .
 
 skos:definition a owl:AnnotationProperty ;
     rdfs:label "definition"@en-US ;
+    skos:prefLabel "definition"@en-US ;
     rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
     rdfs:subPropertyOf skos:note ;
     skos:definition "statement or formal explanation of the meaning of a concept"@en-US .
 
  skos:note a owl:AnnotationProperty ;
     rdfs:label "note"@en-US ;
+    skos:prefLabel "note"@en-US ;
     rdfs:isDefinedBy <http://www.w3.org/2004/02/skos/core> ;
     skos:definition "general note, for any purpose"@en-US .   
 
@@ -218,6 +234,7 @@ rdf:langString rdf:type rdfs:Datatype .
 
 cim:UnitMultiplier a owl:Class ;
   rdfs:label "UnitMultiplier" ;
+  skos:prefLabel "UnitMultiplier" ;
   rdfs:comment """The unit multipliers defined for the CIM.  When applied to unit symbols, the unit symbol is treated as a derived unit. Regardless of the contents of the unit symbol text, the unit symbol shall be treated as if it were a single-character unit symbol. Unit symbols should not contain multipliers, and it should be left to the multiplier to define the multiple for an entire data type. 
 
 For example, if a unit symbol is "m2Pers" and the multiplier is "k", then the value is k(m**2/s), and the multiplier applies to the entire final value, not to any individual part of the value. This can be conceptualized by substituting a derived unit symbol for the unit type. If one imagines that the symbol "Þ" represents the derived unit "m2Pers", then applying the multiplier "k" can be conceptualized simply as "kÞ".
@@ -228,6 +245,7 @@ For example, the SI unit for mass is "kg" and not "g".  If the unit symbol is de
 
 cim:UnitSymbol a owl:Class ;
   rdfs:label "UnitSymbol" ;
+  skos:prefLabel "UnitSymbol" ;
   rdfs:comment """The derived units defined for usage in the CIM. In some cases, the derived unit is equal to an SI unit. Whenever possible, the standard derived symbol is used instead of the formula for the derived unit. For example, the unit symbol Farad is defined as "F" instead of "CPerV". In cases where a standard symbol does not exist for a derived unit, the formula for the unit is used as the unit symbol. For example, density does not have a standard symbol and so it is represented as "kgPerm3". With the exception of the "kg", which is an SI unit, the unit symbols do not contain multipliers and therefore represent the base derived unit to which a multiplier can be applied as a whole. 
 Every unit symbol is treated as an unparseable text as if it were a single-letter symbol. The meaning of each unit symbol is defined by the accompanying descriptive text and not by the text contents of the unit symbol.
 To allow the widest possible range of serializations without requiring special character handling, several substitutions are made which deviate from the format described in IEC 80000-1. The division symbol "/" is replaced by the letters "Per". Exponents are written in plain text after the unit as "m3" instead of being formatted as "m" with a superscript of 3  or introducing a symbol as in "m^3". The degree symbol "°" is replaced with the letters "deg". Any clarification of the meaning for a substitution is included in the description for the unit symbol.
@@ -246,6 +264,7 @@ cim:ActivePowerPerFrequency skos:exactMatch quantitykind:ActivePowerPerFrequency
 
 cim:AngleDegrees a qudt:QuantityKind ;
   rdfs:label "AngleDegrees" ;
+  skos:prefLabel "AngleDegrees" ;
   rdfs:comment "Measurement of angle in degrees."@en ;
   cims:belongsToCategory dl:Package_DiagramLayoutProfile ;
   qudt:applicableUnit cim:UnitSymbol.deg ;
@@ -295,16 +314,19 @@ cim:Temperature skos:exactMatch quantitykind:Temperature .
 
 cim:UnitMultiplier.E a cim:UnitMultiplier ;
   rdfs:label "E" ;
+  skos:prefLabel "E" ;
   rdfs:comment "Exa 10**18."@en ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.G a cim:UnitMultiplier ;
   rdfs:label "G" ;
+  skos:prefLabel "G" ;
   rdfs:comment "Giga 10**9."@en ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.M a cim:UnitMultiplier ;
   rdfs:label "M" ;
+  skos:prefLabel "M" ;
   rdfs:comment "Mega 10**6."@en ;
   cims:stereotype "enum" ;
   qudt:prefixMultiplier 1E6 ;
@@ -312,56 +334,67 @@ cim:UnitMultiplier.M a cim:UnitMultiplier ;
 
 cim:UnitMultiplier.P a cim:UnitMultiplier ;
   rdfs:label "P" ;
+  skos:prefLabel "P" ;
   rdfs:comment "Peta 10**15."@en ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.T a cim:UnitMultiplier ;
   rdfs:label "T" ;
+  skos:prefLabel "T" ;
   rdfs:comment "Tera 10**12."@en ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.Y a cim:UnitMultiplier ;
   rdfs:label "Y" ;
+  skos:prefLabel "Y" ;
   rdfs:comment "Yotta 10**24."@en ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.Z a cim:UnitMultiplier ;
   rdfs:label "Z" ;
+  skos:prefLabel "Z" ;
   rdfs:comment "Zetta 10**21."@en ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.a a cim:UnitMultiplier ;
   rdfs:label "a" ;
+  skos:prefLabel "a" ;
   rdfs:comment "Atto 10**-18."@en ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.c a cim:UnitMultiplier ;
   rdfs:label "c" ;
+  skos:prefLabel "c" ;
   rdfs:comment "Centi 10**-2."@en ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.d a cim:UnitMultiplier ;
   rdfs:label "d" ;
+  skos:prefLabel "d" ;
   rdfs:comment "Deci 10**-1."@en ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.da a cim:UnitMultiplier ;
   rdfs:label "da" ;
+  skos:prefLabel "da" ;
   rdfs:comment "Deca 10**1."@en ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.f a cim:UnitMultiplier ;
   rdfs:label "f" ;
+  skos:prefLabel "f" ;
   rdfs:comment "Femto 10**-15."@en ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.h a cim:UnitMultiplier ;
   rdfs:label "h" ;
+  skos:prefLabel "h" ;
   rdfs:comment "Hecto 10**2."@en ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.k a cim:UnitMultiplier ;
   rdfs:label "k" ;
+  skos:prefLabel "k" ;
   rdfs:comment "Kilo 10**3."@en ;
   cims:stereotype "enum" ;
   qudt:prefixMultiplier 1E3 ;
@@ -369,108 +402,129 @@ cim:UnitMultiplier.k a cim:UnitMultiplier ;
 
 cim:UnitMultiplier.m a cim:UnitMultiplier ;
   rdfs:label "m" ;
+  skos:prefLabel "m" ;
   rdfs:comment "Milli 10**-3."@en ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.micro a cim:UnitMultiplier ;
   rdfs:label "micro" ;
+  skos:prefLabel "micro" ;
   rdfs:comment "Micro 10**-6."@en ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.n a cim:UnitMultiplier ;
   rdfs:label "n" ;
+  skos:prefLabel "n" ;
   rdfs:comment "Nano 10**-9."@en ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.none a cim:UnitMultiplier ;
   rdfs:label "none" ;
+  skos:prefLabel "none" ;
   rdfs:comment "No multiplier or equivalently multiply by 1."@en ;
   cims:stereotype "enum" ;
   qudt:prefixMultiplier 1E0 .
 
 cim:UnitMultiplier.p a cim:UnitMultiplier ;
   rdfs:label "p" ;
+  skos:prefLabel "p" ;
   rdfs:comment "Pico 10**-12."@en ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.y a cim:UnitMultiplier ;
   rdfs:label "y" ;
+  skos:prefLabel "y" ;
   rdfs:comment "Yocto 10**-24."@en ;
   cims:stereotype "enum" .
 
 cim:UnitMultiplier.z a cim:UnitMultiplier ;
   rdfs:label "z" ;
+  skos:prefLabel "z" ;
   rdfs:comment "Zepto 10**-21."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.A a cim:UnitSymbol ;
   rdfs:label "A" ;
+  skos:prefLabel "A" ;
   rdfs:comment "Current in amperes."@en ;
   cims:stereotype "enum" ;
   skos:exactMatch unit:A .
 
 cim:UnitSymbol.A2 a cim:UnitSymbol ;
   rdfs:label "A2" ;
+  skos:prefLabel "A2" ;
   rdfs:comment "Amperes squared (A²)."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.A2h a cim:UnitSymbol ;
   rdfs:label "A2h" ;
+  skos:prefLabel "A2h" ;
   rdfs:comment "Ampere-squared hour, ampere-squared hour."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.A2s a cim:UnitSymbol ;
   rdfs:label "A2s" ;
+  skos:prefLabel "A2s" ;
   rdfs:comment "Ampere squared time in square amperes (A²s)."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.APerA a cim:UnitSymbol ;
   rdfs:label "APerA" ;
+  skos:prefLabel "APerA" ;
   rdfs:comment "Current, ratio of amperages.   Note: Users may need to supply a prefix such as ‘m’ to show rates such as ‘mA/A’."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.APerm a cim:UnitSymbol ;
   rdfs:label "APerm" ;
+  skos:prefLabel "APerm" ;
   rdfs:comment "A/m, magnetic field strength, amperes per metre."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Ah a cim:UnitSymbol ;
   rdfs:label "Ah" ;
+  skos:prefLabel "Ah" ;
   rdfs:comment "Ampere-hours, ampere-hours."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.As a cim:UnitSymbol ;
   rdfs:label "As" ;
+  skos:prefLabel "As" ;
   rdfs:comment "Ampere seconds (A·s)."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Bq a cim:UnitSymbol ;
   rdfs:label "Bq" ;
+  skos:prefLabel "Bq" ;
   rdfs:comment "Radioactivity in becquerels (1/s)."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.Btu a cim:UnitSymbol ;
   rdfs:label "Btu" ;
+  skos:prefLabel "Btu" ;
   rdfs:comment "Energy, British Thermal Units."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.C a cim:UnitSymbol ;
   rdfs:label "C" ;
+  skos:prefLabel "C" ;
   rdfs:comment "Electric charge in coulombs (A·s)."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.CPerkg a cim:UnitSymbol ;
   rdfs:label "CPerkg" ;
+  skos:prefLabel "CPerkg" ;
   rdfs:comment "Exposure (x rays), coulombs per kilogram."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.CPerm2 a cim:UnitSymbol ;
   rdfs:label "CPerm2" ;
+  skos:prefLabel "CPerm2" ;
   rdfs:comment "Surface charge density, coulombs per square metre."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.CPerm3 a cim:UnitSymbol ;
   rdfs:label "CPerm3" ;
+  skos:prefLabel "CPerm3" ;
   rdfs:comment "Electric charge density, coulombs per cubic metre."@en ;
   cims:stereotype "enum" .
 
@@ -1053,36 +1107,43 @@ cim:UnitSymbol.none a cim:UnitSymbol ;
 
 cim:UnitSymbol.ohm a cim:UnitSymbol ;
   rdfs:label "ohm" ;
+  rdfs:label "ohm" ;
   rdfs:comment "Electric resistance in ohms (V/A)."@en ;
   cims:stereotype "enum" ;
   skos:exactMatch unit:OHM .
 
 cim:UnitSymbol.ohmPerm a cim:UnitSymbol ;
   rdfs:label "ohmPerm" ;
+  rdfs:label "ohmPerm" ;
   rdfs:comment "Electric resistance per length in ohms per metre ((V/A)/m)."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.ohmm a cim:UnitSymbol ;
+  rdfs:label "ohmm" ;
   rdfs:label "ohmm" ;
   rdfs:comment "Resistivity, ohm metres, (rho)."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.onePerHz a cim:UnitSymbol ;
   rdfs:label "onePerHz" ;
+  rdfs:label "onePerHz" ;
   rdfs:comment "Reciprocal of frequency (1/Hz)."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.onePerm a cim:UnitSymbol ;
+  rdfs:label "onePerm" ;
   rdfs:label "onePerm" ;
   rdfs:comment "Wavenumber, reciprocal metres,  (1/m)."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.ppm a cim:UnitSymbol ;
   rdfs:label "ppm" ;
+  rdfs:label "ppm" ;
   rdfs:comment "Concentration in parts per million."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.rad a cim:UnitSymbol ;
+  rdfs:label "rad" ;
   rdfs:label "rad" ;
   rdfs:comment "Plane angle in radians (m/m)."@en ;
   cims:stereotype "enum" ;
@@ -1090,25 +1151,30 @@ cim:UnitSymbol.rad a cim:UnitSymbol ;
 
 cim:UnitSymbol.radPers a cim:UnitSymbol ;
   rdfs:label "radPers" ;
+  rdfs:label "radPers" ;
   rdfs:comment "Angular velocity in radians per second (rad/s)."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.radPers2 a cim:UnitSymbol ;
+  rdfs:label "radPers2" ;
   rdfs:label "radPers2" ;
   rdfs:comment "Angular acceleration, radians per second squared."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.rev a cim:UnitSymbol ;
   rdfs:label "rev" ;
+  rdfs:label "rev" ;
   rdfs:comment "Amount of rotation, revolutions."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.rotPers a cim:UnitSymbol ;
   rdfs:label "rotPers" ;
+  rdfs:label "rotPers" ;
   rdfs:comment "Rotations per second (1/s). See also Hz (1/s)."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.s a cim:UnitSymbol ;
+  rdfs:label "s" ;
   rdfs:label "s" ;
   rdfs:comment "Time in seconds."@en ;
   cims:stereotype "enum" ;
@@ -1116,21 +1182,25 @@ cim:UnitSymbol.s a cim:UnitSymbol ;
 
 cim:UnitSymbol.sPers a cim:UnitSymbol ;
   rdfs:label "sPers" ;
+  rdfs:label "sPers" ;
   rdfs:comment "Time, Ratio of time.  Note: Users may need to supply a prefix such as ‘&#181;’ to show rates such as ‘&#181;s/s’."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.sr a cim:UnitSymbol ;
+  rdfs:label "sr" ;
   rdfs:label "sr" ;
   rdfs:comment "Solid angle in steradians (m2/m2)."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.therm a cim:UnitSymbol ;
   rdfs:label "therm" ;
+  rdfs:label "therm" ;
   rdfs:comment "Energy, therms."@en ;
   cims:stereotype "enum" .
 
 cim:UnitSymbol.tonne a cim:UnitSymbol ;
   rdfs:label "tonne" ;
+  skos:prefLabel "tonne" ;
   rdfs:comment "Mass in tons, “tonne” or “metric  ton” (1000 kg = 1 Mg)."@en ;
   cims:stereotype "enum" .
 
