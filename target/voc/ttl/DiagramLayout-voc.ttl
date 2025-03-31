@@ -58,7 +58,7 @@ cim:Diagram a owl:Class ;
   skos:prefLabel "Diagram"@en ;
   rdfs:comment "The diagram being exchanged. The coordinate system is a standard Cartesian coordinate system and the orientation attribute defines the orientation. The initial view related attributes can be used to specify an initial view with the x,y coordinates of the diagonal points."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:stereotype uml:concrete ;
+  cims:isAbstract false ;
   rdfs:subClassOf cim:IdentifiedObject .
 
 cim:DiagramObject a owl:Class ;
@@ -66,7 +66,7 @@ cim:DiagramObject a owl:Class ;
   skos:prefLabel "DiagramObject"@en ;
   rdfs:comment "An object that defines one or more points in a given space. This object can be associated with anything that specializes IdentifiedObject. For single line diagrams such objects typically include such items as analog values, breakers, disconnectors, power transformers, and transmission lines."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:stereotype uml:concrete ;
+  cims:isAbstract false ;
   rdfs:subClassOf cim:IdentifiedObject .
 
 cim:DiagramObjectGluePoint a owl:Class ;
@@ -74,21 +74,21 @@ cim:DiagramObjectGluePoint a owl:Class ;
   skos:prefLabel "DiagramObjectGluePoint"@en ;
   rdfs:comment "This is used for grouping diagram object points from different diagram objects that are considered to be glued together in a diagram even if they are not at the exact same coordinates."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:stereotype uml:concrete .
+  cims:isAbstract false .
 
 cim:DiagramObjectPoint a owl:Class ;
   rdfs:label "DiagramObjectPoint" ;
   skos:prefLabel "DiagramObjectPoint"@en ;
   rdfs:comment "A point in a given space defined by 3 coordinates and associated to a diagram object.  The coordinates may be positive or negative as the origin does not have to be in the corner of a diagram."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:stereotype uml:concrete .
+  cims:isAbstract false .
 
 cim:DiagramObjectStyle a owl:Class ;
   rdfs:label "DiagramObjectStyle" ;
   skos:prefLabel "DiagramObjectStyle"@en ;
   rdfs:comment "A reference to a style used by the originating system for a diagram object.  A diagram object style describes information such as line thickness, shape such as circle or rectangle etc, and colour."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:stereotype uml:concrete ;
+  cims:isAbstract false ;
   rdfs:subClassOf cim:IdentifiedObject .
 
 cim:DiagramStyle a owl:Class ;
@@ -96,7 +96,7 @@ cim:DiagramStyle a owl:Class ;
   skos:prefLabel "DiagramStyle"@en ;
   rdfs:comment "The diagram style refers to a style used by the originating system for a diagram.  A diagram style describes information such as schematic, geographic, etc."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:stereotype uml:concrete ;
+  cims:isAbstract false ;
   rdfs:subClassOf cim:IdentifiedObject .
 
 cim:OrientationKind a owl:Class ;
@@ -112,7 +112,7 @@ cim:TextDiagramObject a owl:Class ;
   skos:prefLabel "TextDiagramObject"@en ;
   rdfs:comment "A diagram object for placing free-text or text derived from an associated domain object."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:stereotype uml:concrete ;
+  cims:isAbstract false ;
   rdfs:subClassOf cim:DiagramObject .
 
 cim:VisibilityLayer a owl:Class ;
@@ -121,7 +121,7 @@ cim:VisibilityLayer a owl:Class ;
   rdfs:comment """Layers are typically used for grouping diagram objects according to themes and scales. Themes are used to display or hide certain information (e.g., lakes, borders), while scales are used for hiding or displaying information depending on the current zoom level (hide text when it is too small to be read, or when it exceeds the screen size). This is also called de-cluttering.
 CIM based graphics exchange supports an m:n relationship between diagram objects and layers. The importing system shall convert an m:n case into an appropriate 1:n representation if the importing system does not support m:n."""@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:stereotype uml:concrete ;
+  cims:isAbstract false ;
   rdfs:subClassOf cim:IdentifiedObject .
 
 cim:Diagram.DiagramElements a owl:ObjectProperty, owl:InverseFunctionalProperty ;
@@ -152,7 +152,7 @@ cim:Diagram.orientation a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:comment "Coordinate system orientation of the diagram. A positive orientation gives standard “right-hand” orientation, with negative orientation indicating a “left-hand” orientation. For 2D diagrams, a positive orientation will result in X values increasing from left to right and Y values increasing from bottom to top. A negative orientation gives the “left-hand” orientation (favoured by computer graphics displays) with X values increasing from left to right and Y values increasing from top to bottom."@en ;
   cims:multiplicity cims:M:1..1 ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:stereotype uml:attribute ;
+  cims:stereotype cims:attribute ;
   rdfs:domain cim:Diagram ;
   rdfs:range cim:OrientationKind .
 
@@ -304,7 +304,7 @@ cim:Diagram.x2InitialView a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:comment "X coordinate of the second corner of the initial view."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
+  cims:stereotype cims:attribute ;
   rdfs:domain cim:Diagram ;
   rdfs:range xsd:float .
 
@@ -314,7 +314,7 @@ cim:Diagram.y1InitialView a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:comment "Y coordinate of the first corner of the initial view."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
+  cims:stereotype cims:attribute ;
   rdfs:domain cim:Diagram ;
   rdfs:range xsd:float .
 
@@ -324,7 +324,7 @@ cim:Diagram.y2InitialView a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:comment "Y coordinate of the second corner of the initial view."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
+  cims:stereotype cims:attribute ;
   rdfs:domain cim:Diagram ;
   rdfs:range xsd:float .
 
@@ -334,7 +334,7 @@ cim:DiagramObject.drawingOrder a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:comment "The drawing order of this element. The higher the number, the later the element is drawn in sequence. This is used to ensure that elements that overlap are rendered in the correct order."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
+  cims:stereotype cims:attribute ;
   rdfs:domain cim:DiagramObject ;
   rdfs:range xsd:integer .
 
@@ -344,7 +344,7 @@ cim:DiagramObject.isPolygon a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:comment "Defines whether or not the diagram objects points define the boundaries of a polygon or the routing of a polyline. If this value is true then a receiving application should consider the first and last points to be connected."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
+  cims:stereotype cims:attribute ;
   rdfs:domain cim:DiagramObject ;
   rdfs:range xsd:boolean .
 
@@ -356,7 +356,7 @@ cim:DiagramObject.offsetX a owl:DatatypeProperty, owl:FunctionalProperty ;
 The offset is in per-unit with 0 indicating there is no offset from the horizontal centre of the icon.  -0.5 indicates it is offset by 50% to the left and 0.5 indicates an offset of 50% to the right."""@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
+  cims:stereotype cims:attribute ;
   rdfs:domain cim:DiagramObject ;
   rdfs:range xsd:float .
 
@@ -368,7 +368,7 @@ cim:DiagramObject.offsetY a owl:DatatypeProperty, owl:FunctionalProperty ;
 The offset is in per-unit with 0 indicating there is no offset from the vertical centre of the icon.  The offset direction is dependent on the orientation of the diagram, with -0.5 and 0.5 indicating an offset of +/- 50% on the vertical axis."""@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
+  cims:stereotype cims:attribute ;
   rdfs:domain cim:DiagramObject ;
   rdfs:range xsd:float .
 
@@ -381,7 +381,7 @@ DiagramObject.rotation=90 has the following meaning: The connection point of an 
   cim:unitMultiplier cim:UnitMultiplier.none ;
   cim:unitSymbol cim:UnitSymbol.deg ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
+  cims:stereotype cims:attribute ;
   qudt:hasQuantityKind cim:AngleDegrees ;
   qudt:hasUnit unit:DEG ;
   rdfs:domain cim:DiagramObject ;
@@ -393,7 +393,7 @@ cim:DiagramObjectPoint.sequenceNumber a owl:DatatypeProperty, owl:FunctionalProp
   rdfs:comment "The sequence position of the point, used for defining the order of points for diagram objects acting as a polyline or polygon with more than one point. The attribute shall be a positive value."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
+  cims:stereotype cims:attribute ;
   rdfs:domain cim:DiagramObjectPoint ;
   rdfs:range xsd:integer .
 
@@ -403,7 +403,7 @@ cim:DiagramObjectPoint.xPosition a owl:DatatypeProperty, owl:FunctionalProperty 
   rdfs:comment "The X coordinate of this point."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
   cims:multiplicity cims:M:1..1 ;
-  cims:stereotype uml:attribute ;
+  cims:stereotype cims:attribute ;
   rdfs:domain cim:DiagramObjectPoint ;
   rdfs:range xsd:float .
 
@@ -413,7 +413,7 @@ cim:DiagramObjectPoint.yPosition a owl:DatatypeProperty, owl:FunctionalProperty 
   rdfs:comment "The Y coordinate of this point."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
   cims:multiplicity cims:M:1..1 ;
-  cims:stereotype uml:attribute ;
+  cims:stereotype cims:attribute ;
   rdfs:domain cim:DiagramObjectPoint ;
   rdfs:range xsd:float .
 
@@ -423,7 +423,7 @@ cim:DiagramObjectPoint.zPosition a owl:DatatypeProperty, owl:FunctionalProperty 
   rdfs:comment "The Z coordinate of this point."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
+  cims:stereotype cims:attribute ;
   rdfs:domain cim:DiagramObjectPoint ;
   rdfs:range xsd:float .
 
@@ -434,7 +434,7 @@ cim:TextDiagramObject.text a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:comment "The text that is displayed by this text diagram object."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
   cims:multiplicity cims:M:1..1 ;
-  cims:stereotype uml:attribute ;
+  cims:stereotype cims:attribute ;
   rdfs:domain cim:TextDiagramObject ;
   rdfs:range xsd:string .
 
@@ -444,7 +444,7 @@ cim:VisibilityLayer.drawingOrder a owl:DatatypeProperty, owl:FunctionalProperty 
   rdfs:comment "The drawing order for this layer.  The higher the number, the later the layer and the objects within it are rendered."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
+  cims:stereotype cims:attribute ;
   rdfs:domain cim:VisibilityLayer ;
   rdfs:range xsd:integer .
 

@@ -86,7 +86,7 @@ cim:IdentifiedObject a owl:Class ;
     skos:prefLabel "IdentifiedObject"@en ;
     skos:definition "This is a root class to provide common identification for all classes needing identification and naming attributes."@en ;
     rdfs:isDefinedBy <https://cim.ucaiug.io/ns/core> ;
-    cims:stereotype uml:abstract .
+    cims:isAbstract true .
 
 cim:IdentifiedObject.name a owl:DatatypeProperty, owl:FunctionalProperty ;
   rdfs:label "name" ;
@@ -94,7 +94,7 @@ cim:IdentifiedObject.name a owl:DatatypeProperty, owl:FunctionalProperty ;
   skos:definition "The name is any free human readable and possibly non unique text naming the object."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/core> ;
   cims:multiplicity cims:M:1..1 ;
-  cims:stereotype uml:attribute ;
+  cims:stereotype cims:attribute ;
   rdfs:domain cim:IdentifiedObject ;
   rdfs:range xsd:string .
 
@@ -104,7 +104,7 @@ cim:IdentifiedObject.description a owl:DatatypeProperty, owl:FunctionalProperty 
   skos:definition "The description is a free human readable text describing or naming the object. It may be non unique and may not correlate to a naming hierarchy."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/core> ;
   cims:multiplicity cims:M:0..1 ;
-  cims:stereotype uml:attribute ;
+  cims:stereotype cims:attribute ;
   rdfs:domain cim:IdentifiedObject ;
   rdfs:range xsd:string .
 
@@ -114,6 +114,6 @@ cim:IdentifiedObject.mRID a owl:DatatypeProperty, owl:FunctionalProperty ;
   skos:definition "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements"@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/core> ;
   cims:multiplicity cims:M:1..1 ;
-  cims:stereotype uml:attribute ;
+  cims:stereotype cims:attribute ;
   rdfs:domain cim:IdentifiedObject ;
   rdfs:range xsd:string .
