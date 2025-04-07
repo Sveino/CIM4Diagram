@@ -108,12 +108,13 @@ cim:IdentifiedObject.description a owl:DatatypeProperty, owl:FunctionalProperty 
   rdfs:domain cim:IdentifiedObject ;
   rdfs:range xsd:string .
 
-cim:IdentifiedObject.mRID a owl:DatatypeProperty, owl:FunctionalProperty ;
+cim:IdentifiedObject.mRID a owl:DatatypeProperty, owl:FunctionalProperty, owl:InverseFunctionalProperty ;
   rdfs:label "mRID" ;
   skos:prefLabel "mRID"@en ;
   skos:definition "Master resource identifier issued by a model authority. The mRID is unique within an exchange context. Global uniqueness is easily achieved by using a UUID, as specified in RFC 4122, for the mRID. The use of UUID is strongly recommended.For CIMXML data files in RDF syntax conforming to IEC 61970-552, the mRID is mapped to rdf:ID or rdf:about attributes that identify CIM object elements"@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/core> ;
   cims:multiplicity cims:M:1..1 ;
   cims:stereotype cims:attribute ;
+  cims:isUnique true ;
   rdfs:domain cim:IdentifiedObject ;
   rdfs:range xsd:string .
