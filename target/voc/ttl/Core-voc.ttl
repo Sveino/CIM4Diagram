@@ -79,7 +79,15 @@
 #    Annotation properties
 #################################################################
 
-### do we need to have annotation for properties that are included in the imported vocabulary?
+cims:isUnique a owl:AnnotationProperty;
+  rdfs:domain owl:DatatypeProperty;
+  rdfs:range xsd:boolean;
+  rdfs:label "is unique";
+  rdfs:comment """Whether this attribute is unique for all objects of this class (or globally). Translates to owl:InverseFunctionalProperty"""@en.
+
+#################################################################
+#    Class
+#################################################################  
 
 cim:IdentifiedObject a owl:Class ;
     rdfs:label "IdentifiedObject" ;
