@@ -31,7 +31,7 @@
                                                         <https://orcid.org/0000-0001-7508-7428> ;
                                     dcterms:creator <https://orcid.org/0009-0009-8211-926X> ;
                                     dcterms:description "Diagram Layout application profile specific the expected data to be exchanges to describe a Common Information Model (CIM) Diagram Layout."@en ;
-                                    dcterms:identifier "urn:uuid:1a27399f-4731-481c-b326-4beee63fbf84e" ;                                  
+                                    dcterms:identifier <urn:uuid:1a27399f-4731-481c-b326-4beee63fbf84e> ;                                  
                                     dcterms:title "DiagramLayout-AP-v2-1-0" ;
                                     rdfs:comment "Diagram Layout application profile defined by DX-PROF"@en ;
                                     rdfs:label "Diagram Layout Application Profile"@en ;

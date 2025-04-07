@@ -31,7 +31,7 @@
                                     dcterms:creator <https://orcid.org/0009-0009-8211-926X> ;
 
                                     dcterms:description "The Common Information Model (CIM) Base Datatype constraints describe the constraints to primitive."@en ;
-                                    dcterms:identifier "urn:uuid:3c3249d4-1829-4a93-985d-5098284dd174" ;
+                                    dcterms:identifier <urn:uuid:3c3249d4-1829-4a93-985d-5098284dd174> ;
                                     dcterms:title "BaseDatatype-Cons-v1-0-0" ;
                                     rdfs:comment "The base datatype constraints."@en ;
                                     rdfs:label "Base datatype constraints"@en ;

@@ -31,7 +31,7 @@
                                     dcterms:creator <https://orcid.org/0009-0009-8211-926X> ;
 
                                     dcterms:description "The Common Information Model (CIM) Diagram Layout vocabulary describe how objects are arranged in a coordinate system rather than how they are rendered."@en ;
-                                    dcterms:identifier "urn:uuid:4a9c6788-65ed-46f9-bcfb-6b54605066d0" ;
+                                    dcterms:identifier <urn:uuid:4a9c6788-65ed-46f9-bcfb-6b54605066d0> ;
                                     dcterms:title "DiagramLayout-Voc-v1-0-0" ;
                                     rdfs:comment "This describes how objects are arranged in a coordinate system rather than how they are rendered."@en ;
                                     rdfs:label "Diagram layout vocabulary" ;
