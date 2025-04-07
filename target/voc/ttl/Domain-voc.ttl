@@ -27,7 +27,7 @@
                                     dcterms:creator <https://orcid.org/0009-0009-8211-926X> ;
 
                                     dcterms:description "The Common Information Model (CIM) Domain vocabulary describe the primitive, contained primitive and unit datatype."@en ;
-                                    dcterms:identifier "urn:uuid:79ec3546-7023-4652-9879-1f02bbe5cb03" ;
+                                    dcterms:identifier <urn:uuid:79ec3546-7023-4652-9879-1f02bbe5cb03> ;
                                     dcterms:title "Domain-Voc-v1-0-0" ;
                                     rdfs:comment "The Domain vocabulary does not have any dependency."@en ;
                                     rdfs:label "Domain vocabulary";
@@ -40,7 +40,7 @@
                                     dcterms:rights "Copyright" ;                                    
 
                                     vann:preferredNamespacePrefix "cim" ;
-                                    vann:preferredNamespaceUri "https://cim.ucaiug.io/ns#" .
+                                    vann:preferredNamespaceUri "https://cim.ucaiug.io/ns#"^^xsd:AnyURI .
 
 
 #################################################################

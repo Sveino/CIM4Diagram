@@ -31,7 +31,7 @@
                                     dcterms:creator <https://orcid.org/0009-0009-8211-926X> ;
 
                                     dcterms:description "The Common Information Model (CIM) diagram layout constraints on the classes that describe how objects are arranged in a coordinate system rather than how they are rendered."@en ;
-                                    dcterms:identifier "urn:uuid:6accd33d-4bf2-4cba-beaa-ecf469634f75" ;
+                                    dcterms:identifier <urn:uuid:6accd33d-4bf2-4cba-beaa-ecf469634f75> ;
                                     dcterms:title "DiagramLayout-Cons-v1-0-0" ;
                                     rdfs:comment "The diagram layout constraints."@en ;
                                     rdfs:label "Digram layout constraints"@en ;
@@ -43,7 +43,7 @@
                                     dcterms:rights "Copyright" ;                                    
 
                                     vann:preferredNamespacePrefix "cimc" ;
-                                    vann:preferredNamespaceUri "hhttps://cim.ucaiug.io/ns/constraints#" .
+                                    vann:preferredNamespaceUri "hhttps://cim.ucaiug.io/ns/constraints#"^^xsd:AnyURI .
 
 
 

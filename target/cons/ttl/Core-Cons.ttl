@@ -31,7 +31,7 @@
                                     dcterms:creator <https://orcid.org/0009-0009-8211-926X> ;
 
                                     dcterms:description "The Common Information Model (CIM) Core constraints describe the constraints to the PowerSystemResource and ConductingEquipment classes that is used in all CIM profiles."@en ;
-                                    dcterms:identifier "urn:uuid:3e0a8146-8a72-48e2-a92a-79b7bb01d4d4" ;
+                                    dcterms:identifier <urn:uuid:3e0a8146-8a72-48e2-a92a-79b7bb01d4d4> ;
                                     dcterms:title "Core-Cons-v1-0-0" ;
                                     rdfs:comment "The Core constraints."@en ;
                                     rdfs:label "Core constraints"@en ;
@@ -43,7 +43,7 @@
                                     dcterms:rights "Copyright" ;                                    
 
                                     vann:preferredNamespacePrefix "cimc" ;
-                                    vann:preferredNamespaceUri "https://cim.ucaiug.io/ns/constraints#" .
+                                    vann:preferredNamespaceUri "https://cim.ucaiug.io/ns/constraints#"^^xsd:AnyURI .
 
 
 

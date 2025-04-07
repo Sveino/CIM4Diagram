@@ -31,7 +31,7 @@
                                     dcterms:creator <https://orcid.org/0009-0009-8211-926X> ;
 
                                     dcterms:description "The Common Information Model (CIM) Diagram Layout vocabulary describe how objects are arranged in a coordinate system rather than how they are rendered."@en ;
-                                    dcterms:identifier "urn:uuid:4a9c6788-65ed-46f9-bcfb-6b54605066d0" ;
+                                    dcterms:identifier <urn:uuid:4a9c6788-65ed-46f9-bcfb-6b54605066d0> ;
                                     dcterms:title "DiagramLayout-Voc-v1-0-0" ;
                                     rdfs:comment "This describes how objects are arranged in a coordinate system rather than how they are rendered."@en ;
                                     rdfs:label "Diagram layout vocabulary" ;
@@ -44,7 +44,7 @@
                                     dcterms:rights "Copyright" ;                                    
 
                                     vann:preferredNamespacePrefix "cim" ;
-                                    vann:preferredNamespaceUri "hhttps://cim.ucaiug.io/ns#" ;
+                                    vann:preferredNamespaceUri "hhttps://cim.ucaiug.io/ns#"^^xsd:AnyURI ;
                                     owl:imports <https://cim.ucaiug.io/ns/core/1.0> .
 
 
@@ -52,6 +52,15 @@
 #    Annotation properties
 #################################################################
 
+cims:isExplicit a owl:AnnotationProperty;
+  rdfs:domain owl:ObjectProperty;
+  rdfs:range xsd:boolean;
+  rdfs:label "is explicit";
+  rdfs:comment "Whether this end of an association (this property from a pair of inverses) is present in instance data. The other direction may be inferred by instance data"@en.
+
+#################################################################
+#    Class
+#################################################################
 
 cim:Diagram a owl:Class ;
   rdfs:label "Diagram" ;
@@ -129,7 +138,7 @@ cim:Diagram.DiagramElements a owl:ObjectProperty, owl:InverseFunctionalProperty 
   skos:prefLabel "DiagramElements"@en ;
   rdfs:comment "A diagram is made up of multiple diagram objects."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:AssociationUsed "No" ;
+  cims:isExplicit false ;
   cims:multiplicity cims:M:0..n ;
   owl:inverseOf cim:DiagramObject.Diagram ;
   rdfs:domain cim:Diagram ;
@@ -140,7 +149,7 @@ cim:Diagram.DiagramStyle a owl:ObjectProperty, owl:FunctionalProperty ;
   skos:prefLabel "DiagramStyle"@en ;
   rdfs:comment "A Diagram may have a DiagramStyle."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:AssociationUsed "Yes" ;
+  cims:isExplicit true ;
   cims:multiplicity cims:M:0..1 ;
   owl:inverseOf cim:DiagramStyle.Diagram ;
   rdfs:domain cim:Diagram ;
@@ -160,7 +169,7 @@ cim:DiagramObject.Diagram a owl:ObjectProperty, owl:FunctionalProperty ;
   rdfs:label "Diagram" ;
   skos:prefLabel "Diagram"@en ;
   rdfs:comment "A diagram object is part of a diagram."@en ;
-  cims:AssociationUsed "Yes" ;
+  cims:isExplicit true ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
   cims:multiplicity cims:M:1..1 ;
   owl:inverseOf cim:Diagram.DiagramElements ;
@@ -172,7 +181,7 @@ cim:DiagramObject.DiagramObjectPoints a owl:ObjectProperty, owl:InverseFunctiona
   skos:prefLabel "DiagramObjectPoints"@en ;
   rdfs:comment "A diagram object can have 0 or more points to reflect its layout position, routing (for polylines) or boundary (for polygons)."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:AssociationUsed "No" ;
+  cims:isExplicit false ;
   cims:multiplicity cims:M:0..n ;
   owl:inverseOf cim:DiagramObjectPoint.DiagramObject ;
   rdfs:domain cim:DiagramObject ;
@@ -183,7 +192,7 @@ cim:DiagramObject.DiagramObjectStyle a owl:ObjectProperty, owl:FunctionalPropert
   skos:prefLabel "DiagramObjectStyle"@en ;
   rdfs:comment "A diagram object has a style associated that provides a reference for the style used in the originating system."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:AssociationUsed "Yes" ;
+  cims:isExplicit true ;
   cims:multiplicity cims:M:0..1 ;
   owl:inverseOf cim:DiagramObjectStyle.StyledObjects ;
   rdfs:domain cim:DiagramObject ;
@@ -194,7 +203,7 @@ cim:DiagramObject.IdentifiedObject a owl:ObjectProperty, owl:FunctionalProperty 
   skos:prefLabel "IdentifiedObject"@en ;
   rdfs:comment "The domain object to which this diagram object is associated."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:AssociationUsed "Yes" ;
+  cims:isExplicit true ;
   cims:multiplicity cims:M:0..1 ;
   owl:inverseOf cim:IdentifiedObject.DiagramObjects ;
   rdfs:domain cim:DiagramObject ;
@@ -205,7 +214,7 @@ cim:DiagramObject.VisibilityLayers a owl:ObjectProperty ;
   skos:prefLabel "VisibilityLayers"@en ;
   rdfs:comment "A diagram object can be part of multiple visibility layers."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:AssociationUsed "No" ;
+  cims:isExplicit false ;
   cims:multiplicity cims:M:0..n ;
   owl:inverseOf cim:VisibilityLayer.VisibleObjects ;
   rdfs:domain cim:DiagramObject ;
@@ -216,7 +225,7 @@ cim:DiagramObjectGluePoint.DiagramObjectPoints a owl:ObjectProperty, owl:Inverse
   skos:prefLabel "DiagramObjectPoints"@en ;
   rdfs:comment "A diagram object glue point is associated with 2 or more object points that are considered to be 'glued' together."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:AssociationUsed "No" ;
+  cims:isExplicit false ;
   cims:multiplicity cims:M:2..n ;
   owl:inverseOf cim:DiagramObjectPoint.DiagramObjectGluePoint ;
   rdfs:domain cim:DiagramObjectGluePoint ;
@@ -227,7 +236,7 @@ cim:DiagramObjectPoint.DiagramObject a owl:ObjectProperty, owl:FunctionalPropert
   skos:prefLabel "DiagramObject"@en ;
   rdfs:comment "The diagram object with which the points are associated."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:AssociationUsed "Yes" ;
+  cims:isExplicit true ;
   cims:multiplicity cims:M:1..1 ;
   owl:inverseOf cim:DiagramObject.DiagramObjectPoints ;
   rdfs:domain cim:DiagramObjectPoint ;
@@ -238,7 +247,7 @@ cim:DiagramObjectPoint.DiagramObjectGluePoint a owl:ObjectProperty, owl:Function
   skos:prefLabel "DiagramObjectGluePoint"@en ;
   rdfs:comment "The 'glue' point to which this point is associated."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:AssociationUsed "Yes" ;
+  cims:isExplicit true ;
   cims:multiplicity cims:M:0..1 ;
   owl:inverseOf cim:DiagramObjectGluePoint.DiagramObjectPoints ;
   rdfs:domain cim:DiagramObjectPoint ;
@@ -249,7 +258,7 @@ cim:DiagramObjectStyle.StyledObjects a owl:ObjectProperty, owl:InverseFunctional
   skos:prefLabel "StyledObjects"@en ;
   rdfs:comment "A style can be assigned to multiple diagram objects."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:AssociationUsed "No" ;
+  cims:isExplicit false ;
   cims:multiplicity cims:M:0..n ;
   owl:inverseOf cim:DiagramObject.DiagramObjectStyle ;
   rdfs:domain cim:DiagramObjectStyle ;
@@ -260,7 +269,7 @@ cim:DiagramStyle.Diagram a owl:ObjectProperty, owl:InverseFunctionalProperty ;
   skos:prefLabel "Diagram"@en ;
   rdfs:comment "A DiagramStyle can be used by many Diagrams."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:AssociationUsed "No" ;
+  cims:isExplicit false ;
   cims:multiplicity cims:M:0..n ;
   owl:inverseOf cim:Diagram.DiagramStyle ;
   rdfs:domain cim:DiagramStyle ;
@@ -271,7 +280,7 @@ cim:IdentifiedObject.DiagramObjects a owl:ObjectProperty, owl:InverseFunctionalP
   skos:prefLabel "DiagramObjects"@en ;
   rdfs:comment "The diagram objects that are associated with the domain object."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:AssociationUsed "No" ;
+  cims:isExplicit false ;
   cims:multiplicity cims:M:0..n ;
   owl:inverseOf cim:DiagramObject.IdentifiedObject ;
   rdfs:domain cim:IdentifiedObject ;
@@ -282,7 +291,7 @@ cim:VisibilityLayer.VisibleObjects a owl:ObjectProperty ;
   skos:prefLabel "VisibleObjects"@en ;
   rdfs:comment "A visibility layer can contain one or more diagram objects."@en ;
   rdfs:isDefinedBy <https://cim.ucaiug.io/ns/DiagramLayout> ;
-  cims:AssociationUsed "Yes" ;
+  cims:isExplicit true ;
   cims:multiplicity cims:M:1..n ;
   owl:inverseOf cim:DiagramObject.VisibilityLayers ;
   rdfs:domain cim:VisibilityLayer ;

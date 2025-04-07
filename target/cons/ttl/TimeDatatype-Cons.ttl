@@ -32,7 +32,7 @@
                                     dcterms:creator <https://orcid.org/0009-0009-8211-926X> ;
 
                                     dcterms:description "The Common Information Model (CIM) Time Datatype constraints describe the constraints to time datatype."@en ;
-                                    dcterms:identifier "urn:uuid:05a2b342-eddd-4571-b868-86011d01009a" ;
+                                    dcterms:identifier <urn:uuid:05a2b342-eddd-4571-b868-86011d01009a> ;
                                     dcterms:title "TimeDatatype-Cons-v1-0-0" ;
                                     rdfs:comment "The time datatype constraints."@en ;
                                     rdfs:label "Time datatype constraints"@en ;
@@ -44,7 +44,7 @@
                                     dcterms:rights "Copyright" ;                                    
 
                                     vann:preferredNamespacePrefix "cimc" ;
-                                    vann:preferredNamespaceUri "https://cim.ucaiug.io/ns/constraints#" .
+                                    vann:preferredNamespaceUri "https://cim.ucaiug.io/ns/constraints#"^^xsd:AnyURI .
 
 
 
