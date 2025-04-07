@@ -43,7 +43,7 @@
                                     dcterms:rights "Copyright" ;                                    
 
                                     vann:preferredNamespacePrefix "cimc" ;
-                                    vann:preferredNamespaceUri "https://cim.ucaiug.io/ns/constraints#" .
+                                    vann:preferredNamespaceUri "https://cim.ucaiug.io/ns/constraints#"^^xsd:AnyURI .
 
 
 

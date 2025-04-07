@@ -41,7 +41,7 @@
                                     dcterms:rights "Copyright" ;                                    
 
                                     vann:preferredNamespacePrefix "cim" ;
-                                    vann:preferredNamespaceUri "https://cim.ucaiug.io/ns#" ;
+                                    vann:preferredNamespaceUri "https://cim.ucaiug.io/ns#"^^xsd:AnyURI ;
                                     owl:imports <https://cim.ucaiug.io/ns/domain> .
 
 <https://cim.ucaiug.io/ns/core/1.0> rdf:type owl:Ontology ;
@@ -69,7 +69,7 @@
                                     dcterms:rights "Copyright" ;                                    
 
                                     vann:preferredNamespacePrefix "cim" ;
-                                    vann:preferredNamespaceUri "https://cim.ucaiug.io/ns#" ;
+                                    vann:preferredNamespaceUri "https://cim.ucaiug.io/ns#"^^xsd:AnyURI ;
                                     owl:imports <https://cim.ucaiug.io/ns/domain/1.0> .
 
 <https://cim.ucaiug.io/ns/core> dcat:hasVersion 

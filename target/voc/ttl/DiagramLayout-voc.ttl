@@ -44,7 +44,7 @@
                                     dcterms:rights "Copyright" ;                                    
 
                                     vann:preferredNamespacePrefix "cim" ;
-                                    vann:preferredNamespaceUri "hhttps://cim.ucaiug.io/ns#" ;
+                                    vann:preferredNamespaceUri "hhttps://cim.ucaiug.io/ns#"^^xsd:AnyURI ;
                                     owl:imports <https://cim.ucaiug.io/ns/core/1.0> .
 
 

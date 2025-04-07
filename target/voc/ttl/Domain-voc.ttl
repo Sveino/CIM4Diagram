@@ -40,7 +40,7 @@
                                     dcterms:rights "Copyright" ;                                    
 
                                     vann:preferredNamespacePrefix "cim" ;
-                                    vann:preferredNamespaceUri "https://cim.ucaiug.io/ns#" .
+                                    vann:preferredNamespaceUri "https://cim.ucaiug.io/ns#"^^xsd:AnyURI .
 
 
 #################################################################
