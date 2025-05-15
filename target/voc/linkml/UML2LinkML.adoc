@@ -1,0 +1,792 @@
+= Representing CIM UML Models in LinkML
+
+== Work in progress
+WARNING: Remove this section when done.
+
+=== Resources
+* https://github.com/Sveino/Spec4CIM-KG/blob/develop/docs/Profile/UML2LinkML.adoc[UML to LinkML mapping] (Svein)
+* https://github.com/Sveino/CIM4Diagram/labels/RDFS[Issues on CIM4Diagram with `RDFS` label]
+    * You can provide comments/examples to the existing issues with LinkML code and explanation.
+    * The additional `spec` label indicates that this issue is "ready for the spec"
+* https://github.com/Sveino/Spec4CIM-KG/blob/develop/docs/Profile/UML2RDFS.adoc[UML to RDFS mapping based on OMG MOF] (Svein)
+* UML to LinkML mapping (Bart)
+    * ./doc-linkml-guide/modules/ROOT/pages/UML2LinkML.adoc
+* https://github.com/Sveino/Inst4CIM-KG/issues/146[Mapping bidirectional UML relation to LinkML]
+* https://github.com/Sveino/Spec4CIM-KG/issues/9[Some early thoughts on the LinkML piece...] (Todd)
+    * Showcases and pleads for `ea_guid` also
+
+=== Inventory
+* Types
+** https://github.com/Sveino/CIM4Diagram/issues/3[Primitives]
+*** https://github.com/Sveino/CIM4Diagram/issues/11[XSD datatypes]
+** https://github.com/Sveino/CIM4Diagram/issues/30[Compound]
+*** CIM data types
+*** https://github.com/Sveino/CIM4Diagram/issues/28[MonetaryDataType]
+*** https://github.com/Sveino/CIM4Diagram/issues/24[Unit]
+* Classes
+** Inheritance
+*** Multiple inheritance
+* Cardinality
+** Optionality vs requiredness
+** Multivaluedness
+** Specific cardinality constraints
+* Associations
+** Binary
+** Non-qualified
+** Aggregation/composition
+** https://github.com/Sveino/CIM4Diagram/issues/23[Association direction]
+* https://github.com/Sveino/CIM4Diagram/issues/13[Enumerations]
+* Metadata
+** https://github.com/Sveino/CIM4Diagram/issues/22[isUnique]
+** https://github.com/Sveino/CIM4Diagram/issues/17[rdfs:isDefinedBy or cims:belongsToCategory]
+** https://github.com/Sveino/CIM4Diagram/issues/7[Descriptions and definitions]
+** https://github.com/Sveino/CIM4Diagram/issues/16[Version URIs]
+** https://github.com/Sveino/CIM4Diagram/issues/6[Miscellaneous `cims` metadata] (such as `isAbstract`)
+* Stereotypes
+* Package
+** Use import mechanism (possible thanks to CIM naming conventions)
+
+== Mappings
+
+[CAUTION]
+--
+* A feature is supported in the LinkML representation if and only if there is a mapping defined for it in this section.
+* Focus is solely on features and idioms used to model the CIM.
+--
+
+[%collapsible]
+.Non-exhaustive list of examples of notable unsupported features
+====
+* https://github.com/Sveino/CIM4Diagram/issues/12[Language strings] (?) #TODO#
+* Association classes (aka qualified relations)
+* Relations with arity higher than binary (aka N-ary relations where N > 2)
+* Class methods
+====
+
+[#mappings_classes]
+=== Classes
+
+|===
+|UML |LinkML
+
+a|
+.Class
+[plantuml,width=100]
+....
+@startuml
+class C
+@enduml
+....
+
+a|
+[source,yaml]
+....
+classes:
+  C:
+....
+
+a|
+.Class
+[plantuml,width=100]
+....
+@startuml
+class C
+C : a: t [i..j]
+@enduml
+....
+
+a|
+[source,yaml]
+....
+classes:
+  C:
+    attributes:
+      a:
+        range: τ(t)
+
+....
+
+
+a|
+.Class with attributes with unspecified multiplicity
+[plantuml]
+----
+@startuml
+class Diagram
+Diagram : x1InitialView: Float
+@enduml
+----
+
+a|
+[source,yaml]
+....
+classes:
+  Diagram:
+    attributes:
+      x1InitialView:
+        range: float
+....
+
+Then, for each attribute:
+
+* Add a range by mapping `t` to a suited LinkML data type by following: <<Data types>>.
+* Add cardinality restrictions based on the multiplicity `i..j` following: <<Multiplicities>>.
+
+|===
+
+=== Relations
+
+==== Generalization
+
+|===
+|UML |LinkML
+
+a|
+[plantuml,width=100px]
+----
+@startuml
+class C
+class D
+C <\|-- D
+@enduml
+----
+
+a|
+[source,yaml]
+----
+classes:
+  C:
+  D:
+    is_a: C
+----
+
+|===
+
+==== Associations
+
+|===
+|UML |LinkML
+
+a|.Standard association (bidirectional)
+[plantuml,width=100px]
+----
+@startuml
+class C
+class D
+C "r<sub>C</sub>" -- "r<sub>D</sub>" D: "r"
+@enduml
+----
+
+a|
+[source,yaml]
+....
+classes:
+  C:
+    slots:
+    - C.r_D
+  D:
+    slots:
+    - D.r_C
+
+slots:
+  C.r_D:
+    domain: C
+    range: D
+    inverse: D.r_C
+  D.r_C:
+    domain: D
+    range: C
+    inverse: C.r_D
+....
+
+a|
+.Standard association (unidirectional)
+[plantuml,width=100px]
+----
+@startuml
+class C
+class D
+C --> "r<sub>D</sub>" D: R
+@enduml
+----
+
+a|
+[source,yaml]
+....
+classes:
+  C:
+    slots:
+    - C.r_D
+  D:
+
+slots:
+  C.r_D:
+    domain: C
+    range: D
+....
+
+a|
+.Aggregation
+[plantuml,width=100px]
+----
+@startuml
+class C
+class D
+C o-- "r<sub>D</sub>" D: R
+@enduml
+----
+
+a|
+[source,yaml]
+....
+classes:
+  C:
+    slots:
+    - C.r_D
+  D:
+
+slots:
+  C.r_D:
+    domain: C
+    range: D
+....
+
+a|
+.Composition
+[plantuml,width=100px]
+----
+@startuml
+class C
+class D
+C *-- "r<sub>D</sub>" D: R
+@enduml
+----
+
+a|
+[source,yaml]
+....
+classes:
+  C:
+    slots:
+    - C.r_D
+  D:
+
+slots:
+  C.r_D:
+    domain: C
+    range: D
+    inlined_as_list: true
+....
+
+|===
+
+==== Multiplicities
+Mapping multiplicities to LinkML cardinality restrictions is described in <<Multiplicities>>.
+
+=== Enumerations
+
+|===
+|UML |LinkML
+
+a|
+.Enumeration class
+[plantuml,width=100px]
+----
+enum E {
+  V
+}
+----
+
+a|
+[source,yaml]
+....
+enums:
+  E:
+    permissible_values:
+      V:
+....
+
+|===
+
+=== Multiplicities
+==== Common cardinalities
+
+|===
+|UML| LinkML
+
+| `0..1`
+a|
+[source,yaml]
+....
+# Default.
+....
+
+| `0..\*`  or  `*` or _not specified_
+a|
+[source,yaml]
+....
+multivalued: true
+....
+
+| `1`
+a|
+[source,yaml]
+....
+required: true
+....
+
+| `1..*`
+a|
+[source,yaml]
+....
+required: true
+multivalued: true
+....
+
+|===
+
+==== Finer grained cardinalities
+
+|===
+|UML| LinkML
+
+| `i`
+
+where `i > 1` and `i ≠ *`
+a|
+[source,yaml]
+....
+exact_cardinality: i
+# required: true
+# multivalued: true
+....
+
+a| `i..*`
+
+where `i > 1`
+a|
+[source,yaml]
+....
+minimum_cardinality: i
+multivalued: true
+# required: true
+....
+
+a| `0..j`
+
+where `j > 1` and `j ≠ *`
+a|
+[source,yaml]
+....
+maximum_cardinality: j
+# multivalued: true
+....
+
+a| `i..j`
+
+where `i, j > 1` and `i, j ≠ *`
+
+a|
+[source,yaml]
+....
+minimum_cardinality: i
+maximum_cardinality: j
+# required: true
+# multivalued: true
+....
+
+|===
+
+NOTE: The commented lines in the LinkML column are values that are supposed to be implied, but since not all generators and software will understand more specific cardinality values, it can be wise to explicitly add the `required` and `multivalued` statements as well.
+
+
+=== Data types
+
+==== Primitives
+
+==== CIM primitives
+
+|===
+| UML  | LinkML
+
+| `Float`
+| https://linkml.io/linkml-model/latest/docs/Date/[`float`]
+
+| `Integer`
+| `integer`
+
+| `DateTime`
+| `date`
+
+| `String`
+| `string`
+
+| `Boolean`
+| `boolean`
+
+| `Decimal`
+| `double`
+
+| `MonthDay`
+| `date`
+
+| `Date`
+| `date`
+
+|===
+
+==== CIM data types
+
+CIM data types are UML classes of stereotype `CIMDatatype`.
+
+
+[NOTE]
+--
+In future versions the aim is to replace the CIM data types with quantity kinds, units, etc. from the QUDT ontology.
+
+These data types might then be represented as custom LinkML types if desired.
+--
+
+|===
+| UML  | LinkML
+
+| `ActivePower`
+| `float`
+
+| `ActivePowerChangeRate`
+| `float`
+
+| `ActivePowerPerCurrentFlow`
+| `float`
+
+| `ActivePowerPerFrequency`
+| `float`
+
+| `Admittance`
+| `float`
+
+| `AngleDegrees`
+| `float`
+
+| `AngleRadians`
+| `float`
+
+| `ApparentPower`
+| `float`
+
+| `Area`
+| `float`
+
+| `Bearing`
+| `float`
+
+| `Capacitance`
+| `float`
+
+| `CapacitancePerLength`
+| `float`
+
+| `Classification`
+| `float`
+
+| `Conductance`
+| `float`
+
+| `ConductancePerLength`
+| `float`
+
+| `CostPerEnergyUnit`
+| `float`
+
+| `CostPerHeatUnit`
+| `float`
+
+| `CostPerVolume`
+| `float`
+
+| `CostRate`
+| `float`
+
+| `CurrentFlow`
+| `float`
+
+| `Damping`
+| `float`
+
+| `Displacement`
+| `float`
+
+| `Emission`
+| `float`
+
+| `Frequency`
+| `float`
+
+| `HeatRate`
+| `float`
+
+| `Hours`
+| `float`
+
+| `Impedance`
+| `float`
+
+| `Inductance`
+| `float`
+
+| `InductancePerLength`
+| `float`
+
+| `KiloActivePower`
+| `float`
+
+| `Length`
+| `float`
+
+| `MagneticField`
+| `float`
+
+| `Mass`
+| `float`
+
+| `Minutes`
+| `float`
+
+| `Money`
+| `float`
+
+| `ParticulateDensity`
+| `float`
+
+| `PerCent`
+| `float`
+
+| `Pressure`
+| `float`
+
+| `PU`
+| `float`
+
+| `Reactance`
+| `float`
+
+| `ReactancePerLength`
+| `float`
+
+| `ReactivePower`
+| `float`
+
+| `RealEnergy`
+| `float`
+
+| `Resistance`
+| `float`
+
+| `ResistancePerLength`
+| `float`
+
+| `RotationSpeed`
+| `float`
+
+| `Seconds`
+| `float`
+
+| `Speed`
+| `float`
+
+| `Susceptance`
+| `float`
+
+| `SusceptancePerLength`
+| `float`
+
+| `Temperature`
+| `float`
+
+| `Voltage`
+| `float`
+
+| `VoltagePerReactivePower`
+| `float`
+
+| `Volume`
+| `float`
+
+| `VolumeFlowRate`
+| `float`
+
+| `WaterLevel`
+| `float`
+
+|===
+
+=== Metadata
+
+#TODO# footnote:[Make sections where you can put more discussion -- inspired for example by the associated GitHub issues -- and explanation. This could also include examples, usage description (such as enumerating the permissible values for stereotypes), etc.]
+
+|===
+| Property  | CIM RDFS (501 Ed. 1) | CIM RDFS (501 Ed. 2) | LinkML
+
+| is defined by
+| `cims:belongsToCategory`
+| http://www.w3.org/2000/01/rdf-schema#isDefinedBy[`rdfs:isDefinedBy`]
+| https://w3id.org/linkml/owned_by[`owned_by`]
+
+| is abstract
+| `cims:isAbstract`
+| `cims:isAbstract`
+| https://w3id.org/linkml/abstract[`abstract`]
+
+| stereotype
+| `cims:stereotype`
+| `cims:stereotype`
+| annotation: `cims:stereotype`
+
+| definition
+| http://www.w3.org/2004/02/skos/core#definition[`skos:definition`]
+| http://www.w3.org/2000/01/rdf-schema#comment[`rdfs:comment`]
+| https://w3id.org/linkml/description[`description`]
+
+| label
+| http://www.w3.org/2000/01/rdf-schema#label[`rdfs:label`]
+| http://www.w3.org/2000/01/rdf-schema#label[`rdfs:label`]
+| https://w3id.org/linkml/name[`name`] #TODO# footnote:[Why is an alias a preferred label, and the unique name just a label?]
+
+| preferred label
+| n/a
+| http://www.w3.org/2004/02/skos/core#prefLabel[`skos:prefLabel`]
+| https://w3id.org/linkml/alias[`alias`]
+
+|===
+
+
+
+=== Names and URIs
+
+|===
+| UML model element | CURIE
+
+a|.Class with attributes
+[plantuml,height=100px]
+....
+@startuml
+class SomeClass {
+  someAttribute
+}
+@enduml
+....
+a|
+[source,yaml]
+....
+classes:
+  SomeClass:
+    class_uri: cim:SomeClass
+    attributes:
+      some_attribute:
+        slot_uri: cim:SomeClass.someAttribute
+....
+
+a|.Relations
+[plantuml,height=100px]
+....
+@startuml
+class SomeClass
+class AnotherClass
+SomeClass "someClass" -- "anotherClass" AnotherClass: SomeRelation
+@enduml
+....
+
+a|
+[source,yaml]
+....
+classes:
+  SomeClass:
+    class_uri: cim:SomeClass
+    slots:
+      - SomeClass.another_class
+  AnotherClass:
+    class_uri: cim:AnotherClass
+    slots:
+      - AnotherClass.some_class
+
+slots:
+  SomeClass.another_class:
+    slot_uri: cim:SomeClass.anotherClass
+  AnotherClass.some_class:
+    slot_uri: cim:AnotherClass.some_class
+....
+
+|===
+
+== Linked Data
+
+=== URIs
+
+`class_uri`, `slot_uri`, `enum_uri`, `meaning`, etc.
+
+=== Ontology alignment
+
+SKOS mappings for example.
+
+== Example
+
+.Example based on `DiagramLayout` profile
+====
+
+.UML class diagram
+[plantuml,height=100px]
+....
+@startuml
+class Diagram
+Diagram : isPolygon: Boolean [0..1]
+class DiagramObject
+DiagramObject : rotation: Float [0..1]
+class DiagramStyle
+Diagram "Diagram [1]" -- "DiagramElements [0..*]" DiagramObject: ""
+Diagram "Diagram [0..*]" -- "DiagramStyle [0..1]" DiagramStyle: ""
+@enduml
+....
+
+->
+
+.LinkML schema
+[source,yaml]
+....
+classes:
+  Diagram: <1>
+    isPolygon: <2>
+      range: boolean <3>
+      required: false <4>
+      multivalued: false <4>
+  DiagramObject:
+  DiagramStyle:
+....
+<1> <<mappings_classes,Class>>
+<2> Class attribute
+<3> Primitive data type
+<4> Cardinality
+====
+
+
+
+
+== Assumptions and decisions
+
+* When stronger statements imply weaker statements, but the inference is not supported broadly, prefer to be explicit and assert the weaker statements as well.
+* All associations are top-level slots, even those that are unidirectional.
+** Bidirectional associations need to be represented as top-level slots since the two slots representing them need to be stated to be each other's inverse.
+** Having all associations be top-level slots ensures consistency and reduces cognitive load and confusion.
+** Also: `attributes` are actually (and only) attributes.
+** In the case of the CIM this actually lines up nicely with the URIs assigned to relations, e.g. the slot `Terminal.ConductingEquipments` will have the URI `cim:TerminalConductingEquipments`. Again: consistency and reduction of cognitive load.
+* Aggregations are not inlined, whereas compositions are.
+
+[bibliography]
+== References
+* [[[SCENARIO-TESTING-USING-OWL]]] Hendrina Harmse. https://api.semanticscholar.org/CorpusID:58132703[Scenario testing using OWL]. 2015.
+* [[[HARMSE]]] https://henrietteharmse.com/wp-content/uploads/2017/11/uml-class-diagram-to-owl-and-sroiq-reference.pdf[UML Class Diagram to OWL and SROIQ Reference] -- Henriette Harmse (2017)
+* [[[LINKML-FAQ]]] https://linkml.io/linkml/faq/modeling.html#when-two-data-classes-are-linked-by-a-slot-in-one-class-definition-how-is-the-reciprocal-association-expressed-in-linkml[LinkML FAQ: When two data classes are linked by a slot in one class definition, how is the reciprocal association expressed in LinkML?]
+* [[[IBM-DEV-CLASS-DIAGRAM]]] https://developer.ibm.com/articles/the-class-diagram/#associations9
+* [[[SPARX-UML-TUTORIAL-CLASS-DIAGRAM]]] https://sparxsystems.com/resources/tutorials/uml2/class-diagram.html
+
+== See also
+* https://github.com/Sveino/Inst4CIM-KG/issues/146
