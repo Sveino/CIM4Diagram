@@ -277,7 +277,7 @@ classes:
           cims:AssociationUsed: false
         slot_uri: cim:Diagram.DiagramElements
         description: A diagram is made up of multiple diagram objects.
-        relational_role: NODE  # NOTE: `NODE` Could be the default in our schema view. It also implies the other is the inverse (i.e. represents bi-directionality).
+        relational_role: NODE  # NOTE: `NODE` Could be the default in our schema view. It also implies the other is the inverse (i.e. represents bi-directionality). HOWEVER: then how do you know what attrs are qualifiers and which ones are roles?
         required: false
         multivalued: true
         domain: Diagram
@@ -293,7 +293,7 @@ classes:
         domain: DiagramObject
         range: Diagram
   # Issues:
-  # 1. Complex and possibly non-conformant: what class becomes the `owner` of these attributes? The relation class or the class the slot will be placed on? I guess the first, so we must use `domain`, but I don't know if this is easy and good practice.
+  # 1. Complex and possibly non-conformant: what class becomes the `owner` of these attributes? The relation class or the class the slot will be placed on? I guess the first, so we must use `domain`, but I don't know if this is easy and good practice. It might even be that `domain` should also point to the relation class?
   # 2. We need a predicate role slot to tell what the relation is. This is also reflected by the class name, but there needs to be an underlying property with a domain and range for this to make sense. Especially if reification is desired you'll feel the necessity of this.
   ### However, we treat the roles as properties in their own rights.
 

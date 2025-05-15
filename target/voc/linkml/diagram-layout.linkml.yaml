@@ -51,6 +51,7 @@ in_language: en-GB
 classes:
   IdentifiedObject:
     owned_by: https://cim.ucaiug.io/ns/core
+    abstract: true
     annotations:
       cims:stereotype: uml:abstract
     description: This is a root class to provide common identification for all classes needing identification and naming attributes.
