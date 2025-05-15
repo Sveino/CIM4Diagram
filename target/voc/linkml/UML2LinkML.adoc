@@ -14,6 +14,7 @@ WARNING: Remove this section when done.
 * https://github.com/Sveino/Inst4CIM-KG/issues/146[Mapping bidirectional UML relation to LinkML]
 * https://github.com/Sveino/Spec4CIM-KG/issues/9[Some early thoughts on the LinkML piece...] (Todd)
     * Showcases and pleads for `ea_guid` also
+* https://github.com/linkml/linkml-runtime/blob/main/linkml_runtime/linkml_model/model/schema/meta.yaml[LinkML metamodel (YAML)]
 
 === Inventory
 * Types
