@@ -13,37 +13,9 @@
     "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   },
   
+  "@id": "urn:uuid:2e11908e-5e1f-8542-854c-54da76d379d1",
+  "dcterms:title": "20160101_Nordic44-HV_DL_v3-0-0-beta-1",
   "@graph": [
-    {
-      "@id": "urn:uuid:fa38b92a-d616-11e5-9a54-c8f73334bf7e",
-      "@type": "Diagram",
-      "Diagram.orientation": {
-        "@id": "http://iec.ch/TC57/CIM100#OrientationKind.negative"
-      },
-      "IdentifiedObject.mRID": "fa38b92a-d616-11e5-9a54-c8f73334bf7e",
-      "IdentifiedObject.name": "Nordic Synchronous Area"
-    },
-    {
-      "@id": "urn:uuid:456fd800-f442-4cc1-9243-2aa2dcee0aed",
-      "@type": "DiagramObject",
-      "DiagramObject.Diagram": {
-        "@id": "urn:uuid:da3d07e2-aea3-4e5d-811d-7baf6ff02024"
-      },
-      "DiagramObject.IdentifiedObject": {
-        "@id": "urn:uuid:f1769cf8-9aeb-11e5-91da-b8763fd99c5f"
-      },
-      "IdentifiedObject.mRID": "456fd800-f442-4cc1-9243-2aa2dcee0aed",
-      "IdentifiedObject.name": "ACLineSegment_300ARENDAL-KRISTA_"
-    },
-    {
-      "@id": "urn:uuid:9577b6d2-3724-458a-87ee-b4a1148b1147",
-      "@type": "Diagram",
-      "Diagram.orientation": {
-        "@id": "http://iec.ch/TC57/CIM100#OrientationKind.negative"
-      },
-      "IdentifiedObject.mRID": "9577b6d2-3724-458a-87ee-b4a1148b1147",
-      "IdentifiedObject.name": "Arendal Substation"
-    },
     {
       "@id": "urn:uuid:2e11908e-5e1f-8542-854c-54da76d379d1",
       "@type": "dcat:Dataset",
@@ -57,7 +29,7 @@
         "@language": "en",
         "@value": "Diagram Layout (DL) part of the Nordic 44-bus synthetic test model developed by Statnett SF of the Nordic region."
       },
-      "dcterms:identifier": "urn:uuid:2e11908e-5e1f-8542-854c-54da76d379d1",
+      "dcterms:identifier": "2e11908e-5e1f-8542-854c-54da76d379d1",
       "dcterms:issued": "2025-02-14T11:00:00Z",
       "dcterms:publisher": {
         "@id": "https://www.statnett.no/en/about-statnett/contact-us/"
@@ -92,6 +64,36 @@
       ],
       "dcat:startDate": "2025-02-14T12:00:00Z",
       "dcat:version": "3.0.0-beta-1"
+    },
+    {
+      "@id": "urn:uuid:fa38b92a-d616-11e5-9a54-c8f73334bf7e",
+      "@type": "Diagram",
+      "Diagram.orientation": {
+        "@id": "http://iec.ch/TC57/CIM100#OrientationKind.negative"
+      },
+      "IdentifiedObject.mRID": "fa38b92a-d616-11e5-9a54-c8f73334bf7e",
+      "IdentifiedObject.name": "Nordic Synchronous Area"
+    },
+    {
+      "@id": "urn:uuid:456fd800-f442-4cc1-9243-2aa2dcee0aed",
+      "@type": "DiagramObject",
+      "DiagramObject.Diagram": {
+        "@id": "urn:uuid:da3d07e2-aea3-4e5d-811d-7baf6ff02024"
+      },
+      "DiagramObject.IdentifiedObject": {
+        "@id": "urn:uuid:f1769cf8-9aeb-11e5-91da-b8763fd99c5f"
+      },
+      "IdentifiedObject.mRID": "456fd800-f442-4cc1-9243-2aa2dcee0aed",
+      "IdentifiedObject.name": "ACLineSegment_300ARENDAL-KRISTA_"
+    },
+    {
+      "@id": "urn:uuid:9577b6d2-3724-458a-87ee-b4a1148b1147",
+      "@type": "Diagram",
+      "Diagram.orientation": {
+        "@id": "http://iec.ch/TC57/CIM100#OrientationKind.negative"
+      },
+      "IdentifiedObject.mRID": "9577b6d2-3724-458a-87ee-b4a1148b1147",
+      "IdentifiedObject.name": "Arendal Substation"
     },
     {
       "@id": "urn:uuid:da3d07e2-aea3-4e5d-811d-7baf6ff02024",

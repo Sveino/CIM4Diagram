@@ -9,6 +9,7 @@
     "prov": "http://www.w3.org/ns/prov#",
     "@base": "https://test.model4powersystem.eu/FullGrid#"
   },
+  "@id": "6b7387f2-c7f9-11ed-afa1-0242ac120002",
   "@graph": [
     {
       "@graph": [
@@ -73,6 +74,7 @@
       ]
     },
     {
+      "@id": "a4025d93-bf8c-4d38-baeb-ddc2219e7570",
       "@graph": [
         {
           "@id": "a4025d93-bf8c-4d38-baeb-ddc2219e7570",
@@ -91,6 +93,7 @@
       ]
     },
     {
+      "@id": "e5a0a4ad-f115-4f79-af3f-45a5317398c3",
       "@graph": [
         {
           "@id": "e5a0a4ad-f115-4f79-af3f-45a5317398c3",
