@@ -1,0 +1,112 @@
+{
+  "@context": {
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "cim": "https://cim.ucaiug.io/ns#",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcatcim": "https://cim4.eu/ns/dcatcim#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "prov": "http://www.w3.org/ns/prov#",
+    "@base": "https://test.model4powersystem.eu/FullGrid#"
+  },
+  "@graph": [
+    {
+      "@graph": [
+        {
+          "@id": "6b7387f2-c7f9-11ed-afa1-0242ac120002",
+          "@type": "dcatcim:DifferenceSet",
+		  "dcterms:accessRights": {
+			"@id": "https://energy.referencedata.eu/Confidentiality/OPDEConfidential"
+		  },
+		  "dcterms:conformsTo": {
+			"@id": "https://ap.cim4.eu/RemedialAction/2.3"
+		  },
+		  "dcterms:description": {
+			"@value": "Remedial Action dataset including the project PSP-101, PSP-102 and PSR-106.",
+			"@language": "en"
+		  },
+		  "dcterms:temporal": {
+			"@type": "dcterms:PeriodOfTime",
+			"dcat:startDate": "2025-01-28T05:00:00Z",
+			"dcat:endDate": "2025-01-28T06:00:00Z"
+		  },
+		  "dcterms:identifier": "urn:uuid:3a7bfef2-52df-4152-8b2d-1fff40cd0e8f",
+		  "dcterms:issued": "2025-01-20T06:00:00Z",
+		  "dcat:isVersionOf": {
+			"@id": "https://energy.referencedata.eu/Model/Statnett-RA"
+		  },
+		  "dcat:keyword": "RA",
+		  "dcterms:license": {
+			"@id": "https://creativecommons.org/licenses/by/4.0/"
+		  },
+		  "dcterms:publisher": {
+			"@id": "https://energy.referencedata.eu/EIC/10X1001A1001A38Y"
+		  },
+		  "dcterms:requires": {
+			"@id": "99ae9f41-0a91-4d21-a483-7398c160da96"
+		  },
+		  "dcterms:spatial": {
+			"@id": "https://energy.referencedata.eu/Frame/NO-Power-Transmission-System"
+		  },
+		  "dcterms:title": "20250128_NO-RA",
+		  "dcterms:type": {
+			"@id": "https://energy.referencedata.eu/type/CIM-PowerSystemModel"
+		  },
+		  "dcat:version": "1.1.0",
+		  "adms:versionNotes": {
+			"@value": "This is the minor update of version 1.0.",
+			"@language": "en"
+		  },
+		  "prov:wasGeneratedBy": {
+			"@id": "https://energy.referencedata.eu/Action/CGM-RA"
+		  },
+		  "dcat:previousVersion": {
+			"@id": "536f9bf1-3f8f-a546-87e3-7af2272f29b7"
+		  },
+          "dcatcim:forwardDifference": {
+            "@id": "a4025d93-bf8c-4d38-baeb-ddc2219e7570"
+          },
+          "dcatcim:reversalDifference": {
+            "@id": "e5a0a4ad-f115-4f79-af3f-45a5317398c3"
+          }
+        }
+      ]
+    },
+    {
+      "@graph": [
+        {
+          "@id": "a4025d93-bf8c-4d38-baeb-ddc2219e7570",
+          "@type": "dcatcim:Statments",
+          "dcterms:title": "Forward Difference",
+          "dcterms:identifier": "urn:uuid:a4025d93-bf8c-4d38-baeb-ddc2219e7570"
+        },
+        {
+          "@id": "87478acb-cd1f-40a6-b4a7-59ec99f8b063",
+          "cim:IdentifiedObject.description": "SET_PNT_1 test"
+        },
+        {
+          "@id": "fc908c16-468f-4a64-ba74-6f57175e0005",
+          "cim:AnalogLimit.value": "100"
+        }
+      ]
+    },
+    {
+      "@graph": [
+        {
+          "@id": "e5a0a4ad-f115-4f79-af3f-45a5317398c3",
+          "@type": "dcatcim:Statments",
+          "dcterms:identifier": "e5a0a4ad-f115-4f79-af3f-45a5317398c3",
+          "dcterms:title": "Reverse Difference"
+        },
+        {
+          "@id": "87478acb-cd1f-40a6-b4a7-59ec99f8b063",
+          "cim:IdentifiedObject.description": "SET_PNT_1"
+        },
+        {
+          "@id": "fc908c16-468f-4a64-ba74-6f57175e0005",
+          "cim:AnalogLimit.value": "99"
+        }
+      ]
+    }
+  ]
+}
