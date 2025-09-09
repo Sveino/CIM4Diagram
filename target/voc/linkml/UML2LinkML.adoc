@@ -92,18 +92,18 @@ a|
 ....
 @startuml
 class C
-C : a: t [i..j]
+C : a<sub>1</sub>: t<sub>1</sub> [i<sub>1</sub>..j<sub>1</sub>]
+C : a<sub>2</sub>: t<sub>2</sub> [i<sub>2</sub>..j<sub>2</sub>]
 @enduml
 ....
 
 a|
-[source,yaml]
+[source,yaml,subs="+macros"]
 ....
 classes:
   C:
     attributes:
-      a:
-        range: τ(t)
+      <<mapattr(a)>>
 
 ....
 
@@ -641,7 +641,7 @@ These data types might then be represented as custom LinkML types if desired.
 | stereotype
 | `cims:stereotype`
 | `cims:stereotype`
-| annotation: `cims:stereotype`
+| annotation: `cims:stereotype` footnote:[Some stereotypes -- such as `uml:attribute` are self-evident and can be trivially mapped by generators.]
 
 | definition
 | http://www.w3.org/2004/02/skos/core#definition[`skos:definition`]
@@ -780,6 +780,9 @@ classes:
 ** Also: `attributes` are actually (and only) attributes.
 ** In the case of the CIM this actually lines up nicely with the URIs assigned to relations, e.g. the slot `Terminal.ConductingEquipments` will have the URI `cim:TerminalConductingEquipments`. Again: consistency and reduction of cognitive load.
 * Aggregations are not inlined, whereas compositions are.
+* #TODO#: Document default cardinalities (when nothing is explitictly stated).
+* `owned_by` for enum permissible values and class attributes is inherited from the enum and class (resp.) and therefore not explicitly stated.
+** In fact, the metamodel does not seem to even support the `owned_by` slot for pv's.
 
 [bibliography]
 == References
