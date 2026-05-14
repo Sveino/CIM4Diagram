@@ -47,9 +47,9 @@
     dcterms:rightsHolder "UCA International User Group" ;
     dcterms:rights "Copyright" ;
     
-    prof:hasResource <https://cim.ucaiug.io/grid/DiagramLayout/2.1#Vocabilary>,
+    prof:hasResource <https://cim.ucaiug.io/grid/DiagramLayout/2.1#Vocabulary>,
                     <https://cim.ucaiug.io/grid/DiagramLayout/2.1#Constraints>,
-                    <https://cim.ucaiug.io/dcatcim/1.0#Vocabilary>,
+                    <https://cim.ucaiug.io/dcatcim/1.0#Vocabulary>,
                     <https://cim.ucaiug.io/dcatcim/1.0#Constraints>,
                     <https://cim.ucaiug.io/grid/DiagramLayout/2.1#Specification> .
 
@@ -78,7 +78,7 @@
     dct:source "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
     prof:hasRole role:constraints .
 
-<https://cim.ucaiug.io/dcatcim/1.0#Vocabilary> a prof:ResourceDescriptor ;
+<https://cim.ucaiug.io/dcatcim/1.0#Vocabulary> a prof:ResourceDescriptor ;
     rdfs:label "DCAT-CIM Vocabulary (DCAT-CIM)"@en ;
     dcterms:title "DCAT-CIM-Voc-v1-0-0" ;
     dcterms:description "Data Catalog Vocabulary (DCAT) with CIM extension described in RDFS-Plus."@en ;
