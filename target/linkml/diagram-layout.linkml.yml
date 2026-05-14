@@ -2,7 +2,7 @@ id: https://cim.ucaiug.io/grid/DiagramLayout/2.1
 instantiates: https://cim.ucaiug.io/grid/DiagramLayout
 version: '2.1'  # NOTE: PAV version, not OWL version IRI
 name: diagram-layout  # NOTE: rdfs:label, but must conform to NCName pattern. Weird.
-alias: Diagram Layout Application Profile 2.1  # Derive rdfs:label from this as well
+aliases: Diagram Layout Application Profile 2.1  # Derive rdfs:label from this as well
 title: Diagram Layout 2.1
 description: Diagram Layout application profile specific the expected data to be exchanges to describe a Common Information Model (CIM) Diagram Layout.
 prefixes:
@@ -27,13 +27,12 @@ default_prefix: cim
 default_range: string
 imports:
   - linkml:types
-  - ./extra-types
+#   - ./extra-types
 default_curi_maps:
   - semweb_context
 source: iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap
 conforms_to: https://cim.ucaiug.io/prof/Profile/1.0  # Profile schema
 created_by: orcid:0009-0009-8211-926X
-publisher: https://www.ucaiug.org
 contributors:
   - orcid:0000-0002-7167-7321
   - orcid:0000-0001-7508-7428
@@ -41,6 +40,7 @@ extensions:  # TODO: Feature request for LinkML to add these DCTerms terms
   issued: 2025-03-06T17:59:40+01:00
   rightsHolder: UCA International User Group
   rights: Copyright
+  publisher: https://www.ucaiug.org  # NOTE: Supposed to be native, but somehow doesn't work.
   # Profile resources
   # syntax:
   # <role>: <language>/<serialization>
@@ -236,14 +236,14 @@ classes:
 
   DiagramStyle:
     description: The diagram style refers to a style used by the originating system for a diagram.  A diagram style describes information such as schematic, geographic, etc.
-    https://cim.ucaiug.io/ns/DiagramLayout
+    source: https://cim.ucaiug.io/ns/DiagramLayout
     is_a: IdentifiedObject
     slots:
       - DiagramStyle.Diagram
 
   TextDiagramObject:
     description: A diagram object for placing free-text or text derived from an associated domain object.
-    https://cim.ucaiug.io/ns/DiagramLayout
+    source: https://cim.ucaiug.io/ns/DiagramLayout
     is_a: DiagramObject
     attributes:
       text:
@@ -255,7 +255,7 @@ classes:
 
   VisibilityLayer:
     description: Layers are typically used for grouping diagram objects according to themes and scales. Themes are used to display or hide certain information (e.g., lakes, borders), while scales are used for hiding or displaying information depending on the current zoom level (hide text when it is too small to be read, or when it exceeds the screen size). This is also called de-cluttering. CIM based graphics exchange supports an m:n relationship between diagram objects and layers. The importing system shall convert an m:n case into an appropriate 1:n representation if the importing system does not support m:n.
-    https://cim.ucaiug.io/ns/DiagramLayout
+    source: https://cim.ucaiug.io/ns/DiagramLayout
     is_a: IdentifiedObject
     slots:
       - VisibilityLayer.VisibleObjects
@@ -270,19 +270,20 @@ classes:
 slots:
   Diagram.DiagramElements:
     annotations:
-      cims:isExplicit: false  # TODO: Discuss in issue #23 on CIM4Diagram: I do not like this name.
+      is_explicit: false  # TODO: Discuss in issue #23 on CIM4Diagram: I do not like this name.
+      inverse_functional: true
     alias: DiagramElements  # NOTE: LinkML convention suited for storing local name.
     source: https://cim.ucaiug.io/ns/DiagramLayout
     description: A diagram is made up of multiple diagram objects.
     required: false
     multivalued: true
-    identifier: true
+    # identifier: true  NOTE: This cannot be non-required, so won't work to encode for being inversely functional.
     inverse: DiagramObject.Diagram
     range: DiagramObject
 
   Diagram.DiagramStyle:
     annotations:
-      cims:isExplicit: true
+      is_explicit: true
     alias: DiagramStyle
     source: https://cim.ucaiug.io/ns/DiagramLayout
     description: A Diagram may have a DiagramStyle
@@ -293,7 +294,7 @@ slots:
 
   DiagramObject.Diagram:
     annotations:
-      cims:isExplicit: true
+      is_explicit: true
     alias: Diagram
     source: https://cim.ucaiug.io/ns/DiagramLayout
     description: A diagram object is part of a diagram.
@@ -304,19 +305,20 @@ slots:
 
   DiagramObject.DiagramObjectPoints:
     annotations:
-      cims:isExplicit: false
+      is_explicit: false
+      inverse_functional: true
     alias: DiagramObjectPoints
     source: https://cim.ucaiug.io/ns/DiagramLayout
     description: A diagram object can have 0 or more points to reflect its layout position, routing (for polylines) or boundary (for polygons).
     required: false
     multivalued: true
     inverse: DiagramObjectPoint.DiagramObject
-    identifier: true
+    # identifier: true
     range: DiagramObjectPoint
 
   DiagramObject.DiagramObjectStyle:
     annotations:
-      cims:isExplicit: true
+      is_explicit: true
     alias: DiagramObjectStyle
     source: https://cim.ucaiug.io/ns/DiagramLayout
     description: A diagram object has a style associated that provides a reference for the style used in the originating system.
@@ -327,7 +329,7 @@ slots:
 
   DiagramObject.IdentifiedObject:
     annotations:
-      cims:isExplicit: true
+      is_explicit: true
     source: https://cim.ucaiug.io/ns/DiagramLayout
     alias: IdentifiedObject
     description: The domain object to which this diagram object is associated.
@@ -338,7 +340,7 @@ slots:
 
   DiagramObject.VisibilityLayers:
     annotations:
-      cims:isExplicit: false
+      is_explicit: false
     source: https://cim.ucaiug.io/ns/DiagramLayout
     alias: VisibilityLayers
     description: A diagram object can be part of multiple visibility layers.
@@ -349,11 +351,12 @@ slots:
 
   DiagramObjectGluePoint.DiagramObjectPoints:
     annotations:
-      cims:isExplicit: false
+      is_explicit: false
+      inverse_functional: true
     source: https://cim.ucaiug.io/ns/DiagramLayout
     alias: DiagramObjectPoints
     description: A diagram object glue point is associated with 2 or more object points that are considered to be 'glued' together
-    identifier: true
+    # identifier: true
     minimum_cardinality: 2
     multivalued: true
     inverse: DiagramObjectPoint.DiagramObjectGluePoint
@@ -361,7 +364,7 @@ slots:
 
   DiagramObjectPoint.DiagramObject:
     annotations:
-      cims:isExplicit: true
+      is_explicit: true
     source: https://cim.ucaiug.io/ns/DiagramLayout
     alias: DiagramObject
     description: The diagram object with which the points are associated.
@@ -372,7 +375,7 @@ slots:
 
   DiagramObjectPoint.DiagramObjectGluePoint:
     annotations:
-      cims:isExplicit: true
+      is_explicit: true
     source: https://cim.ucaiug.io/ns/DiagramLayout
     alias: DiagramObjectGluePoint
     description: The 'glue' point to which this point is associated.
@@ -383,23 +386,25 @@ slots:
 
   DiagramObjectStyle.StyledObjects:
     annotations:
-      cims:isExplicit: false
+      is_explicit: false
+      inverse_functional: true
     source: https://cim.ucaiug.io/ns/DiagramLayout
     alias: StyledObjects
     description: A style can be assigned to multiple diagram objects.
     required: false
     multivalued: true
-    identifier: true
+    # identifier: true
     inverse: DiagramObject.DiagramObjectStyle
     range: DiagramObject
 
   DiagramStyle.Diagram:
     annotations:
-      cims:isExplicit: false
+      is_explicit: false
+      inverse_functional: true
     source: https://cim.ucaiug.io/ns/DiagramLayout
     alias: Diagram
     description: A DiagramStyle can be used by many Diagrams.
-    identifier: true
+    # identifier: true
     required: false
     multivalued: true
     inverse: Diagram.DiagramStyle
@@ -407,19 +412,20 @@ slots:
 
   IdentifiedObject.DiagramObjects:
     annotations:
-      cims:isExplicit: false
+      is_explicit: false
+      inverse_functional: true
     source: https://cim.ucaiug.io/ns/DiagramLayout
     alias: DiagramObjects
     description: The diagram objects that are associated with the domain object.
     required: false
     multivalued: true
     inverse: DiagramObject.IdentifiedObject
-    identifier: true
+    # identifier: true
     range: DiagramObject
 
   VisibilityLayer.VisibleObjects:
     annotations:
-      cims:isExplicit: true
+      is_explicit: true
     source: https://cim.ucaiug.io/ns/DiagramLayout
     alias: VisibleObjects
     description: A visibility layer can contain one or more diagram objects.
