@@ -25,7 +25,7 @@
   dcterms:issued "2025-03-06T17:59:40+01:00"^^xsd:dateTime ;
   
   dcterms:conformsTo <https://cim.ucaiug.io/prof/Vocabulary/1.0> ;
-  dc:source "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
+  dct:source "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
   dcterms:contributor <https://orcid.org/0000-0002-7167-7321> ,
                       <https://orcid.org/0000-0001-7508-7428> ;
   dcterms:creator <https://orcid.org/0009-0009-8211-926X> ;
