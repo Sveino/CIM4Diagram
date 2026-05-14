@@ -41,25 +41,26 @@ extensions:  # TODO: Feature request for LinkML to add these DCTerms terms
   issued: 2025-03-06T17:59:40+01:00
   rightsHolder: UCA International User Group
   rights: Copyright
+  # Profile resources
+  # syntax:
+  # <role>: <language>/<serialization>
+  constraints: shacl/ttl
+  vocabulary: rdfs+/ttl
+  profile: prof/jsonld
+  schema:  # empty means "none"
 license: http://www.apache.org/licenses/LICENSE-2.0
 last_updated_on: "2025-03-06"  # dcterms:modified "2025-03-06"^^xsd:date ;
 comments: Diagram Layout application profile defined by DX-PROF
 in_language: en-GB
 
-# dcterms:rights "Copyright" ;
-# source: 'URI of file' also available, which is the actual dct:source
-# owl:versionInfo "1.0.0-alpha-1" ;
-# issued "2025-03-06T17:59:40+01:00"^^xsd:dateTime ;
-# dcterms:rightsHolder "UCA International User Group" ;
-
 classes:
   IdentifiedObject:
-    owned_by: https://cim.ucaiug.io/ns/core
+    source: https://cim.ucaiug.io/ns/core  # NOTE: Owning package is not an agent, so not using `owned_by`.
     abstract: true
     description: This is a root class to provide common identification for all classes needing identification and naming attributes.
     attributes:
       name:
-        owned_by: https://cim.ucaiug.io/ns/core
+        source: https://cim.ucaiug.io/ns/core
         slot_uri: cim:IdentifiedObject.name 
         description: The name is any free human readable and possibly non unique text naming the object.
         required: true
@@ -82,7 +83,7 @@ classes:
         identifier: true
 
   Diagram:
-    owned_by: https://cim.ucaiug.io/ns/DiagramLayout
+    source: https://cim.ucaiug.io/ns/DiagramLayout
     is_a: IdentifiedObject
     description: The diagram being exchanged. The coordinate system is a standard Cartesian coordinate system and the orientation attribute defines the orientation. The initial view related attributes can be used to specify an initial view with the x,y coordinates of the diagonal points.
     slots:  # Assocations
@@ -125,7 +126,7 @@ classes:
         range: OrientationKind
 
   DiagramObject:
-    owned_by: https://cim.ucaiug.io/ns/DiagramLayout
+    source: https://cim.ucaiug.io/ns/DiagramLayout
     description: An object that defines one or more points in a given space. This object can be associated with anything that specializes IdentifiedObject. For single line diagrams such objects typically include such items as analog values, breakers, disconnectors, power transformers, and transmission lines.
     is_a: IdentifiedObject
     slots:
@@ -186,14 +187,14 @@ classes:
           has_quantity_kind: cim:AngleDegrees  # skos:exactMatch: qk:Angle
 
   DiagramObjectGluePoint:
-    owned_by: https://cim.ucaiug.io/ns/DiagramLayout
+    source: https://cim.ucaiug.io/ns/DiagramLayout
     description: This is used for grouping diagram object points from different diagram objects that are considered to be glued together in a diagram even if they are not at the exact same coordinates.
     slots:
       - DiagramObjectGluePoint.DiagramObjectPoints
 
   DiagramObjectPoint:
     description: A point in a given space defined by 3 coordinates and associated to a diagram object.  The coordinates may be positive or negative as the origin does not have to be in the corner of a diagram.
-    owned_by: https://cim.ucaiug.io/ns/DiagramLayout
+    source: https://cim.ucaiug.io/ns/DiagramLayout
     slots:
       - DiagramObjectPoint.DiagramObject
       - DiagramObjectPoint.DiagramObjectGluePoint
@@ -228,7 +229,7 @@ classes:
 
   DiagramObjectStyle:
     description: A reference to a style used by the originating system for a diagram object.  A diagram object style describes information such as line thickness, shape such as circle or rectangle etc, and colour.
-    owned_by: https://cim.ucaiug.io/ns/DiagramLayout
+    source: https://cim.ucaiug.io/ns/DiagramLayout
     is_a: IdentifiedObject
     slots:
       - DiagramObjectStyle.StyledObjects
@@ -271,7 +272,7 @@ slots:
     annotations:
       cims:isExplicit: false  # TODO: Discuss in issue #23 on CIM4Diagram: I do not like this name.
     alias: DiagramElements  # NOTE: LinkML convention suited for storing local name.
-    owned_by: https://cim.ucaiug.io/ns/DiagramLayout
+    source: https://cim.ucaiug.io/ns/DiagramLayout
     description: A diagram is made up of multiple diagram objects.
     required: false
     multivalued: true
@@ -283,7 +284,7 @@ slots:
     annotations:
       cims:isExplicit: true
     alias: DiagramStyle
-    owned_by: https://cim.ucaiug.io/ns/DiagramLayout
+    source: https://cim.ucaiug.io/ns/DiagramLayout
     description: A Diagram may have a DiagramStyle
     required: false
     multivalued: false
@@ -294,7 +295,7 @@ slots:
     annotations:
       cims:isExplicit: true
     alias: Diagram
-    owned_by: https://cim.ucaiug.io/ns/DiagramLayout
+    source: https://cim.ucaiug.io/ns/DiagramLayout
     description: A diagram object is part of a diagram.
     required: true
     multivalued: false
@@ -305,7 +306,7 @@ slots:
     annotations:
       cims:isExplicit: false
     alias: DiagramObjectPoints
-    owned_by: https://cim.ucaiug.io/ns/DiagramLayout
+    source: https://cim.ucaiug.io/ns/DiagramLayout
     description: A diagram object can have 0 or more points to reflect its layout position, routing (for polylines) or boundary (for polygons).
     required: false
     multivalued: true
@@ -317,7 +318,7 @@ slots:
     annotations:
       cims:isExplicit: true
     alias: DiagramObjectStyle
-    owned_by: https://cim.ucaiug.io/ns/DiagramLayout
+    source: https://cim.ucaiug.io/ns/DiagramLayout
     description: A diagram object has a style associated that provides a reference for the style used in the originating system.
     required: false
     multivalued: false
@@ -327,7 +328,7 @@ slots:
   DiagramObject.IdentifiedObject:
     annotations:
       cims:isExplicit: true
-    owned_by: https://cim.ucaiug.io/ns/DiagramLayout
+    source: https://cim.ucaiug.io/ns/DiagramLayout
     alias: IdentifiedObject
     description: The domain object to which this diagram object is associated.
     required: false
@@ -338,7 +339,7 @@ slots:
   DiagramObject.VisibilityLayers:
     annotations:
       cims:isExplicit: false
-    owned_by: https://cim.ucaiug.io/ns/DiagramLayout
+    source: https://cim.ucaiug.io/ns/DiagramLayout
     alias: VisibilityLayers
     description: A diagram object can be part of multiple visibility layers.
     required: false
@@ -349,7 +350,7 @@ slots:
   DiagramObjectGluePoint.DiagramObjectPoints:
     annotations:
       cims:isExplicit: false
-    owned_by: https://cim.ucaiug.io/ns/DiagramLayout
+    source: https://cim.ucaiug.io/ns/DiagramLayout
     alias: DiagramObjectPoints
     description: A diagram object glue point is associated with 2 or more object points that are considered to be 'glued' together
     identifier: true
@@ -361,7 +362,7 @@ slots:
   DiagramObjectPoint.DiagramObject:
     annotations:
       cims:isExplicit: true
-    owned_by: https://cim.ucaiug.io/ns/DiagramLayout
+    source: https://cim.ucaiug.io/ns/DiagramLayout
     alias: DiagramObject
     description: The diagram object with which the points are associated.
     required: true
@@ -372,7 +373,7 @@ slots:
   DiagramObjectPoint.DiagramObjectGluePoint:
     annotations:
       cims:isExplicit: true
-    owned_by: https://cim.ucaiug.io/ns/DiagramLayout
+    source: https://cim.ucaiug.io/ns/DiagramLayout
     alias: DiagramObjectGluePoint
     description: The 'glue' point to which this point is associated.
     required: false
@@ -383,7 +384,7 @@ slots:
   DiagramObjectStyle.StyledObjects:
     annotations:
       cims:isExplicit: false
-    owned_by: https://cim.ucaiug.io/ns/DiagramLayout
+    source: https://cim.ucaiug.io/ns/DiagramLayout
     alias: StyledObjects
     description: A style can be assigned to multiple diagram objects.
     required: false
@@ -395,7 +396,7 @@ slots:
   DiagramStyle.Diagram:
     annotations:
       cims:isExplicit: false
-    owned_by: https://cim.ucaiug.io/ns/DiagramLayout
+    source: https://cim.ucaiug.io/ns/DiagramLayout
     alias: Diagram
     description: A DiagramStyle can be used by many Diagrams.
     identifier: true
@@ -407,7 +408,7 @@ slots:
   IdentifiedObject.DiagramObjects:
     annotations:
       cims:isExplicit: false
-    owned_by: https://cim.ucaiug.io/ns/DiagramLayout
+    source: https://cim.ucaiug.io/ns/DiagramLayout
     alias: DiagramObjects
     description: The diagram objects that are associated with the domain object.
     required: false
@@ -419,7 +420,7 @@ slots:
   VisibilityLayer.VisibleObjects:
     annotations:
       cims:isExplicit: true
-    owned_by: https://cim.ucaiug.io/ns/DiagramLayout
+    source: https://cim.ucaiug.io/ns/DiagramLayout
     alias: VisibleObjects
     description: A visibility layer can contain one or more diagram objects.
     required: true
@@ -430,7 +431,7 @@ slots:
 enums:
   OrientationKind:
     description: The orientation of the coordinate system with respect to top, left, and the coordinate number system.
-    owned_by: https://cim.ucaiug.io/ns/DiagramLayout
+    source: https://cim.ucaiug.io/ns/DiagramLayout
     permissible_values:
       negative:
         meaning: cim:OrientationKind.negative
@@ -438,4 +439,3 @@ enums:
       positive:
         meaning: cim:OrientationKind.positive
         description: For 2D diagrams, a positive orientation will result in X values increasing from left to right and Y values increasing from bottom to top.  This is also known as a right hand orientation.
-
