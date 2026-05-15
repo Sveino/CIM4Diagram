@@ -2,10 +2,12 @@ id: https://cim.ucaiug.io/grid/DiagramLayout/2.1
 instantiates: https://cim.ucaiug.io/grid/DiagramLayout
 version: '2.1'  # NOTE: PAV version, not OWL version IRI
 name: diagram-layout  # NOTE: rdfs:label, but must conform to NCName pattern. Weird.
-aliases: Diagram Layout Application Profile 2.1  # Derive rdfs:label from this as well
+aliases:
+  - Diagram Layout Application Profile 2.1  # Derive rdfs:label from this as well
 title: Diagram Layout 2.1
 description: Diagram Layout application profile specific the expected data to be exchanges to describe a Common Information Model (CIM) Diagram Layout.
 prefixes:
+  adms: http://www.w3.org/ns/adms#
   linkml: https://w3id.org/linkml/
   cim: https://cim.ucaiug.io/ns#
   cims: https://cim.ucaiug.io/schema-extensions#
@@ -24,6 +26,8 @@ prefixes:
   qk: http://qudt.org/vocab/quantitykind/
   unit: https://qudt.org/vocab/unit/
   orcid: https://orcid.org/
+  prof: http://www.w3.org/ns/dx/prof/
+  role: http://www.w3.org/ns/dx/prof/role/
 default_prefix: cim
 default_range: string
 imports:
@@ -39,19 +43,20 @@ contributors:
   - orcid:0000-0001-7508-7428
 extensions:  # TODO: Feature request for LinkML to add these DCTerms terms
   issued: '2025-03-06T17:59:40+01:00'
-  rightsHolder: UCA International User Group
+  rights_holder: UCA International User Group
   rights: Copyright
   publisher: https://www.ucaiug.org  # NOTE: Supposed to be native, but somehow doesn't work.
   # Profile resources
   # syntax:
   # <role>: <language>/<serialization>
-  constraints: shacl/ttl
-  vocabulary: rdfs+/ttl
+  constraints: shacl/turtle
+  vocabulary: rdfs+/turtle
   profile: prof/jsonld
   schema:  # empty means "none"
 license: http://www.apache.org/licenses/LICENSE-2.0
 last_updated_on: "2025-03-06"  # dcterms:modified "2025-03-06"^^xsd:date ;
-comments: Diagram Layout application profile defined by DX-PROF
+comments:
+  - Diagram Layout application profile defined by DX-PROF
 in_language: en-GB
 
 classes:

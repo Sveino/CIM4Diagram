@@ -2,6 +2,7 @@
 # sv = SchemaView("target/linkml/diagram-layout.linkml.yml")
 # print(sv.schema.extensions)
 
+from functools import partial
 import yaml
 from pyoxigraph import Dataset, Quad, NamedNode
 
@@ -14,15 +15,15 @@ def is_uri(element):
     return element.startswith("http")
 
 
-def val(element, schema):
+def to_uri(element, schema):
     if is_curie(element):
         name = curie_to_uri(element, schema)
     elif not is_uri(element):
         name = name_to_uri(element, schema)
     else:
         name = element
-    
-    return name
+
+    return NamedNode(name)
 
 
 def curie_to_uri(curie, schema):
@@ -36,7 +37,11 @@ def name_to_uri(name, schema):
 
 
 def metadata(schema, dataset):
-    dataset.add(Quad(NamedNode(val(schema["id"], schema)), NamedNode(val("rdf:type", schema)), NamedNode(val(schema["instantiates"], schema))))
+    q = partial(Quad, g=None)
+    uri = partial(to_uri, schema=schema)
+
+    dataset.add(q(uri(schema["instantiates"]), uri("rdf:type"), uri("owl:Ontology")))
+    dataset.add(q(uri(schema["version"]), uri("dcat:version"), schema["version"]))
 
     # id: https://cim.ucaiug.io/grid/DiagramLayout/2.1
     # instantiates: https://cim.ucaiug.io/grid/DiagramLayout
@@ -94,14 +99,13 @@ def metadata(schema, dataset):
     # in_language: en-GB
 
 
-
 if __name__ == "__main__":
     schema_file = "target/linkml/diagram-layout.linkml.yml"
     vocab_dataset = Dataset()
 
     with open(schema_file) as f:
         schema_dict = yaml.safe_load(f)
-    
+
     metadata(schema_dict, vocab_dataset)
     print(vocab_dataset)
 
