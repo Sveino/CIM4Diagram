@@ -1,1 +1,58 @@
-[{"@id":"https://cim.ucaiug.io/grid/DiagramLayout/2.1#vocabulary","http://www.w3.org/1999/02/22-rdf-syntax-ns#type":[{"@id":"http://www.w3.org/ns/dx/prof/ResourceDescriptor"}],"http://purl.org/dc/terms/description":[{"@value":"Vocabulary for Diagram Layout 2.1 profile described in RDFS+."}],"http://purl.org/dc/terms/title":[{"@value":"Diagram Layout 2.1 Vocabulary"}],"http://www.w3.org/ns/dx/prof/hasRole":[{"@id":"http://www.w3.org/ns/dx/prof/role/vocabulary"}],"http://www.w3.org/2000/01/rdf-schema#label":[{"@value":"Diagram Layout Application Profile 2.1 Vocabulary"}],"http://purl.org/dc/terms/format":[{"@id":"https://www.iana.org/assignments/media-types/text/turtle"}],"http://www.w3.org/ns/adms#representationTechnique":[{"@id":"https://cim.ucaiug.io/grid/DiagramLayout/2.1/lang/rdfs+"}]},{"@id":"https://cim.ucaiug.io/grid/DiagramLayout","http://www.w3.org/1999/02/22-rdf-syntax-ns#type":[{"@id":"http://www.w3.org/ns/dx/prof/Profile"}]},{"@id":"https://cim.ucaiug.io/grid/DiagramLayout/2.1#constraints","http://www.w3.org/1999/02/22-rdf-syntax-ns#type":[{"@id":"http://www.w3.org/ns/dx/prof/ResourceDescriptor"}],"http://purl.org/dc/terms/description":[{"@value":"Constraints for Diagram Layout 2.1 profile described in RDFS+."}],"http://purl.org/dc/terms/title":[{"@value":"Diagram Layout 2.1 Constraints"}],"http://www.w3.org/ns/dx/prof/hasRole":[{"@id":"http://www.w3.org/ns/dx/prof/role/constraints"}],"http://www.w3.org/2000/01/rdf-schema#label":[{"@value":"Diagram Layout Application Profile 2.1 Constraints"}],"http://purl.org/dc/terms/format":[{"@id":"https://www.iana.org/assignments/media-types/text/turtle"}],"http://www.w3.org/ns/adms#representationTechnique":[{"@id":"https://cim.ucaiug.io/grid/DiagramLayout/2.1/lang/shacl"}]},{"@id":"https://cim.ucaiug.io/grid/DiagramLayout/2.1","http://www.w3.org/ns/dx/prof/hasResource":[{"@id":"https://cim.ucaiug.io/grid/DiagramLayout/2.1#vocabulary"},{"@id":"https://cim.ucaiug.io/grid/DiagramLayout/2.1#constraints"}],"http://www.w3.org/ns/dcat#version":[{"@value":"2.1"}],"http://purl.org/dc/terms/license":[{"@id":"http://www.apache.org/licenses/LICENSE-2.0"}],"http://www.w3.org/2000/01/rdf-schema#comment":[{"@value":"Diagram Layout application profile defined by DX-PROF"}],"http://purl.org/dc/terms/language":[{"@type":"http://www.w3.org/2001/XMLSchema#language","@value":"en-GB"}],"http://www.w3.org/ns/dcat#isVersionOf":[{"@id":"https://cim.ucaiug.io/grid/DiagramLayout"}],"http://www.w3.org/1999/02/22-rdf-syntax-ns#type":[{"@id":"http://www.w3.org/ns/dx/prof/Profile"}],"http://purl.org/dc/terms/contributor":[{"@id":"https://orcid.org/0000-0001-7508-7428"},{"@id":"https://orcid.org/0000-0002-7167-7321"}],"http://purl.org/dc/terms/description":[{"@value":"Diagram Layout application profile specific the expected data to be exchanges to describe a Common Information Model (CIM) Diagram Layout."}],"http://purl.org/dc/terms/rights":[{"@value":"Copyright"}],"http://purl.org/dc/terms/publisher":[{"@id":"https://www.ucaiug.org"}],"http://purl.org/dc/terms/title":[{"@value":"Diagram Layout 2.1"}],"http://purl.org/dc/terms/conformsTo":[{"@id":"https://cim.ucaiug.io/prof/Profile/1.0"}],"http://purl.org/dc/terms/issued":[{"@type":"http://www.w3.org/2001/XMLSchema#dateTime","@value":"2025-03-06T17:59:40+01:00"}],"http://purl.org/dc/terms/creator":[{"@id":"https://orcid.org/0009-0009-8211-926X"}],"http://purl.org/dc/terms/rightsHolder":[{"@value":"UCA International User Group"}],"http://www.w3.org/2000/01/rdf-schema#label":[{"@value":"Diagram Layout Application Profile 2.1"}]}]
+@base <https://cim.ucaiug.io/ns#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix cim: <#> .
+@prefix cims: <schema-extensions#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dctype: <http://purl.org/dc/dcmitype/> .
+@prefix dl: <http://iec.ch/TC57/ns/CIM/DiagramLayout-EU#> .
+@prefix dom: <ns/domain#> .
+@prefix linkml: <//w3id.org/linkml/> .
+@prefix orcid: <//orcid.org/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prof: <http://www.w3.org/ns/dx/prof/> .
+@prefix qk: <http://qudt.org/vocab/quantitykind/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix role: <http://www.w3.org/ns/dx/prof/role/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix unit: <//qudt.org/vocab/unit/> .
+@prefix vann: <http://purl.org/vocab/vann/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<grid/DiagramLayout/2.1#vocabulary> dcterms:description "Vocabulary for Diagram Layout 2.1 profile described in RDFS+." ;
+    prof:hasRole role:vocabulary ;
+    dcterms:title "Diagram Layout 2.1 Vocabulary" ;
+    dcterms:format <//www.iana.org/assignments/media-types/text/turtle> ;
+    rdfs:label "Diagram Layout Application Profile 2.1 Vocabulary" ;
+    adms:representationTechnique <grid/DiagramLayout/2.1/lang/rdfs+> ;
+    a prof:ResourceDescriptor .
+
+<grid/DiagramLayout> a prof:Profile .
+
+<grid/DiagramLayout/2.1#constraints> dcterms:description "Constraints for Diagram Layout 2.1 profile described in RDFS+." ;
+    prof:hasRole role:constraints ;
+    dcterms:title "Diagram Layout 2.1 Constraints" ;
+    dcterms:format <//www.iana.org/assignments/media-types/text/turtle> ;
+    rdfs:label "Diagram Layout Application Profile 2.1 Constraints" ;
+    adms:representationTechnique <grid/DiagramLayout/2.1/lang/shacl> ;
+    a prof:ResourceDescriptor .
+
+<grid/DiagramLayout/2.1> dcterms:creator orcid:0009-0009-8211-926X ;
+    dcterms:issued "2025-03-06T17:59:40+01:00"^^xsd:dateTime ;
+    prof:hasResource <grid/DiagramLayout/2.1#vocabulary> , <grid/DiagramLayout/2.1#constraints> ;
+    dcterms:rights "Copyright" ;
+    dcterms:description "Diagram Layout application profile specific the expected data to be exchanges to describe a Common Information Model (CIM) Diagram Layout." ;
+    rdfs:comment "Diagram Layout application profile defined by DX-PROF" ;
+    dcterms:rightsHolder "UCA International User Group" ;
+    dcat:version "2.1" ;
+    dcterms:contributor orcid:0000-0001-7508-7428 , orcid:0000-0002-7167-7321 ;
+    dcterms:title "Diagram Layout 2.1" ;
+    dcterms:conformsTo <prof/Profile/1.0> ;
+    dcat:isVersionOf <grid/DiagramLayout> ;
+    dcterms:language "en-GB"^^xsd:language ;
+    rdfs:label "Diagram Layout Application Profile 2.1" ;
+    dcterms:publisher <//www.ucaiug.org> ;
+    dcterms:license <http://www.apache.org/licenses/LICENSE-2.0> ;
+    a prof:Profile .
