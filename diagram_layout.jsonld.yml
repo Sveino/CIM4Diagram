@@ -1,0 +1,24 @@
+'@context': {}
+classes:
+  cim:TextDiagramObject:
+    name: TextDiagramObject
+    type:
+      - sh:NodeShape
+      - rdfs:Class
+    description: A diagram object for placing free-text or text derived from an associated domain object.
+    source: https://cim.ucaiug.io/ns/DiagramLayout
+    subClassOf: cim:DiagramObject
+    properties:
+      cim:TextDiagramObject.text:
+        name: text
+        type: sh:PropertyShape
+        description: The text that is displayed by this text diagram object.
+        minCardinality: 1
+        maxCardinality: 1
+        : string
+
+# This sucks.
+#
+# Because of the properties being first-class citizens,
+# it is very hard to write the model in a OO style like
+# LinkML allows you to do.

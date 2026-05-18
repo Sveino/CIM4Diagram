@@ -49,9 +49,9 @@ extensions:  # TODO: Feature request for LinkML to add these DCTerms terms
   # Profile resources
   # syntax:
   # <role>: <language>/<serialization>
-  constraints: shacl/turtle
-  vocabulary: rdfs+/turtle
-  profile: prof/jsonld
+  # constraints: shacl/turtle
+  # vocabulary: rdfs+/turtle
+  # profile: prof/jsonld
   schema:  # empty means "none"
 license: http://www.apache.org/licenses/LICENSE-2.0
 last_updated_on: "2025-03-06"  # dcterms:modified "2025-03-06"^^xsd:date ;

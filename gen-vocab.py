@@ -1,14 +1,12 @@
-# from linkml_runtime.utils.schemaview import SchemaView
-# sv = SchemaView("target/linkml/diagram-layout.linkml.yml")
-# print(sv.schema.extensions)
-
 from functools import partial
 import yaml
-from pyoxigraph import Dataset, Quad, NamedNode
+from pyoxigraph import Dataset, Quad, NamedNode, Literal, serialize, RdfFormat
 
 
 def is_curie(element):
-    return not element.startswith("http") and ":" in element
+    return ":" in element and not (
+        element.startswith("http://") or element.startswith("https://")
+    )
 
 
 def is_uri(element):
@@ -36,67 +34,66 @@ def name_to_uri(name, schema):
     return curie_to_uri(f"{schema['default_prefix']}:{name}", schema)
 
 
-def metadata(schema, dataset):
-    q = partial(Quad, g=None)
+def media_type(format):
+    return {
+        "turtle": "https://www.iana.org/assignments/media-types/text/turtle",
+    }[format]
+
+
+def to_vocab(schema, dataset):
+    q = partial(Quad, graph_name=None)
+    val = Literal  # TODO: Use `default_range` mapped to XSD
     uri = partial(to_uri, schema=schema)
 
     dataset.add(q(uri(schema["instantiates"]), uri("rdf:type"), uri("owl:Ontology")))
-    dataset.add(q(uri(schema["version"]), uri("dcat:version"), schema["version"]))
 
-    # id: https://cim.ucaiug.io/grid/DiagramLayout/2.1
-    # instantiates: https://cim.ucaiug.io/grid/DiagramLayout
-    # version: '2.1'  # NOTE: PAV version, not OWL version IRI
-    # name: diagram-layout  # NOTE: rdfs:label, but must conform to NCName pattern. Weird.
-    # aliases: Diagram Layout Application Profile 2.1  # Derive rdfs:label from this as well
-    # title: Diagram Layout 2.1
-    # description: Diagram Layout application profile specific the expected data to be exchanges to describe a Common Information Model (CIM) Diagram Layout.
-    # prefixes:
-    # linkml: https://w3id.org/linkml/
-    # cim: https://cim.ucaiug.io/ns#
-    # dl: http://iec.ch/TC57/ns/CIM/DiagramLayout-EU#
-    # dctype: http://purl.org/dc/dcmitype/
-    # rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
-    # rdfs: http://www.w3.org/2000/01/rdf-schema#
-    # xsd: http://www.w3.org/2001/XMLSchema#
-    # dcat: http://www.w3.org/ns/dcat#
-    # dcterms: http://purl.org/dc/terms/
-    # dc: http://purl.org/dc/elements/1.1/
-    # owl: http://www.w3.org/2002/07/owl#
-    # skos: http://www.w3.org/2004/02/skos/core#
-    # vann: http://purl.org/vocab/vann/
-    # dom: https://cim.ucaiug.io/ns/domain#
-    # qk: http://qudt.org/vocab/quantitykind/
-    # unit: https://qudt.org/vocab/unit/
-    # orcid: https://orcid.org/
-    # default_prefix: cim
-    # default_range: string
-    # imports:
-    # - linkml:types
-    # #   - ./extra-types
-    # default_curi_maps:
-    # - semweb_context
-    # source: iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap
-    # conforms_to: https://cim.ucaiug.io/prof/Profile/1.0  # Profile schema
-    # created_by: orcid:0009-0009-8211-926X
-    # contributors:
-    # - orcid:0000-0002-7167-7321
-    # - orcid:0000-0001-7508-7428
-    # extensions:  # TODO: Feature request for LinkML to add these DCTerms terms
-    # issued: '2025-03-06T17:59:40+01:00'
-    # rightsHolder: UCA International User Group
-    # rights: Copyright
-    # publisher: https://www.ucaiug.org  # NOTE: Supposed to be native, but somehow doesn't work.
-    # # Profile resources
-    # # syntax:
-    # # <role>: <language>/<serialization>
-    # constraints: shacl/ttl
-    # vocabulary: rdfs+/ttl
-    # profile: prof/jsonld
-    # schema:  # empty means "none"
-    # license: http://www.apache.org/licenses/LICENSE-2.0
-    # last_updated_on: "2025-03-06"  # dcterms:modified "2025-03-06"^^xsd:date ;
-    # comments: Diagram Layout application profile defined by DX-PROF
-    # in_language: en-GB
+    s = uri(schema["id"])
+    for _q in [
+        q(s, uri("rdf:type"), uri("owl:Ontology")),
+        q(s, uri("dcat:version"), val(schema["version"])),
+        q(s, uri("dcat:isVersionOf"), uri(schema["instantiates"])),
+        q(
+            s,
+            uri("dcterms:issued"),
+            val(schema["extensions"]["issued"], datatype=uri("xsd:dateTime")),
+        ),
+        q(s, uri("dcterms:rightsHolder"), val(schema["extensions"]["rights_holder"])),
+        q(s, uri("dcterms:rights"), val(schema["extensions"]["rights"])),
+        q(s, uri("dcterms:conformsTo"), uri(schema["conforms_to"])),
+        *[q(s, uri("dcterms:contributor"), uri(o)) for o in schema["contributors"]],
+        q(s, uri("dcterms:creator"), uri(schema["created_by"])),
+        q(s, uri("dcterms:publisher"), uri(schema["extensions"]["publisher"])),
+        q(s, uri("dcterms:description"), val(schema["description"])),
+        q(s, uri("dcterms:title"), val(schema["title"])),
+        *[q(s, uri("rdfs:comment"), val(o)) for o in schema["comments"]],
+        *[
+            q(s, uri("rdfs:label"), val(o)) for o in schema["aliases"]
+        ],  # TODO: What about `name` from LinkML?
+        q(
+            s,
+            uri("dcterms:language"),
+            val(schema["in_language"], datatype=uri("xsd:language")),
+        ),
+        q(s, uri("dcterms:license"), uri(schema["license"])),
+    ]:
+        dataset.add(_q)
+
+    for class_name, class_ in schema["classes"].items():
+        c = uri(class_.get("class_uri", class_name))
+        for _q in [
+            q(c, uri("rdf:type"), uri("owl:Class")),
+            q(
+                c,
+                uri("linkml:abstract"),
+                val(class_.get("abstract", False)),
+            ),
+        ]:
+            dataset.add(_q)
+
+        # source: https://cim.ucaiug.io/ns/core  # NOTE: Owning package is not an agent, so not using `owned_by`.
+        # abstract: true
+        # description: This is a root class to provide common identification for all classes needing identification and naming attributes.
+        # attributes:
 
 
 if __name__ == "__main__":
@@ -106,8 +103,14 @@ if __name__ == "__main__":
     with open(schema_file) as f:
         schema_dict = yaml.safe_load(f)
 
-    metadata(schema_dict, vocab_dataset)
-    print(vocab_dataset)
+    to_vocab(schema_dict, vocab_dataset)
+    serialize(
+        vocab_dataset,
+        "vocab.ttl",
+        RdfFormat.TURTLE,  # TODO: HTTPS URIs get rendered improperly, this seems to be a bug with the serialization. With `JSON_LD` it works fine.
+        prefixes=schema_dict["prefixes"],
+        base_iri=curie_to_uri(schema_dict["default_prefix"] + ":", schema_dict),
+    )
 
     # for class_name, class_ in schema_dict["classes"].items():
     #     vocab_dataset.add(Quad(NamedNode()))
