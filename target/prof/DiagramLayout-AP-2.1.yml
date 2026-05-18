@@ -35,7 +35,7 @@ resource:
     label: Diagram Layout Vocabulary
     title: DiagramLayout-Voc-v2-1-0
     description: Vocabulary for the Diagram Layout profile described in RDFS-Plus.
-    conformsTo: <https://cim.ucaiug.io/prof/Vocabulary/1.0
+    conformsTo: https://cim.ucaiug.io/prof/Vocabulary/1.0
     representationTechnique: https://cim.ucaiug.io/codelist/representation-technique#rdfs
     format: https://www.iana.org/assignments/media-types/text/turtle
     source: iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap
@@ -45,7 +45,7 @@ resource:
     label: Diagram Layout Constraints
     title: DiagramLayout-Cons-v2-1-0
     description: Constraints for the Diagram Layout profile described in SHACL.
-    conformsTo: <https://cim.ucaiug.io/prof/Constraints/1.0
+    conformsTo: https://cim.ucaiug.io/prof/Constraints/1.0
     representationTechnique: https://cim.ucaiug.io/codelist/representation-technique#shacl
     format: https://www.iana.org/assignments/media-types/text/turtle
     source: iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap
