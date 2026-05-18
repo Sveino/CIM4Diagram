@@ -101,8 +101,8 @@
       "@type": "@id"
     }
   },
-  "@id": "https://cim.ucaiug.io/grid/DiagramLayout/2.1",
-  "@type": "prof:Profile",
+  "id": "https://cim.ucaiug.io/grid/DiagramLayout/2.1",
+  "type": "prof:Profile",
   "version": "2.1",
   "title": "DiagramLayout-AP-v2-1",
   "isVersionOf": "https://cim.ucaiug.io/grid/DiagramLayout",
