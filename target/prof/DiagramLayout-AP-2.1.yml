@@ -1,4 +1,4 @@
-'@context': https://cim.ucaiug.io/ap/prof/1.0/context.jsonld  # NOTE: Currently injected loocally by script.
+'@context': https://cim.ucaiug.io/dxprof-ap-cim/1.0/context.jsonld  # NOTE: Currently injected loocally by script.
 id: https://cim.ucaiug.io/grid/DiagramLayout/2.1
 type: prof:Profile
 version: "2.1"
@@ -6,7 +6,7 @@ title: DiagramLayout-AP-v2-1
 isVersionOf: https://cim.ucaiug.io/grid/DiagramLayout
 priorVersion: https://cim.ucaiug.io/grid/DiagramLayout/2.0
 issued: '2025-03-06T17:59:40+01:00'
-conformsTo: https://cim.ucaiug.io/ap/prof/1.0
+conformsTo: https://cim.ucaiug.io/dxprof-ap-cim/1.0
 source: iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap
 contributor:
   - orcid:0000-0002-7167-7321

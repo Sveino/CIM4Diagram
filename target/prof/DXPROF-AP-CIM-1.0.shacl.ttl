@@ -16,6 +16,7 @@
 <https://cim.ucaiug.io/dxprof-ap-cim/1.0#> a owl:Ontology ;
     dcat:isVersionOf <https://cim.ucaiug.io/dxprof-ap-cim#> ;
     rdfs:label "DXPROF-AP-CIM" ;
+    dcterms:conformsTo <https://www.w3.org/TR/dx-prof/> ;
     dcterms:title "DX Profile Application Profile: CIM" .
 
 prof:Profile a sh:NodeShape , rdfs:Class ;

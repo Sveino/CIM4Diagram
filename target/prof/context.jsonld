@@ -1,0 +1,102 @@
+{
+    "@base": "https://cim.ucaiug.io/grid/DiagramLayout/2.1#",
+    "id": "@id",
+    "adms": "http://www.w3.org/ns/adms#",
+    "type": "@type",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "cim": "https://cim.ucaiug.io/ns#",
+    "cims": "https://cim.ucaiug.io/schema-extensions#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "role": "http://www.w3.org/ns/dx/prof/role/",
+    "@vocab": "http://cim.ucaiug.io/grid/DiagramLayout",
+    "version": {
+        "@id": "dcat:version",
+        "@type": "xsd:string"
+    },
+    "isVersionOf": {
+        "@id": "dcat:isVersionOf",
+        "@type": "@id"
+    },
+    "priorVersion": {
+        "@id": "dcat:priorVersion",
+        "@type": "@id"
+    },
+    "issued": {
+        "@id": "dcterms:issued",
+        "@type": "xsd:dateTime"
+    },
+    "conformsTo": {
+        "@id": "dcterms:conformsTo",
+        "@type": "@id"
+    },
+    "source": {
+        "@id": "dcterms:source"
+    },
+    "contributor": {
+        "@id": "dcterms:contributor",
+        "@type": "@id"
+    },
+    "creator": {
+        "@id": "dcterms:creator",
+        "@type": "@id"
+    },
+    "description": {
+        "@id": "dcterms:description"
+    },
+    "title": {
+        "@id": "dcterms:title"
+    },
+    "comment": {
+        "@id": "rdfs:comment"
+    },
+    "label": {
+        "@id": "rdfs:label"
+    },
+    "language": {
+        "@id": "dcterms:language"
+    },
+    "license": {
+        "@id": "dcterms:license",
+        "@type": "@id"
+    },
+    "publisher": {
+        "@id": "dcterms:publisher",
+        "@type": "@id"
+    },
+    "rightsHolder": {
+        "@id": "dcterms:rightsHolder"
+    },
+    "rights": {
+        "@id": "dcterms:rights"
+    },
+    "resource": {
+        "@id": "prof:hasResource"
+    },
+    "representationTechnique": {
+        "@id": "adms:representationTechnique",
+        "@type": "@id"
+    },
+    "format": {
+        "@id": "dcterms:format",
+        "@type": "@id"
+    },
+    "hasArtifact": {
+        "@id": "prof:hasArtifact",
+        "@type": "@id"
+    },
+    "hasRole": {
+        "@id": "prof:hasRole",
+        "@type": "@id"
+    },
+    "orcid": {
+        "@id": "https://orcid.org/",
+        "@type": "@id"
+    }
+}
