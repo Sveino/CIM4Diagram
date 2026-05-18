@@ -23,7 +23,7 @@ CONTEXT = {
     "prof": "http://www.w3.org/ns/dx/prof/",
     "role": "http://www.w3.org/ns/dx/prof/role/",
     "@vocab": "http://cim.ucaiug.io/grid/DiagramLayout",
-    "version": {"@id": "dcat:version", "@type": "@id"},
+    "version": {"@id": "dcat:version", "@type": "xsd:string"},
     "isVersionOf": {"@id": "dcat:isVersionOf", "@type": "@id"},
     "priorVersion": {"@id": "dcat:priorVersion", "@type": "@id"},
     "issued": {"@id": "dcterms:issued", "@type": "xsd:dateTime"},
@@ -61,3 +61,5 @@ if __name__ == "__main__":
 
     with open(PROF_JSON, "w") as g:
         json.dump(prof_dict, g, indent=2)
+
+    # NOTE: https://json-ld.org/playground/next/
