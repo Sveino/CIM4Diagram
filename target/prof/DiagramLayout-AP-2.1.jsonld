@@ -1,0 +1,172 @@
+{
+  "@context": {
+    "@base": "https://cim.ucaiug.io/grid/DiagramLayout/2.1#",
+    "id": "@id",
+    "adms": "http://www.w3.org/ns/adms#",
+    "type": "@type",
+    "rdf": "http://www.w3.org/1999/02/22-rdf-syntax-ns#",
+    "rdfs": "http://www.w3.org/2000/01/rdf-schema#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dc": "http://purl.org/dc/elements/1.1/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "dcat": "http://www.w3.org/ns/dcat#",
+    "owl": "http://www.w3.org/2002/07/owl#",
+    "skos": "http://www.w3.org/2004/02/skos/core#",
+    "cim": "https://cim.ucaiug.io/ns#",
+    "cims": "https://cim.ucaiug.io/schema-extensions#",
+    "prof": "http://www.w3.org/ns/dx/prof/",
+    "role": "http://www.w3.org/ns/dx/prof/role/",
+    "@vocab": "http://cim.ucaiug.io/grid/DiagramLayout",
+    "version": {
+      "@id": "dcat:version",
+      "@type": "xsd:string"
+    },
+    "isVersionOf": {
+      "@id": "dcat:isVersionOf",
+      "@type": "@id"
+    },
+    "priorVersion": {
+      "@id": "dcat:priorVersion",
+      "@type": "@id"
+    },
+    "issued": {
+      "@id": "dcterms:issued",
+      "@type": "xsd:dateTime"
+    },
+    "conformsTo": {
+      "@id": "dcterms:conformsTo",
+      "@type": "@id"
+    },
+    "source": {
+      "@id": "dcterms:source"
+    },
+    "contributor": {
+      "@id": "dcterms:contributor",
+      "@type": "@id"
+    },
+    "creator": {
+      "@id": "dcterms:creator",
+      "@type": "@id"
+    },
+    "description": {
+      "@id": "dcterms:description"
+    },
+    "title": {
+      "@id": "dcterms:title"
+    },
+    "comment": {
+      "@id": "rdfs:comment"
+    },
+    "label": {
+      "@id": "rdfs:label"
+    },
+    "language": {
+      "@id": "dcterms:language"
+    },
+    "license": {
+      "@id": "dcterms:license",
+      "@type": "@id"
+    },
+    "publisher": {
+      "@id": "dcterms:publisher",
+      "@type": "@id"
+    },
+    "rightsHolder": {
+      "@id": "dcterms:rightsHolder"
+    },
+    "rights": {
+      "@id": "dcterms:rights"
+    },
+    "resource": {
+      "@id": "prof:hasResource"
+    },
+    "representationTechnique": {
+      "@id": "adms:representationTechnique",
+      "@type": "@id"
+    },
+    "format": {
+      "@id": "dcterms:format",
+      "@type": "@id"
+    },
+    "hasArtifact": {
+      "@id": "prof:hasArtifact",
+      "@type": "@id"
+    },
+    "hasRole": {
+      "@id": "prof:hasRole",
+      "@type": "@id"
+    },
+    "orcid": {
+      "@id": "https://orcid.org/",
+      "@type": "@id"
+    }
+  },
+  "id": "https://cim.ucaiug.io/grid/DiagramLayout/2.1",
+  "type": "prof:Profile",
+  "version": "2.1",
+  "title": "DiagramLayout-AP-v2-1",
+  "isVersionOf": "https://cim.ucaiug.io/grid/DiagramLayout",
+  "priorVersion": "https://cim.ucaiug.io/grid/DiagramLayout/2.0",
+  "issued": "2025-03-06T17:59:40+01:00",
+  "conformsTo": "https://cim.ucaiug.io/dxprof-ap-cim/1.0",
+  "source": "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap",
+  "contributor": [
+    "orcid:0000-0002-7167-7321",
+    "orcid:0000-0001-7508-7428"
+  ],
+  "creator": "orcid:0009-0009-8211-926X",
+  "description": "Diagram Layout application profile specific the expected data to be exchanges to describe a Common Information Model (CIM) Diagram Layout.",
+  "comment": "Diagram Layout application profile defined by DX-PROF",
+  "label": "Diagram Layout Application Profile 2.1",
+  "language": "en-GB",
+  "license": "http://www.apache.org/licenses/LICENSE-2.0",
+  "publisher": "https://www.ucaiug.org/",
+  "rightsHolder": "UCA International User Group",
+  "rights": "Copyright",
+  "resource": [
+    {
+      "id": "https://cim.ucaiug.io/dcatcim/1.0#Vocabulary",
+      "type": "prof:ResourceDescriptor",
+      "label": "DCAT-CIM Constraints",
+      "title": "DCAT-CIM-Cons-v1-0-0",
+      "description": "Constraints for the Data Catalog Vocabulary (DCAT) with CIM extension profile described in SHACL.",
+      "representationTechnique": "https://cim.ucaiug.io/codelist/representation-technique#rdfs",
+      "conformsTo": "https://cim.ucaiug.io/prof/Constraints/1.0",
+      "format": "https://www.iana.org/assignments/media-types/text/turtle",
+      "hasArtifact": "https://cim.ucaiug.io/dcatcim/DCAT-CIM-Cons-v1-0-0.ttl",
+      "hasRole": "role:constraints"
+    },
+    {
+      "id": "https://cim.ucaiug.io/grid/DiagramLayout/2.1#Vocabulary",
+      "label": "Diagram Layout Vocabulary",
+      "title": "DiagramLayout-Voc-v2-1-0",
+      "description": "Vocabulary for the Diagram Layout profile described in RDFS-Plus.",
+      "conformsTo": "https://cim.ucaiug.io/prof/Vocabulary/1.0",
+      "representationTechnique": "https://cim.ucaiug.io/codelist/representation-technique#rdfs",
+      "format": "https://www.iana.org/assignments/media-types/text/turtle",
+      "source": "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap",
+      "hasArtifact": "https://cim.ucaiug.io/grid/DiagramLayout-Voc-v2-1-0.ttl",
+      "hasRole": "role:vocabulary"
+    },
+    {
+      "id": "https://cim.ucaiug.io/grid/DiagramLayout/2.1#Constraints",
+      "label": "Diagram Layout Constraints",
+      "title": "DiagramLayout-Cons-v2-1-0",
+      "description": "Constraints for the Diagram Layout profile described in SHACL.",
+      "conformsTo": "https://cim.ucaiug.io/prof/Constraints/1.0",
+      "representationTechnique": "https://cim.ucaiug.io/codelist/representation-technique#shacl",
+      "format": "https://www.iana.org/assignments/media-types/text/turtle",
+      "source": "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap",
+      "hasArtifact": "https://cim.ucaiug.io/grid/DiagramLayout-Voc-v2-1-0.ttl",
+      "hasRole": "role:constraints"
+    },
+    {
+      "id": "https://cim.ucaiug.io/grid/DiagramLayout/2.1#Specification",
+      "label": "Diagram-Layout-Specification-v2-1-0",
+      "description": "Document describing the human readable specification of the Diagram Layout application profile.",
+      "format": "https://www.iana.org/assignments/media-types/application/pdf",
+      "hasArtifact": "https://cim.ucaiug.io/grid/DiagramLayout_Profile_Specification_v2-1-0.pdf",
+      "hasRole": "role:specification"
+    }
+  ]
+}

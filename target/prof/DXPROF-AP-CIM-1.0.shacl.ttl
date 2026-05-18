@@ -1,0 +1,144 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix adms: <http://www.w3.org/ns/adms#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix dcat: <http://www.w3.org/ns/dcat#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix cim: <https://cim.ucaiug.io/ns#> .
+@prefix cims: <https://cim.ucaiug.io/schema-extensions#> .
+@prefix prof: <http://www.w3.org/ns/dx/prof/> .
+@prefix role: <http://www.w3.org/ns/dx/prof/role/> .
+
+<https://cim.ucaiug.io/dxprof-ap-cim/1.0#> a owl:Ontology ;
+    dcat:isVersionOf <https://cim.ucaiug.io/dxprof-ap-cim#> ;
+    rdfs:label "DXPROF-AP-CIM" ;
+    dcterms:conformsTo <https://www.w3.org/TR/dx-prof/> ;
+    dcterms:title "DX Profile Application Profile: CIM" .
+
+prof:Profile a sh:NodeShape , rdfs:Class ;
+	sh:property
+    [
+        sh:path dcat:version ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+	] ,
+    [
+        sh:path dcterms:title ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+	] ,
+    [
+        sh:path dcat:isVersionOf ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+	] ,
+    [
+        sh:path dcat:priorVersion ;
+        sh:nodeKind sh:IRI
+    ] ,
+    [
+        sh:path dcterms:issued ;
+        sh:datatype xsd:dateTime ;
+        sh:minCount 1 ;
+        sh:maxCount 1
+    ] ,
+    [
+        sh:path dcterms:conformsTo ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1
+    ] ,
+    [
+        sh:path dcterms:source
+    ] ,
+    [
+        sh:path dcterms:contributor ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1
+    ] ,
+    [
+        sh:path dcterms:creator ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1
+    ] ,
+    [
+        sh:path dcterms:description ;
+        sh:minCount 1
+    ] ,
+    [
+        sh:path dcterms:comment
+    ] ,
+    [
+        sh:path rdfs:label ;
+        sh:minCount 1
+    ] ,
+    [
+        sh:path dcterms:language ;
+    ] ,
+    [
+        sh:path dcterms:license ;
+    ] ,
+    [
+        sh:path dcterms:publisher ;
+        sh:minCount 1
+    ] ,
+    [
+        sh:path dcterms:rightsHolder
+    ] ,
+    [
+        sh:path dcterms:rights
+    ] ,
+    [
+        sh:path prof:hasResource ;
+        sh:node prof:ResourceDescriptor
+    ]
+.
+
+prof:ResourceDescriptor a sh:NodeShape , rdfs:Class ;
+	sh:property
+    [
+        sh:path rdfs:label ;
+        sh:minCount 1
+    ] ,
+    [
+        sh:path dcterms:title ;
+        sh:datatype xsd:string ;
+        sh:maxCount 1
+    ] ,
+    [
+        sh:path dcterms:description ;
+        sh:minCount 1
+	] ,
+    [
+        sh:path adms:representationTechnique ;
+        sh:nodeKind sh:IRI
+	] ,
+    [
+        sh:path dcterms:conformsTo ;
+        sh:nodeKind sh:IRI
+    ] ,
+    [
+        sh:path dcterms:format ;
+        sh:nodeKind sh:IRI ;  # TODO: Create code list.
+        sh:minCount 1
+    ] ,
+    [
+        sh:path dcterms:source
+    ] ,
+    [
+        sh:path prof:hasArtifact ;
+        sh:nodeKind sh:IRI ;
+        sh:minCount 1
+    ] ,
+    [
+        sh:path prof:hasRole ;
+        sh:minCount 1 ;
+        sh:in (role:constraints role:vocabulary role:specification)
+    ]
+.
