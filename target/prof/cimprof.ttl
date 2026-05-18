@@ -13,6 +13,10 @@
 @prefix prof: <http://www.w3.org/ns/dx/prof/> .
 @prefix role: <http://www.w3.org/ns/dx/prof/role/> .
 
+<https://cim.ucaiug.io/dxprof-ap-cim/1.0#> a owl:Ontology ;
+    dcat:isVersionOf <https://cim.ucaiug.io/dxprof-ap-cim#> ;
+    rdfs:label "DXPROF-AP-CIM" ;
+    dcterms:title "DX Profile Application Profile: CIM" .
 
 prof:Profile a sh:NodeShape , rdfs:Class ;
 	sh:property
