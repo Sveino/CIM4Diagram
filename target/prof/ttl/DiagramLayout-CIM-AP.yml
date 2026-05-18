@@ -1,3 +1,5 @@
+# '@context': https://cim.ucaiug.io/ap/prof/1.0/context.jsonld
+# Context inline for now.
 '@context':
   '@base': https://cim.ucaiug.io/grid/DiagramLayout/2.1#
   id: '@id'
@@ -34,7 +36,7 @@
     '@type': '@id'
   source:
     '@id': dcterms:source
-  contributors:
+  contributor:
     '@id': dcterms:contributor
     '@type': '@id'
   creator:
@@ -60,9 +62,9 @@
     '@id': dcterms:rightsHolder
   rights:
     '@id': dcterms:rights
-  resources:
+  resource:
     '@id': prof:hasResource
-    '@container': '@id'
+    # '@container': '@id'
   representationTechnique:
     '@id': adms:representationTechnique
     '@type': '@id'
@@ -78,6 +80,7 @@
   orcid:
     '@id': https://orcid.org/
     '@type': '@id'
+
 id: https://cim.ucaiug.io/grid/DiagramLayout/2.1
 type: prof:Profile
 version: "2.1"
@@ -87,7 +90,7 @@ priorVersion: https://cim.ucaiug.io/grid/DiagramLayout/2.0
 issued: '2025-03-06T17:59:40+01:00'
 conformsTo: https://cim.ucaiug.io/ap/prof/1.0
 source: iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap
-contributors:
+contributor:
   - orcid:0000-0002-7167-7321
   - orcid:0000-0001-7508-7428
 creator: orcid:0009-0009-8211-926X
@@ -99,8 +102,8 @@ license: http://www.apache.org/licenses/LICENSE-2.0
 publisher: https://www.ucaiug.org/
 rightsHolder: UCA International User Group
 rights: Copyright
-resources:
-  https://cim.ucaiug.io/dcatcim/1.0#Vocabulary:
+resource:
+  - id: https://cim.ucaiug.io/dcatcim/1.0#Vocabulary
     type: prof:ResourceDescriptor
     label: DCAT-CIM Constraints
     title: DCAT-CIM-Cons-v1-0-0
@@ -110,57 +113,32 @@ resources:
     format: https://www.iana.org/assignments/media-types/text/turtle
     hasArtifact: https://cim.ucaiug.io/dcatcim/DCAT-CIM-Cons-v1-0-0.ttl
     hasRole: role:constraints
-
-#################################################################
-#    Annotation properties
-#################################################################
-
-
-# <https://cim.ucaiug.io/grid/DiagramLayout/2.1#Vocabulary> a prof:ResourceDescriptor ;
-#     rdfs:label "Diagram Layout Vocabulary"@en ;
-#     dcterms:title "DiagramLayout-Voc-v2-1-0" ;
-#     dcterms:description "Vocabulary for the Diagram Layout profile described in RDFS-Plus."@en ;
-#     dcterms:conformsTo <https://cim.ucaiug.io/prof/Vocabulary/1.0> ;
-#     dcterms:format <https://www.iana.org/assignments/media-types/text/turtle> ;
-#     dct:source "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
-#     prof:hasArtifact <https://cim.ucaiug.io/grid/DiagramLayout-Voc-v2-1-0.ttl> ;
-#     prof:hasRole role:vocabulary .
-
-# <https://cim.ucaiug.io/grid/DiagramLayout/2.1#Constraints> a prof:ResourceDescriptor ;
-#     rdfs:label "Diagram Layout Constraints"@en ;
-#     dcterms:title "DiagramLayout-Cons-v2-1-0" ;
-#     dcterms:conformsTo <https://cim.ucaiug.io/prof/Constraints/1.0> ;
-#     dcterms:description "Constraints for the Diagram Layout profile described in SHACL."@en ;
-#     dcterms:format <https://www.iana.org/assignments/media-types/text/turtle> ;
-#     prof:hasArtifact <https://cim.ucaiug.io/grid/DiagramLayout-Cons-v2-1-0.ttl> ;
-#     dct:source "iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap" ;
-#     prof:hasRole role:constraints .
-
-# <https://cim.ucaiug.io/dcatcim/1.0#Vocabulary> a prof:ResourceDescriptor ;
-#     rdfs:label "DCAT-CIM Vocabulary (DCAT-CIM)"@en ;
-#     dcterms:title "DCAT-CIM-Voc-v1-0-0" ;
-#     dcterms:description "Data Catalog Vocabulary (DCAT) with CIM extension described in RDFS-Plus."@en ;
-#     dcterms:conformsTo <https://cim.ucaiug.io/prof/Vocabulary/1.0> ;
-#     dcterms:format <https://www.iana.org/assignments/media-types/text/turtle> ;
-#     prof:hasArtifact <https://cim.ucaiug.io/dcatcim/DCAT-CIM-Voc-v1-0-0.ttl> ;
-#     prof:hasRole role:vocabulary .
-
-# <https://cim.ucaiug.io/dcatcim/1.0#Constraints> a prof:ResourceDescriptor ;
-#     rdfs:label "DCAT-CIM Constraints"@en ;
-#     dcterms:title "DCAT-CIM-Cons-v1-0-0" ;
-#     dcterms:description "Constraints for the Data Catalog Vocabulary (DCAT) with CIM extension profile described in SHACL."@en ;
-#     dcterms:conformsTo <https://cim.ucaiug.io/prof/Constraints/1.0> ;
-#     dcterms:format <https://www.iana.org/assignments/media-types/text/turtle> ;
-#     prof:hasArtifact <https://cim.ucaiug.io/dcatcim/DCAT-CIM-Cons-v1-0-0.ttl> ;
-#     prof:hasRole role:constraints .
-
-
-# <https://cim.ucaiug.io/grid/DiagramLayout/2.1#Specification> a prof:ResourceDescriptor ;
-#     rdfs:label "Diagram Layout Specification"@en ;
-#     dcterms:title "DCAT-CIM-Cons-v1-0-0" ;
-#     dcterms:description "Document describing the human readable specification of the Diagram Layout application profile."@en ;
-#     dcterms:format <https://www.iana.org/assignments/media-types/application/pdf> ;
-#     prof:hasArtifact <https://cim.ucaiug.io/grid/DiagramLayout_Profile_Specification_v2-1-0.pdf> ;
-#     prof:hasRole role:specification .
+  - id: https://cim.ucaiug.io/grid/DiagramLayout/2.1#Vocabulary
+    label: Diagram Layout Vocabulary
+    title: DiagramLayout-Voc-v2-1-0
+    description: Vocabulary for the Diagram Layout profile described in RDFS-Plus.
+    conformsTo: <https://cim.ucaiug.io/prof/Vocabulary/1.0
+    representationTechnique: https://cim.ucaiug.io/codelist/representation-technique#rdfs
+    format: https://www.iana.org/assignments/media-types/text/turtle
+    source: iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap
+    hasArtifact: https://cim.ucaiug.io/grid/DiagramLayout-Voc-v2-1-0.ttl
+    hasRole: role:vocabulary
+  - id: https://cim.ucaiug.io/grid/DiagramLayout/2.1#Constraints
+    label: Diagram Layout Constraints
+    title: DiagramLayout-Cons-v2-1-0
+    description: Constraints for the Diagram Layout profile described in SHACL.
+    conformsTo: <https://cim.ucaiug.io/prof/Constraints/1.0
+    representationTechnique: https://cim.ucaiug.io/codelist/representation-technique#shacl
+    format: https://www.iana.org/assignments/media-types/text/turtle
+    source: iec61970cim17v40_iec61968cim13v13a_iec62325cim03v17a.eap
+    hasArtifact: https://cim.ucaiug.io/grid/DiagramLayout-Voc-v2-1-0.ttl
+    hasRole: role:constraints
+  - id: https://cim.ucaiug.io/grid/DiagramLayout/2.1#Specification
+    label: Diagram Layout Specification
+    label: Diagram-Layout-Specification-v2-1-0
+    description: Document describing the human readable specification of the Diagram Layout application profile.
+    format: https://www.iana.org/assignments/media-types/application/pdf
+    hasArtifact: https://cim.ucaiug.io/grid/DiagramLayout_Profile_Specification_v2-1-0.pdf
+    hasRole: role:specification
 
 
